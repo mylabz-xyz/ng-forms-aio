@@ -11,6 +11,16 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "paths": {
+      "ng-aio-forms": [
+        "dist/ng-aio-forms/ng-aio-forms",
+        "dist/ng-aio-forms"
+      ],
+      "ng-aio-forms-tester": [
+        "dist/ng-aio-forms-tester/ng-aio-forms-tester",
+        "dist/ng-aio-forms-tester"
+      ]
+    },
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
