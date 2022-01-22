@@ -3,5 +3,68 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ng-aio-forms": {
+      "projectType": "library",
+      "root": "projects/ng-aio-forms",
+      "sourceRoot": "projects/ng-aio-forms/src",
+      "prefix": "ng-aio-forms",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ng-aio-forms/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-aio-forms/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-aio-forms/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-aio-forms/src/test.ts",
+            "tsConfig": "projects/ng-aio-forms/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-aio-forms/karma.conf.js"
+          }
+        }
+      }
+    },
+    "ng-aio-forms-tester": {
+      "projectType": "library",
+      "root": "projects/ng-aio-forms-tester",
+      "sourceRoot": "projects/ng-aio-forms-tester/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ng-aio-forms-tester/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-aio-forms-tester/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-aio-forms-tester/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-aio-forms-tester/src/test.ts",
+            "tsConfig": "projects/ng-aio-forms-tester/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-aio-forms-tester/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-aio-forms"
 }
