@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgAioFormsTesterComponent } from './ng-aio-forms-tester.component';
+import { NgAioTestComponent } from './ng-aio-test.component';
 
-describe('NgAioFormsTesterComponent', () => {
-  let component: NgAioFormsTesterComponent;
-  let fixture: ComponentFixture<NgAioFormsTesterComponent>;
+describe('NgAioTestComponent', () => {
+  let component: NgAioTestComponent;
+  let fixture: ComponentFixture<NgAioTestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NgAioFormsTesterComponent ]
+      declarations: [ NgAioTestComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgAioFormsTesterComponent);
+    fixture = TestBed.createComponent(NgAioTestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
