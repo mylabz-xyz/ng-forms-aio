@@ -1,0 +1,24 @@
+<div class="form-floating mb-3 rounded">
+  <div class="form-control text-start position-relative">
+    <div
+      class="form-check form-check-inline"
+      *ngFor="let choice of choices; let i = index"
+    >
+      <input
+        class="form-check-input"
+        type="checkbox"
+        [id]="choice + '_' + i + '_' + _index"
+        [value]="choice"
+        (input)="emit($event, i, choice)"
+      />
+      <label
+        #labelForAnimatedCheckbox
+        class="form-check-label"
+        [for]="choice + '_' + i + '_' + _index"
+        >{{ choice }}</label
+      >
+    </div>
+  </div>
+
+  <label *ngIf="label" id="inputGroup-sizing-default">{{ label }}</label>
+</div>
