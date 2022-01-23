@@ -1,0 +1,20 @@
+<div class="form-floating border-0 mb-3 p-1">
+  <select
+    class="form-control"
+    [id]="label + '_choice_component' + '_' + _index"
+    (input)="emit(getValue($event))"
+  >
+    <option *ngFor="let choice of choices; let i = index" [value]="choice">
+      {{ choice }}
+    </option>
+  </select>
+  <label *ngIf="label" [for]="label + '_choice_component' + '_' + _index">{{
+    label
+  }}</label>
+  <small
+    *ngIf="formValueTips"
+    id="emailHelp"
+    class="d-flex align-self-start form-text text-muted"
+    >{{ formValueTips }}</small
+  >
+</div>

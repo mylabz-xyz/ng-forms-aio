@@ -1,0 +1,13 @@
+<div class="form-floating border-0 mb-3 p-1">
+  <input
+    [id]="'floating_' + label + '_' + _index"
+    type="text"
+    class="form-control rounded"
+    aria-describedby="emailHelp"
+    placeholder="Enter email"
+    (input)="emit(getValue($event))"
+  />
+  <label *ngIf="label" [for]="'floating_' + label + '_' + _index">{{
+    label
+  }}</label>
+</div>
