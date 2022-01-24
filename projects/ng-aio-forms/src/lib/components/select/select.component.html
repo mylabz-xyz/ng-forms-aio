@@ -4,7 +4,7 @@
     [id]="label + '_choice_component' + '_' + _index"
     (input)="emit(getValue($event))"
   >
-    <option *ngFor="let choice of choices; let i = index" [value]="choice">
+    <option *ngFor="let choice of values; let i = index" [value]="choice">
       {{ choice }}
     </option>
   </select>

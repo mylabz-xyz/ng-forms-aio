@@ -25,7 +25,7 @@ export class NgAioCheckboxFormComponent
   public required = false;
   public invalid = false;
 
-  private value: string = '';
+  @Input() value?: string | number | any = '';
 
   constructor() {}
 
