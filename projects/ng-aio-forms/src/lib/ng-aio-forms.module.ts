@@ -6,6 +6,7 @@ import {
   NgAioSelectFormComponent,
 } from './components';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgAioInputFormComponent,
     NgAioSelectFormComponent,
   ],
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, BrowserModule],
   exports: [
     NgAioFormsComponent,
     NgAioCheckboxFormComponent,

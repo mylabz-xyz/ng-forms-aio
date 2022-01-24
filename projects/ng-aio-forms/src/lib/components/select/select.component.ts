@@ -13,9 +13,9 @@ import {
   styleUrls: ['./select.component.scss'],
 })
 export class NgAioSelectFormComponent implements OnInit, OnDestroy {
-  @Input() choices: string[] | any;
+  @Input() values: string[] | any;
   @Input() label: string | undefined;
-  @Input() defaultSelected: number | any;
+  @Input() valueSelected: number | any;
   @Input() formValueTips: number | any;
   @Input() _index: number | any;
 
@@ -40,8 +40,8 @@ export class NgAioSelectFormComponent implements OnInit, OnDestroy {
   private checkRules$() {}
 
   private checkDefaultSelected() {
-    if (this.defaultSelected === undefined || this.defaultSelected === null) {
-      this.defaultSelected = 0;
+    if (this.valueSelected === undefined || this.valueSelected === null) {
+      this.valueSelected = 0;
     }
   }
 

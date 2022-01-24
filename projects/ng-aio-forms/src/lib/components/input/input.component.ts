@@ -11,7 +11,7 @@ export class NgAioInputFormComponent implements OnInit {
   @Input() preprendLabel: number | any;
   @Input() appendLabel: number | any;
 
-  public value = '';
+  @Input() value?: string | number | any = '';
 
   @Output() inputChange = new EventEmitter();
 
