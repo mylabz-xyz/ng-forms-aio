@@ -12,20 +12,33 @@ export class NgAioTestComponent {
       label: 'Ceci est un input',
       type: 'input',
       value: '',
-      onChange: () => {},
+      onChange: (e: any) => {
+        console.log(e);
+        console.log('input');
+      },
     },
     {
       label: 'Ceci est un select',
       type: 'select',
       value: '',
-      onChange: () => {},
+      onChange: (e: any) => {
+        console.log(e);
+        console.log('select');
+      },
     },
     {
       label: 'Ceci est un checkbox',
       type: 'checkbox',
       value: '',
-      onChange: () => {},
+      onChange: (e: any) => {
+        console.log(e);
+        console.log('checkbox');
+      },
       name: '',
     },
   ];
+
+  public onCheckboxChange(value: any) {
+    console.log(value);
+  }
 }

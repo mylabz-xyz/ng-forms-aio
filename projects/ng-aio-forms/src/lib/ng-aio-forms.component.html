@@ -1,0 +1,26 @@
+<div *ngIf="_formsKeys.length > 0">
+  <div *ngFor="let formID of _formsKeys" [ngSwitch]="_forms[formID].type">
+    <ng-aio-select
+      [label]="_forms[formID].label"
+      [values]="_forms[formID].value"
+      (choicesSelected)="onFormElementChange(_forms[formID].eventId, $event)"
+      *ngSwitchCase="'select'"
+    >
+    </ng-aio-select>
+    <ng-aio-input
+      [label]="_forms[formID].label"
+      [value]="_forms[formID].value"
+      (inputChange)="onFormElementChange(_forms[formID].eventId, $event)"
+      *ngSwitchCase="'input'"
+    >
+    </ng-aio-input>
+    <ng-aio-checkbox
+      [label]="_forms[formID].label"
+      [value]="_forms[formID].value"
+      (choicesSelected)="onFormElementChange(_forms[formID].eventId, $event)"
+      *ngSwitchCase="'checkbox'"
+    >
+    </ng-aio-checkbox>
+    <div *ngSwitchDefault>...</div>
+  </div>
+</div>
