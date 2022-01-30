@@ -1,1 +1,4 @@
-<ng-aio-forms [forms]="forms"></ng-aio-forms>
+<ng-aio-forms
+  (onInputChange)="onCheckboxChange($event)"
+  [forms]="forms"
+></ng-aio-forms>
