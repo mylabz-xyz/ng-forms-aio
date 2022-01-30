@@ -1,4 +1,14 @@
+import {
+  AbstractControlOptions,
+  AsyncValidatorFn,
+  ValidatorFn,
+} from '@angular/forms';
+
 export interface NgAioForms extends Array<NgAioItem> {}
+export interface NgAioFormsOptions {
+  submitIfValid?: boolean;
+  debug?: boolean;
+}
 
 export interface NgAioItem {
   /**
@@ -12,7 +22,13 @@ export interface NgAioItem {
    * @default '' if type input
    * @default 0 if type checkbox | select
    */
-  value?: string | number | string[] | number[] | undefined;
+  value?: string | number | undefined;
+  /**
+   * @description Actual or init value of form (only for checkbox)
+   * @default '' if type input
+   * @default 0 if type checkbox | select
+   */
+  values?: { value?: any; label?: any }[] | number[] | undefined;
   /**
    * @description Last value of form
    * @default '' if type input
@@ -30,11 +46,29 @@ export interface NgAioItem {
    * @description **If null and objects with same type, type and index is used**
    * @default null
    */
-  name?: string;
+  id?: string;
   /**
    * @description Name is usefull to generate EventEmmiter
    */
   required?: string;
+  /**
+   * TODO
+   */
+  controlType?: string;
+  /**
+   * TODO
+   */
+  options?: string;
+  /**
+   * TODO
+   */
+  validator?:
+    | ValidatorFn
+    | ValidatorFn[]
+    | AbstractControlOptions
+    | null
+    | undefined;
+  asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null | undefined;
 }
 
 export interface NgAioBase extends NgAioItem {
