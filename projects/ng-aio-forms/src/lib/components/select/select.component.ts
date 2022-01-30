@@ -15,13 +15,11 @@ import {
 export class NgAioSelectFormComponent implements OnInit, OnDestroy {
   @Input() values: string[] | any;
   @Input() label: string | undefined;
-  @Input() valueSelected: number | any;
+  @Input() value: number | any;
   @Input() formValueTips: number | any;
   @Input() _index: number | any;
 
   @Output() choicesSelected = new EventEmitter();
-
-  constructor() {}
 
   ngOnInit() {
     this.initIndex();
@@ -40,8 +38,8 @@ export class NgAioSelectFormComponent implements OnInit, OnDestroy {
   private checkRules$() {}
 
   private checkDefaultSelected() {
-    if (this.valueSelected === undefined || this.valueSelected === null) {
-      this.valueSelected = 0;
+    if (this.value === undefined || this.value === null) {
+      this.value = 0;
     }
   }
 
