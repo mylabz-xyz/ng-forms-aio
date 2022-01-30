@@ -20,11 +20,10 @@ import { map, pairwise, startWith } from 'rxjs';
 export type _NgAioFormsComponent = MapSchema<
   typeof NgAioFormsComponent['prototype']['_forms']
 >;
-
 @Component({
   selector: 'ng-aio-forms',
   templateUrl: './ng-aio-forms.component.html',
-  styles: [],
+  styleUrls: ['./ng-aio-forms.component.scss'],
 })
 export class NgAioFormsComponent implements OnInit {
   @Input() forms!: NgAioForms;

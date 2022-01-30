@@ -1,0 +1,18 @@
+
+:host ::ng-deep {
+@import '~normalize.css';
+
+._d-flex{
+  display: flex !important;
+}
+
+._flex-row{
+  flex-direction: row !important;
+}
+
+
+._flex-col{
+  flex-direction: column !important;
+}
+
+}

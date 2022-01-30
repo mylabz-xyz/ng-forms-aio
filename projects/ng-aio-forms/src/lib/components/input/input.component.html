@@ -1,13 +1,11 @@
-<div class="form-floating border-0 mb-3 p-1">
+<div class="ng-aio-control">
+  <label *ngIf="label" [for]="'ngAioInput_' + '_' + _index">{{ label }}</label>
   <input
-    [id]="'floating_' + label + '_' + _index"
+    [id]="'ngAioInput_' + '_' + _index"
     type="text"
-    class="form-control rounded"
+    class=""
     aria-describedby="emailHelp"
     placeholder="Enter email"
     (input)="emit(getValue($event))"
   />
-  <label *ngIf="label" [for]="'floating_' + label + '_' + _index">{{
-    label
-  }}</label>
 </div>
