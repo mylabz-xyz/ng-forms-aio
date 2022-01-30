@@ -16,9 +16,7 @@ export class NgAioInputFormComponent implements OnInit {
   @Output() inputChange = new EventEmitter();
 
   ngOnInit() {
-    if (this._index === undefined || this._index === null) {
-      this._index = 0;
-    }
+    this.initIndex();
   }
 
   public getValue(event: Event): string {
@@ -27,5 +25,11 @@ export class NgAioInputFormComponent implements OnInit {
 
   public emit(value: any): void {
     this.inputChange.emit(value);
+  }
+
+  private initIndex() {
+    if (this._index === undefined || this._index === null) {
+      this._index = 0;
+    }
   }
 }

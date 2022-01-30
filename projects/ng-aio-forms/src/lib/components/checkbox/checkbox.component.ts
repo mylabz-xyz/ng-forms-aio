@@ -1,22 +1,12 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'ng-aio-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
 })
-export class NgAioCheckboxFormComponent
-  implements OnInit, AfterViewInit, OnDestroy
-{
-  @Input() choices: string[] | undefined;
+export class NgAioCheckboxFormComponent implements OnInit {
+  @Input() values: any = [];
   @Input() label: string | undefined;
   @Input() _index: number | undefined;
 
@@ -27,16 +17,14 @@ export class NgAioCheckboxFormComponent
 
   @Input() value?: string | number | any = '';
 
-  constructor() {}
-
-  ngOnInit() {}
-
-  ngAfterViewInit() {}
+  ngOnInit() {
+    this.initIndex();
+  }
 
   public emit(event: any, i: any, choice: any): void {
     if (event.target.checked) {
       this.value = (event.target as HTMLInputElement).value;
-      this.choices?.forEach((_choice, index) => {
+      this.values?.forEach((_choice: any, index: number) => {
         if (_choice !== choice) {
           (
             document.getElementById(
@@ -46,8 +34,8 @@ export class NgAioCheckboxFormComponent
         }
       });
     } else {
-      this.value = '';
-      this.choices?.forEach((_choice, index) => {
+      this.value = false;
+      this.values?.forEach((_choice: any, index: number) => {
         (
           document.getElementById(
             _choice + '_' + index + '_' + this._index
@@ -59,5 +47,9 @@ export class NgAioCheckboxFormComponent
     this.choicesSelected.emit(this.value);
   }
 
-  ngOnDestroy() {}
+  private initIndex() {
+    if (this._index === undefined || this._index === null) {
+      this._index = 0;
+    }
+  }
 }
