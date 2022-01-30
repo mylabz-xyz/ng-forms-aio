@@ -1,5 +1,5 @@
 {
-  "name": "ng-aio-forms",
+  "name": "@mylabz.xyz/ng-aio-forms",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~13.0.0",
     "@angular/common": "~13.0.0",
@@ -36,5 +36,26 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "ng-packagr": "^13.0.0",
     "typescript": "~4.4.3"
-  }
+  },
+  "description": "All-in-one forms, easily manage complex forms under Angular 13",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mylabz-xyz/ng-aio-forms.git"
+  },
+  "keywords": [
+    "angular",
+    "forms",
+    "reactive",
+    "input",
+    "formbuilder",
+    "checkbox",
+    "select"
+  ],
+  "author": "Boucham Amine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mylabz-xyz/ng-aio-forms/issues"
+  },
+  "homepage": "https://github.com/mylabz-xyz/ng-aio-forms#readme"
 }

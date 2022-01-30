@@ -35,36 +35,212 @@
       }
     },
     "ng-aio-forms-tester": {
-      "projectType": "library",
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "projects/ng-aio-forms-tester",
       "sourceRoot": "projects/ng-aio-forms-tester/src",
-      "prefix": "lib",
+      "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "project": "projects/ng-aio-forms-tester/ng-package.json"
+            "outputPath": "dist/ng-aio-forms-tester",
+            "index": "projects/ng-aio-forms-tester/src/index.html",
+            "main": "projects/ng-aio-forms-tester/src/main.ts",
+            "polyfills": "projects/ng-aio-forms-tester/src/polyfills.ts",
+            "tsConfig": "projects/ng-aio-forms-tester/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ng-aio-forms-tester/src/favicon.ico",
+              "projects/ng-aio-forms-tester/src/assets"
+            ],
+            "styles": [
+              "projects/ng-aio-forms-tester/src/styles.scss"
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ng-aio-forms-tester/tsconfig.lib.prod.json"
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/ng-aio-forms-tester/src/environments/environment.ts",
+                  "with": "projects/ng-aio-forms-tester/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
             },
             "development": {
-              "tsConfig": "projects/ng-aio-forms-tester/tsconfig.lib.json"
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "ng-aio-forms-tester:build:production"
+            },
+            "development": {
+              "browserTarget": "ng-aio-forms-tester:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ng-aio-forms-tester:build"
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/ng-aio-forms-tester/src/test.ts",
+            "polyfills": "projects/ng-aio-forms-tester/src/polyfills.ts",
             "tsConfig": "projects/ng-aio-forms-tester/tsconfig.spec.json",
-            "karmaConfig": "projects/ng-aio-forms-tester/karma.conf.js"
+            "karmaConfig": "projects/ng-aio-forms-tester/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ng-aio-forms-tester/src/favicon.ico",
+              "projects/ng-aio-forms-tester/src/assets"
+            ],
+            "styles": [
+              "projects/ng-aio-forms-tester/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "ng-aio-forms-website": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/ng-aio-forms-website",
+      "sourceRoot": "projects/ng-aio-forms-website/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ng-aio-forms-website",
+            "index": "projects/ng-aio-forms-website/src/index.html",
+            "main": "projects/ng-aio-forms-website/src/main.ts",
+            "polyfills": "projects/ng-aio-forms-website/src/polyfills.ts",
+            "tsConfig": "projects/ng-aio-forms-website/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ng-aio-forms-website/src/favicon.ico",
+              "projects/ng-aio-forms-website/src/assets"
+            ],
+            "styles": [
+              "projects/ng-aio-forms-website/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/ng-aio-forms-website/src/environments/environment.ts",
+                  "with": "projects/ng-aio-forms-website/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "ng-aio-forms-website:build:production"
+            },
+            "development": {
+              "browserTarget": "ng-aio-forms-website:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ng-aio-forms-website:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-aio-forms-website/src/test.ts",
+            "polyfills": "projects/ng-aio-forms-website/src/polyfills.ts",
+            "tsConfig": "projects/ng-aio-forms-website/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-aio-forms-website/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ng-aio-forms-website/src/favicon.ico",
+              "projects/ng-aio-forms-website/src/assets"
+            ],
+            "styles": [
+              "projects/ng-aio-forms-website/src/styles.scss"
+            ],
+            "scripts": []
           }
         }
       }
     }
+
   },
   "defaultProject": "ng-aio-forms"
 }
