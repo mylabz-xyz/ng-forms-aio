@@ -1,5 +1,4 @@
 import {
-  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -28,7 +27,7 @@ export type _NgAioFormsComponent = MapSchema<
 export class NgAioFormsComponent implements OnInit {
   @Input() forms!: NgAioForms;
   @Input() opts: NgAioFormsOptions = {
-    debug: true,
+    debug: false,
     submitIfValid: true,
   };
   public _forms: any = {};
@@ -37,17 +36,13 @@ export class NgAioFormsComponent implements OnInit {
   public _formsGroup: { [key: string]: FormControl } = {};
 
   public _formsKeys: string[] | any = [];
-  private _keyStart = 'ng_aio_';
+  private _keyStart = '';
 
   @Output() onChange = new EventEmitter();
   @Output() onCreate = new EventEmitter();
   @Output() onSubmit = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder) {
-    if (this.opts.debug) {
-      this.alertDebug();
-    }
-  }
+  constructor(private formBuilder: FormBuilder) {}
 
   private _formatID = (form: NgAioItem, count: any) =>
     `${this._keyStart}${form.type}${
@@ -58,6 +53,9 @@ export class NgAioFormsComponent implements OnInit {
     `on${key.Capitalize()}${count[key] !== 0 ? count[key] : ''}Change`;
 
   ngOnInit(): void {
+    if (this.opts.debug) {
+      this.alertDebug();
+    }
     this.toObject();
     this.formGroup = this.toFormGroup();
   }
@@ -72,7 +70,7 @@ export class NgAioFormsComponent implements OnInit {
     this._forms[id as never].oldValue = this._forms[id as never].value;
     this._forms[id as never].value = value;
     if (this._forms[id as never]?.onChange) {
-      this._forms[id as never]?.onChange(value, this._forms);
+      this._forms[id as never]?.onChange(value, id);
     }
     this.updateFormByKey(id, value);
     this.onChange.emit(this.formGroup);
@@ -103,6 +101,7 @@ export class NgAioFormsComponent implements OnInit {
           id: id,
           required: form?.required || false,
           eventId: eventId,
+          onChange: form?.onChange||false
         },
         enumerable: true,
         writable: true,
@@ -146,7 +145,7 @@ export class NgAioFormsComponent implements OnInit {
   }
 
   private debug(value: any, from?: string) {
-    if (from) console.info(`[Ng-Aio-Forms ] ${from}`);
+    if (from) console.info(`[Ng-Aio-Forms] ${from}`);
     console.info(value);
   }
 
