@@ -37,9 +37,10 @@ export interface NgAioItem {
   oldValue?: string | number | string[] | number[] | undefined;
   /**
    * @description Calback called on any form change
-   * @default null
+   * @property value
+   * @property formKey
    */
-  onChange?: Function;
+  onChange?: (value?:any,formKey?:any)=>void;
   /**
    * @description Name is usefull to generate EventEmmiter
    * @description **If null type is used instead of name**
