@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { NgAioForms } from 'projects/ng-aio-forms/src/lib/models/NgAioForms';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public forms: any = [
+  public homeForms: NgAioForms = [
     {
       label: 'Ceci est un input',
-      type: 'input',
+      component: 'input',
       value: '',
       onChange: (e: any) => {
         console.log(e);
@@ -18,16 +19,15 @@ export class HomeComponent implements OnInit {
     },
     {
       label: 'Ceci est un input',
-      type: 'input',
+      component: 'input',
       value: '',
       onChange: (e: any) => {
         console.log(e);
         console.log('input');
       },
-    }]
-  constructor() { }
+    },
+  ];
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
