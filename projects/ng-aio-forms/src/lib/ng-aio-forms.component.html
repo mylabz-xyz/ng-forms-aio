@@ -3,7 +3,7 @@
   [formGroup]="formGroup"
   *ngIf="_formsKeys.length > 0"
 >
-  <div *ngFor="let formID of _formsKeys" [ngSwitch]="_forms[formID].type">
+  <div *ngFor="let formID of _formsKeys" [ngSwitch]="_forms[formID].component">
     <ng-aio-select
       [label]="_forms[formID].label"
       [values]="_forms[formID].values"
@@ -15,6 +15,7 @@
     <ng-aio-input
       [label]="_forms[formID].label"
       [value]="_forms[formID].value"
+      [type]="_forms[formID].type"
       (inputChange)="onFormElementChange(_forms[formID].id, $event)"
       *ngSwitchCase="'input'"
     >

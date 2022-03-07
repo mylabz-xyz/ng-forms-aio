@@ -1,4 +1,8 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -15,6 +19,7 @@ import {
   FooterComponent,
   HeaderComponent,
   SupportComponent,
+  JsonExempleComponent,
 } from './components';
 
 import {
@@ -26,17 +31,15 @@ import {
 } from './pages';
 
 import { BackgroundProvider } from './providers';
+
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
-import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 import { NgAioFormsModule } from 'projects/ng-aio-forms/src/lib/ng-aio-forms.module';
-
 
 registerLocaleData(en);
 
@@ -54,6 +57,7 @@ registerLocaleData(en);
     DocsComponentPage,
     ExemplesComponentPage,
     HomeComponentPage,
+    JsonExempleComponent,
     SupportComponent,
     SupportPageComponent,
   ],
@@ -72,8 +76,10 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     NzGridModule,
     NzButtonModule,
+    NzTypographyModule,
     NzLayoutModule,
-    NgAioFormsModule
+    NzDividerModule,
+    NgAioFormsModule,
   ],
   providers: [BackgroundProvider, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

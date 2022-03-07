@@ -1638,7 +1638,7 @@
         },
         {
             "name": "NgAioFormsComponent",
-            "id": "component-NgAioFormsComponent-114a8574414f29aaf011a795807435708087337a393a3333de02a11ad71fa9128c629cfacb1deb0db037721d5d4a73e1a2426b20185b73163207c1820049b36a",
+            "id": "component-NgAioFormsComponent-32542e7d3318e9ea29eea0a310b0d00539ca134fb08cb071d2df3a066d41009305f810447aa322b74a74f3c0c20a7eab6ec8d075036a457d70e609ec0bea2398",
             "file": "projects/ng-aio-forms/src/lib/ng-aio-forms.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1798,7 +1798,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 140,
+                    "line": 150,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1825,7 +1825,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 147,
+                    "line": 157,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1873,7 +1873,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 152,
+                    "line": 162,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1976,7 +1976,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 136,
+                    "line": 146,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2015,7 +2015,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 132,
+                    "line": 137,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2024,6 +2024,52 @@
                     "jsdoctags": [
                         {
                             "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "updateFormTypeById",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 142,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "id",
                             "type": "string",
                             "deprecated": false,
                             "deprecationMessage": "",
@@ -2050,7 +2096,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  EventEmitter,\n  Input,\n  OnInit,\n  Output,\n} from '@angular/core';\nimport {\n  MapSchema,\n  NgAioForms,\n  NgAioFormsOptions,\n  NgAioItem,\n} from './models/NgAioForms';\n\nimport './extends/String';\nimport { FormBuilder, FormControl, FormGroup } from '@angular/forms';\nimport { map, pairwise, startWith } from 'rxjs';\n\nexport type _NgAioFormsComponent = MapSchema<\n  typeof NgAioFormsComponent['prototype']['_forms']\n>;\n@Component({\n  selector: 'ng-aio-forms',\n  templateUrl: './ng-aio-forms.component.html',\n  styleUrls: ['./ng-aio-forms.component.scss'],\n})\nexport class NgAioFormsComponent implements OnInit {\n  @Input() forms!: NgAioForms;\n  @Input() opts: NgAioFormsOptions = {\n    debug: false,\n    submitIfValid: true,\n  };\n  public _forms: any = {};\n\n  public formGroup!: FormGroup;\n  public _formsGroup: { [key: string]: FormControl } = {};\n\n  public _formsKeys: string[] | any = [];\n  private _keyStart = '';\n\n  @Output() onChange = new EventEmitter();\n  @Output() onCreate = new EventEmitter();\n  @Output() onSubmit = new EventEmitter();\n\n  constructor(private formBuilder: FormBuilder) {}\n\n  private _formatID = (form: NgAioItem, count: any) =>\n    `${this._keyStart}${form.type}${\n      count[form.type] !== 0 ? '_' + count[form.type] : ''\n    }`;\n\n  private _formatEventID = (key: string, count: any) =>\n    `on${key.Capitalize()}${count[key] !== 0 ? count[key] : ''}Change`;\n\n  ngOnInit(): void {\n    if (this.opts.debug) {\n      this.alertDebug();\n    }\n    this.toObject();\n    this.formGroup = this.toFormGroup();\n  }\n\n  public submit() {\n    if (this.formGroup.valid) {\n      this.onSubmit.emit(this.formGroup);\n    }\n  }\n\n  public onFormElementChange(id: string, value: any) {\n    this._forms[id as never].oldValue = this._forms[id as never].value;\n    this._forms[id as never].value = value;\n    if (this._forms[id as never]?.onChange) {\n      this._forms[id as never]?.onChange(value, id);\n    }\n    this.updateFormByKey(id, value);\n    this.onChange.emit(this.formGroup);\n\n    if (this.opts.debug) {\n      this.debug(this._formsGroup, 'on form change');\n    }\n  }\n\n  private toObject() {\n    if (!this.forms) {\n      console.error('ERROR : provide forms input');\n    }\n    const count: any = {};\n    var id = '';\n    var eventId = '';\n    this.forms.forEach((form: NgAioItem, index: number) => {\n      count[form.type] =\n        count[form.type] !== undefined ? count[form.type] + 1 : 0;\n      id = form?.id || this._formatID(form, count);\n      eventId = form?.id || this._formatEventID(form.type, count);\n      Object.defineProperty(this._forms, id, {\n        value: {\n          value: form?.value || '',\n          values: form?.values || [],\n          label: form?.label || '',\n          type: form?.type,\n          id: id,\n          required: form?.required || false,\n          eventId: eventId,\n          onChange: form?.onChange||false\n        },\n        enumerable: true,\n        writable: true,\n      });\n\n      Object.defineProperty(this._formsGroup, id, {\n        value: new FormControl(form.value || '', form.validator || null),\n        enumerable: true,\n        writable: true,\n      });\n\n      this._formsGroup[id].valueChanges.pipe(\n        startWith(null),\n        pairwise(),\n        map((pairValues) => {\n          return {\n            current: pairValues[0],\n            previous: pairValues[1],\n          };\n        })\n      );\n    });\n    this._formsKeys = Object.keys(this._forms);\n\n    this.onCreate.emit(this._forms);\n  }\n\n  public updateFormByKey(key: string, value: any) {\n    this.formGroup.patchValue({ [key]: value });\n  }\n\n  private toFormGroup() {\n    return this.formBuilder.group(this._formsGroup);\n  }\n\n  private alertDebug() {\n    console.info(\n      '%c [Ng-Aio-Forms] Debug Enabled !',\n      'color:red;font-size:1.2rem;background:black;'\n    );\n  }\n\n  private debug(value: any, from?: string) {\n    if (from) console.info(`[Ng-Aio-Forms] ${from}`);\n    console.info(value);\n  }\n\n  private debugTable(value: any, from?: string) {\n    if (from) console.info(`[Ng-Aio-Forms] ${from}`);\n    console.table(value);\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  EventEmitter,\n  Input,\n  OnInit,\n  Output,\n} from '@angular/core';\nimport {\n  MapSchema,\n  NgAioForms,\n  NgAioFormsOptions,\n  NgAioItem,\n} from './models/NgAioForms';\n\nimport './extends/String';\nimport { FormBuilder, FormControl, FormGroup } from '@angular/forms';\nimport { map, pairwise, startWith } from 'rxjs';\n\nexport type _NgAioFormsComponent = MapSchema<\n  typeof NgAioFormsComponent['prototype']['_forms']\n>;\n@Component({\n  selector: 'ng-aio-forms',\n  templateUrl: './ng-aio-forms.component.html',\n  styleUrls: ['./ng-aio-forms.component.scss'],\n})\nexport class NgAioFormsComponent implements OnInit {\n  @Input() forms!: NgAioForms;\n  @Input() opts: NgAioFormsOptions = {\n    debug: false,\n    submitIfValid: true,\n  };\n  public _forms: any = {};\n\n  public formGroup!: FormGroup;\n  public _formsGroup: { [key: string]: FormControl } = {};\n\n  public _formsKeys: string[] | any = [];\n  private _keyStart = '';\n\n  @Output() onChange = new EventEmitter();\n  @Output() onCreate = new EventEmitter();\n  @Output() onSubmit = new EventEmitter();\n\n  constructor(private formBuilder: FormBuilder) {}\n\n  private _formatID = (form: NgAioItem, count: any) =>\n    `${this._keyStart}${form.component}${\n      count[form.component as never] !== 0 ? '_' + count[form.component as never] : ''\n    }`;\n\n  private _formatEventID = (key: string, count: any) =>\n    `on${key.Capitalize()}${count[key] !== 0 ? count[key] : ''}Change`;\n\n  ngOnInit(): void {\n    if (this.opts.debug) {\n      this.alertDebug();\n    }\n    this.toObject();\n    this.formGroup = this.toFormGroup();\n  }\n\n  public submit() {\n    if (this.formGroup.valid) {\n      this.onSubmit.emit(this.formGroup);\n    }\n  }\n\n  public onFormElementChange(id: string, value: any) {\n    this._forms[id as never].oldValue = this._forms[id as never].value;\n    this._forms[id as never].value = value;\n    if (this._forms[id as never]?.onChange) {\n      this._forms[id as never]?.onChange(value, id);\n    }\n    this.updateFormByKey(id, value);\n    this.onChange.emit(this.formGroup);\n\n    if (this.opts.debug) {\n      this.debug(this._formsGroup, 'on form change');\n    }\n  }\n\n  private toObject() {\n    if (!this.forms) {\n      console.error('ERROR : provide forms input');\n    }\n    const count: any = {};\n    var id = '';\n    var eventId = '';\n    this.forms.forEach((form: NgAioItem, index: number) => {\n      count[form.component as never] =\n        count[form.component as never] !== undefined ? count[form.component as never] + 1 : 0;\n      id = form?.id || this._formatID(form, count);\n\n      console.log(form)\n      console.log(form.component)\n      console.log(count)\n      eventId = form?.id || this._formatEventID(form.component as never, count);\n      Object.defineProperty(this._forms, id, {\n        value: {\n          value: form?.value || '',\n          values: form?.values || [],\n          label: form?.label || '',\n          component: form?.component,\n          type: form?.type,\n          id: id,\n          required: form?.required || false,\n          eventId: eventId,\n          onChange: form?.onChange||false,\n        },\n        enumerable: true,\n        writable: true,\n      });\n\n      Object.defineProperty(this._formsGroup, id, {\n        value: new FormControl(form.value || '', form.validator || null),\n        enumerable: true,\n        writable: true,\n      });\n\n      this._formsGroup[id].valueChanges.pipe(\n        startWith(null),\n        pairwise(),\n        map((pairValues) => {\n          return {\n            current: pairValues[0],\n            previous: pairValues[1],\n          };\n        })\n      );\n    });\n    this._formsKeys = Object.keys(this._forms);\n\n    this.onCreate.emit(this._forms);\n  }\n\n  public updateFormByKey(key: string, value: any) {\n    this.formGroup.patchValue({ [key]: value });\n  }\n\n\n  public updateFormTypeById(id: string, value: any) {\n   this._forms[id]\n  }\n\n  private toFormGroup() {\n    return this.formBuilder.group(this._formsGroup);\n  }\n\n  private alertDebug() {\n    console.info(\n      '%c [Ng-Aio-Forms] Debug Enabled !',\n      'color:red;font-size:1.2rem;background:black;'\n    );\n  }\n\n  private debug(value: any, from?: string) {\n    if (from) console.info(`[Ng-Aio-Forms] ${from}`);\n    console.info(value);\n  }\n\n  private debugTable(value: any, from?: string) {\n    if (from) console.info(`[Ng-Aio-Forms] ${from}`);\n    console.table(value);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2088,11 +2134,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<form\n  (ngSubmit)=\"submit()\"\n  [formGroup]=\"formGroup\"\n  *ngIf=\"_formsKeys.length > 0\"\n>\n  <div *ngFor=\"let formID of _formsKeys\" [ngSwitch]=\"_forms[formID].type\">\n    <ng-aio-select\n      [label]=\"_forms[formID].label\"\n      [values]=\"_forms[formID].values\"\n      [value]=\"_forms[formID].value\"\n      (choicesSelected)=\"onFormElementChange(_forms[formID].id, $event)\"\n      *ngSwitchCase=\"'select'\"\n    >\n    </ng-aio-select>\n    <ng-aio-input\n      [label]=\"_forms[formID].label\"\n      [value]=\"_forms[formID].value\"\n      (inputChange)=\"onFormElementChange(_forms[formID].id, $event)\"\n      *ngSwitchCase=\"'input'\"\n    >\n    </ng-aio-input>\n    <ng-aio-checkbox\n      [label]=\"_forms[formID].label\"\n      [value]=\"_forms[formID].values\"\n      [values]=\"_forms[formID].values\"\n      (choicesSelected)=\"onFormElementChange(_forms[formID].id, $event)\"\n      *ngSwitchCase=\"'checkbox'\"\n    >\n    </ng-aio-checkbox>\n    <div *ngSwitchDefault>...</div>\n  </div>\n\n  <button>submit</button>\n</form>\n"
+            "templateData": "<form\n  (ngSubmit)=\"submit()\"\n  [formGroup]=\"formGroup\"\n  *ngIf=\"_formsKeys.length > 0\"\n>\n  <div *ngFor=\"let formID of _formsKeys\" [ngSwitch]=\"_forms[formID].component\">\n    <ng-aio-select\n      [label]=\"_forms[formID].label\"\n      [values]=\"_forms[formID].values\"\n      [value]=\"_forms[formID].value\"\n      (choicesSelected)=\"onFormElementChange(_forms[formID].id, $event)\"\n      *ngSwitchCase=\"'select'\"\n    >\n    </ng-aio-select>\n    <ng-aio-input\n      [label]=\"_forms[formID].label\"\n      [value]=\"_forms[formID].value\"\n      [type]=\"_forms[formID].type\"\n      (inputChange)=\"onFormElementChange(_forms[formID].id, $event)\"\n      *ngSwitchCase=\"'input'\"\n    >\n    </ng-aio-input>\n    <ng-aio-checkbox\n      [label]=\"_forms[formID].label\"\n      [value]=\"_forms[formID].values\"\n      [values]=\"_forms[formID].values\"\n      (choicesSelected)=\"onFormElementChange(_forms[formID].id, $event)\"\n      *ngSwitchCase=\"'checkbox'\"\n    >\n    </ng-aio-checkbox>\n    <div *ngSwitchDefault>...</div>\n  </div>\n\n  <button>submit</button>\n</form>\n"
         },
         {
             "name": "NgAioInputFormComponent",
-            "id": "component-NgAioInputFormComponent-c3c21322fec4260e5fe463ad042a6523ba14731879dbc088641843adf9794133ea60909aee8d703a32fe5ec7a323f3264ddcdf7aa4ace0220a06eedead9555a6",
+            "id": "component-NgAioInputFormComponent-ec685071c04f49df42eabf625f3ed216c15c4bd26df15e5fc80ea2379d2306fce52f177f15d054ba56eb82862f3c5703e96d4a74b467103a68ff23af28a5b43e",
             "file": "projects/ng-aio-forms/src/lib/components/input/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2142,11 +2188,20 @@
                     "decorators": []
                 },
                 {
+                    "name": "type",
+                    "defaultValue": "'text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string | any",
+                    "decorators": []
+                },
+                {
                     "name": "value",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 15,
                     "type": "string | number | any",
                     "decorators": []
                 }
@@ -2157,7 +2212,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 17,
                     "type": "EventEmitter"
                 }
             ],
@@ -2176,7 +2231,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 26,
+                    "line": 27,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2207,7 +2262,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 22,
+                    "line": 23,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2231,7 +2286,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 30,
+                    "line": 31,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2244,7 +2299,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 18,
+                    "line": 19,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -2256,7 +2311,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'ng-aio-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n})\nexport class NgAioInputFormComponent implements OnInit {\n  @Input() label: string | undefined;\n  @Input() _index: number | any;\n  @Input() preprendLabel: number | any;\n  @Input() appendLabel: number | any;\n\n  @Input() value?: string | number | any = '';\n\n  @Output() inputChange = new EventEmitter();\n\n  ngOnInit() {\n    this.initIndex();\n  }\n\n  public getValue(event: Event): string {\n    return (event.target as HTMLInputElement).value;\n  }\n\n  public emit(value: any): void {\n    this.inputChange.emit(value);\n  }\n\n  private initIndex() {\n    if (this._index === undefined || this._index === null) {\n      this._index = 0;\n    }\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'ng-aio-input',\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.scss'],\n})\nexport class NgAioInputFormComponent implements OnInit {\n  @Input() label: string | undefined;\n  @Input() _index: number | any;\n  @Input() preprendLabel: number | any;\n  @Input() appendLabel: number | any;\n  @Input() type: string | any='text';\n\n  @Input() value?: string | number | any = '';\n\n  @Output() inputChange = new EventEmitter();\n\n  ngOnInit() {\n    this.initIndex();\n  }\n\n  public getValue(event: Event): string {\n    return (event.target as HTMLInputElement).value;\n  }\n\n  public emit(value: any): void {\n    this.inputChange.emit(value);\n  }\n\n  private initIndex() {\n    if (this._index === undefined || this._index === null) {\n      this._index = 0;\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2268,7 +2323,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"ng-aio-control\">\n  <label *ngIf=\"label\" [for]=\"'ngAioInput_' + '_' + _index\">{{ label }}</label>\n  <input\n    [id]=\"'ngAioInput_' + '_' + _index\"\n    type=\"text\"\n    class=\"\"\n    aria-describedby=\"emailHelp\"\n    placeholder=\"Enter email\"\n    (input)=\"emit(getValue($event))\"\n  />\n</div>\n"
+            "templateData": "<div class=\"ng-aio-control\">\n  <label *ngIf=\"label\" [for]=\"'ngAioInput_' + '_' + _index\">{{ label }}</label>\n  <input\n    [id]=\"'ngAioInput_' + '_' + _index\"\n    [type]=\"type\"\n    class=\"\"\n    aria-describedby=\"emailHelp\"\n    placeholder=\"Enter email\"\n    (input)=\"emit(getValue($event))\"\n  />\n</div>\n"
         },
         {
             "name": "NgAioSelectFormComponent",
@@ -2488,7 +2543,7 @@
         },
         {
             "name": "NgAioTestComponent",
-            "id": "component-NgAioTestComponent-67344983b2e494fbaf9f0a2e0653326d06af646aa7255d1806cc0b544f9e38a5249f42dbf49aacd27907b53d7cc487e8174cf5381e74644ecd8e3e3865163f75",
+            "id": "component-NgAioTestComponent-615136f5eab866e8b44f5b246f33079625cc31945c04992e0652169a8bb145d13b25eda75b2081ff9c803bf8d0824cbe55e7cadb123f72801696bea0268b3cf5",
             "file": "projects/ng-aio-forms-tester/src/app/components/ng-aio-test/ng-aio-test.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2509,7 +2564,7 @@
             "propertiesClass": [
                 {
                     "name": "forms",
-                    "defaultValue": "[\n    {\n      label: 'Ceci est un input',\n      type: 'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input obligatoire',\n      type: 'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n      validator: Validators.required,\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      type: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      type: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un checkbox',\n      type: 'checkbox',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('checkbox');\n      },\n    },\n  ]",
+                    "defaultValue": "[\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input obligatoire',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n      validator: Validators.required,\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      component: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      component: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un checkbox',\n      component: 'checkbox',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('checkbox');\n      },\n    },\n  ]",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "NgAioForms",
@@ -2535,7 +2590,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 90,
+                    "line": 94,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -2561,7 +2616,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Validators } from '@angular/forms';\nimport { NgAioForms } from 'projects/ng-aio-forms/src/lib/models/NgAioForms';\n\n@Component({\n  selector: 'ng-aio-forms-ng-aio-test',\n  templateUrl: './ng-aio-test.component.html',\n  styleUrls: ['./ng-aio-test.component.scss'],\n})\nexport class NgAioTestComponent {\n  public forms: NgAioForms = [\n    {\n      label: 'Ceci est un input',\n      type: 'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input obligatoire',\n      type: 'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n      validator: Validators.required,\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      type: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      type: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un checkbox',\n      type: 'checkbox',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('checkbox');\n      },\n    },\n  ];\n\n  public onCheckboxChange(value: any) {}\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Validators } from '@angular/forms';\nimport { NgAioForms } from 'projects/ng-aio-forms/src/lib/models/NgAioForms';\n\n@Component({\n  selector: 'ng-aio-forms-ng-aio-test',\n  templateUrl: './ng-aio-test.component.html',\n  styleUrls: ['./ng-aio-test.component.scss'],\n})\nexport class NgAioTestComponent {\n  public forms: NgAioForms = [\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input obligatoire',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n      validator: Validators.required,\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      component: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      component: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un checkbox',\n      component: 'checkbox',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('checkbox');\n      },\n    },\n  ];\n\n  public onCheckboxChange(value: any) {}\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -3048,7 +3103,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<NgAioFormsComponent>",
-                "defaultValue": "() => ({\n  props: {\n      forms,\n  },\n  template\n})"
+                "defaultValue": "(args) => {\nconsole.log(args)\n\n  return ({\n    props: {\n      ...args\n    },\n    template\n  })\n}"
             },
             {
                 "name": "context",
@@ -3127,8 +3182,18 @@
                 "file": "projects/ng-aio-forms-website/src/stories/Forms.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
+                "type": "NgAioForms",
+                "defaultValue": "[\n  {\n    label: 'Ceci est un input',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Ceci est un input',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Ceci est un input obligatoire',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n    validator: Validators.required,\n  },\n  {\n    label: 'Ceci est un input',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Ceci est un select',\n    component: 'select',\n    value: '',\n    values: [\n      { label: 'choix 0', value: 0 },\n      { label: 'choix 1', value: 1 },\n    ],\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('select');\n    },\n  },\n  {\n    label: 'Ceci est un select',\n    component: 'select',\n    value: '',\n    values: [\n      { label: 'choix 0', value: 0 },\n      { label: 'choix 1', value: 1 },\n    ],\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('select');\n    },\n  },\n  {\n    label: 'Ceci est un checkbox',\n    component: 'checkbox',\n    value: '',\n    values: [\n      { label: 'choix 0', value: 0 },\n      { label: 'choix 1', value: 1 },\n    ],\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('checkbox');\n    },\n  },\n]"
+            },
+            {
+                "name": "forms",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
                 "type": "any",
-                "defaultValue": "[\n  {\n    label: 'Username',\n    type: 'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Password',\n    type: 'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  }]"
+                "defaultValue": "{\n  test: 'test1',\n  test2: 'test2',\n}"
             },
             {
                 "name": "Large",
@@ -3201,6 +3266,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "story.bind({})"
+            },
+            {
                 "name": "require",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3248,6 +3323,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "story",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<NgAioFormsComponent>",
+                "defaultValue": "(args) => ({\n  props: {\n    ...args,\n  },\n  template,\n})"
+            },
+            {
                 "name": "template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3255,7 +3340,17 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "`<ng-aio-forms\n[opts]=\"{debug: false}\"\n[forms]=\"forms\"\n></ng-aio-forms>`"
+                "defaultValue": "`\n<ng-aio-forms\n[opts]=\"{debug: false}\"\n[forms]=\"forms\"\n></ng-aio-forms>`"
+            },
+            {
+                "name": "template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "`<div>{{test}}</div><div>{{test2}}</div>`"
             },
             {
                 "name": "Template",
@@ -3342,7 +3437,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<NgAioFormsComponent>",
-                    "defaultValue": "() => ({\n  props: {\n      forms,\n  },\n  template\n})"
+                    "defaultValue": "(args) => {\nconsole.log(args)\n\n  return ({\n    props: {\n      ...args\n    },\n    template\n  })\n}"
                 },
                 {
                     "name": "forms",
@@ -3351,8 +3446,8 @@
                     "file": "projects/ng-aio-forms-website/src/stories/Forms.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "any",
-                    "defaultValue": "[\n  {\n    label: 'Username',\n    type: 'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Password',\n    type: 'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  }]"
+                    "type": "NgAioForms",
+                    "defaultValue": "[\n  {\n    label: 'Ceci est un input',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Ceci est un input',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Ceci est un input obligatoire',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n    validator: Validators.required,\n  },\n  {\n    label: 'Ceci est un input',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Ceci est un select',\n    component: 'select',\n    value: '',\n    values: [\n      { label: 'choix 0', value: 0 },\n      { label: 'choix 1', value: 1 },\n    ],\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('select');\n    },\n  },\n  {\n    label: 'Ceci est un select',\n    component: 'select',\n    value: '',\n    values: [\n      { label: 'choix 0', value: 0 },\n      { label: 'choix 1', value: 1 },\n    ],\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('select');\n    },\n  },\n  {\n    label: 'Ceci est un checkbox',\n    component: 'checkbox',\n    value: '',\n    values: [\n      { label: 'choix 0', value: 0 },\n      { label: 'choix 1', value: 1 },\n    ],\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('checkbox');\n    },\n  },\n]"
                 },
                 {
                     "name": "opts",
@@ -3372,7 +3467,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "`<ng-aio-forms\n[opts]=\"{debug: false}\"\n[forms]=\"forms\"\n></ng-aio-forms>`"
+                    "defaultValue": "`\n<ng-aio-forms\n[opts]=\"{debug: false}\"\n[forms]=\"forms\"\n></ng-aio-forms>`"
                 }
             ],
             "projects/ng-aio-forms/src/test.ts": [
@@ -3484,6 +3579,48 @@
                     "deprecationMessage": "",
                     "type": "object",
                     "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "projects/ng-aio-forms-website/src/stories/Test.stories.ts": [
+                {
+                    "name": "forms",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "defaultValue": "{\n  test: 'test1',\n  test2: 'test2',\n}"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "story.bind({})"
+                },
+                {
+                    "name": "story",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<NgAioFormsComponent>",
+                    "defaultValue": "(args) => ({\n  props: {\n    ...args,\n  },\n  template,\n})"
+                },
+                {
+                    "name": "template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "`<div>{{test}}</div><div>{{test2}}</div>`"
                 }
             ],
             "stories/Button.stories.ts": [
@@ -3939,6 +4076,46 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "forms",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/ng-aio-forms-website/src/test.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -3973,7 +4150,7 @@
                 "linktype": "component",
                 "name": "NgAioInputFormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/11",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {
@@ -4000,7 +4177,7 @@
                 "linktype": "component",
                 "name": "NgAioFormsComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/23",
+                "coverageCount": "0/24",
                 "status": "low"
             },
             {

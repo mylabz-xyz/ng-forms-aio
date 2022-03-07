@@ -11,7 +11,8 @@ export class NgAioTestComponent {
   public forms: NgAioForms = [
     {
       label: 'Ceci est un input',
-      type: 'input',
+      type: 'text',
+      component:'input',
       value: '',
       onChange: (e: any) => {
         console.log(e);
@@ -20,7 +21,8 @@ export class NgAioTestComponent {
     },
     {
       label: 'Ceci est un input',
-      type: 'input',
+      type: 'text',
+      component:'input',
       value: '',
       onChange: (e: any) => {
         console.log(e);
@@ -29,7 +31,8 @@ export class NgAioTestComponent {
     },
     {
       label: 'Ceci est un input obligatoire',
-      type: 'input',
+      type: 'text',
+      component:'input',
       value: '',
       onChange: (e: any) => {
         console.log(e);
@@ -39,7 +42,8 @@ export class NgAioTestComponent {
     },
     {
       label: 'Ceci est un input',
-      type: 'input',
+      type: 'text',
+      component:'input',
       value: '',
       onChange: (e: any) => {
         console.log(e);
@@ -48,7 +52,7 @@ export class NgAioTestComponent {
     },
     {
       label: 'Ceci est un select',
-      type: 'select',
+      component: 'select',
       value: '',
       values: [
         { label: 'choix 0', value: 0 },
@@ -61,7 +65,7 @@ export class NgAioTestComponent {
     },
     {
       label: 'Ceci est un select',
-      type: 'select',
+      component: 'select',
       value: '',
       values: [
         { label: 'choix 0', value: 0 },
@@ -74,7 +78,7 @@ export class NgAioTestComponent {
     },
     {
       label: 'Ceci est un checkbox',
-      type: 'checkbox',
+      component: 'checkbox',
       value: '',
       values: [
         { label: 'choix 0', value: 0 },
