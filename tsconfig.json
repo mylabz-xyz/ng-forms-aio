@@ -13,10 +13,10 @@
     "sourceMap": true,
     "paths": {
       "ng-aio-forms": [
-        "dist/ng-aio-forms"
+        "projects/ng-aio-forms/src/public-api"
       ],
       "ng-aio-forms-tester": [
-        "dist/ng-aio-forms-tester"
+        "projects/ng-aio-forms-tester"
       ]
     },
     "declaration": false,

@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   MapSchema,
   NgAioForms,
@@ -16,9 +10,6 @@ import './extends/String';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { map, pairwise, startWith } from 'rxjs';
 
-export type _NgAioFormsComponent = MapSchema<
-  typeof NgAioFormsComponent['prototype']['_forms']
->;
 @Component({
   selector: 'ng-aio-forms',
   templateUrl: './ng-aio-forms.component.html',
@@ -30,7 +21,7 @@ export class NgAioFormsComponent implements OnInit {
     debug: false,
     submitIfValid: true,
   };
-  public _forms: any = {};
+  public _forms: { [key: string]: NgAioItem } = {};
 
   public formGroup!: FormGroup;
   public _formsGroup: { [key: string]: FormControl } = {};
@@ -45,8 +36,10 @@ export class NgAioFormsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   private _formatID = (form: NgAioItem, count: any) =>
-    `${this._keyStart}${form.type}${
-      count[form.type] !== 0 ? '_' + count[form.type] : ''
+    `${this._keyStart}${form.component}${
+      count[form.component as never] !== 0
+        ? '_' + count[form.component as never]
+        : ''
     }`;
 
   private _formatEventID = (key: string, count: any) =>
@@ -66,11 +59,12 @@ export class NgAioFormsComponent implements OnInit {
     }
   }
 
-  public onFormElementChange(id: string, value: any) {
-    this._forms[id as never].oldValue = this._forms[id as never].value;
-    this._forms[id as never].value = value;
-    if (this._forms[id as never]?.onChange) {
-      this._forms[id as never]?.onChange(value, id);
+  public onFormElementChange(id: any, value: any) {
+    this._forms[id].oldValue = this._forms[id].value;
+    this._forms[id].value = value;
+    if (this._forms[id].onChange) {
+      //@ts-ignore
+      this._forms[id].onChange(value, id);
     }
     this.updateFormByKey(id, value);
     this.onChange.emit(this.formGroup);
@@ -88,20 +82,23 @@ export class NgAioFormsComponent implements OnInit {
     var id = '';
     var eventId = '';
     this.forms.forEach((form: NgAioItem, index: number) => {
-      count[form.type] =
-        count[form.type] !== undefined ? count[form.type] + 1 : 0;
+      count[form.component as never] =
+        count[form.component as never] !== undefined
+          ? count[form.component as never] + 1
+          : 0;
       id = form?.id || this._formatID(form, count);
-      eventId = form?.id || this._formatEventID(form.type, count);
+      eventId = form?.id || this._formatEventID(form.component as never, count);
       Object.defineProperty(this._forms, id, {
         value: {
           value: form?.value || '',
           values: form?.values || [],
           label: form?.label || '',
+          component: form?.component,
           type: form?.type,
           id: id,
           required: form?.required || false,
           eventId: eventId,
-          onChange: form?.onChange||false
+          onChange: form?.onChange || false,
         },
         enumerable: true,
         writable: true,
@@ -131,6 +128,10 @@ export class NgAioFormsComponent implements OnInit {
 
   public updateFormByKey(key: string, value: any) {
     this.formGroup.patchValue({ [key]: value });
+  }
+
+  public updateFormTypeById(id: string, value: any) {
+    this._forms[id];
   }
 
   private toFormGroup() {

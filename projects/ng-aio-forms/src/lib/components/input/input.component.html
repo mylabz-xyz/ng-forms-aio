@@ -1,11 +1,14 @@
-<div class="ng-aio-control">
-  <label *ngIf="label" [for]="'ngAioInput_' + '_' + _index">{{ label }}</label>
+<div class="aio-input-label ng-aio-control">
   <input
     [id]="'ngAioInput_' + '_' + _index"
-    type="text"
-    class=""
+    [type]="type"
+    class="aio-border"
+    [ngClass]="{
+      'has-value': value.length > 0
+    }"
+    [(value)]="value"
     aria-describedby="emailHelp"
-    placeholder="Enter email"
     (input)="emit(getValue($event))"
   />
+  <label *ngIf="label" [for]="'ngAioInput_' + '_' + _index">{{ label }}</label>
 </div>

@@ -10,6 +10,7 @@ export class NgAioInputFormComponent implements OnInit {
   @Input() _index: number | any;
   @Input() preprendLabel: number | any;
   @Input() appendLabel: number | any;
+  @Input() type: string | any='text';
 
   @Input() value?: string | number | any = '';
 
