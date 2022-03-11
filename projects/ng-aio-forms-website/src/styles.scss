@@ -1,4 +1,6 @@
 @import './assets/scss/index.scss';
+@import 'codemirror/lib/codemirror.css';
+@import 'codemirror/theme/material.css';
 
 .glslCanvas {
   top: 0;
@@ -12,4 +14,28 @@
 .ant-layout,.ant-layout-footer,.ant-layout-header {
   background: transparent !important;
   background-color: transparent !important;
+}
+
+div.code {
+  white-space: pre;
+}
+
+nz-header {
+  position: fixed;
+  width: 100%;
+}
+
+.layout {
+  min-height: 100vh;
+}
+
+
+nz-footer {
+  text-align: center;
+}
+
+
+nz-content {
+  padding: 0 50px;
+  margin-top: 64px;
 }

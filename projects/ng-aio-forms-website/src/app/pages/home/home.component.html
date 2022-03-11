@@ -1,7 +1,23 @@
-<nz-divider nzOrientation="left" nzText="Horizontal"></nz-divider>
-<div nz-row>
-  <div class="text-center" nz-col nzFlex="3">test</div>
-  <div class="text-center" nz-col nzFlex="2">
-    <ng-aio-forms [opts]="{ debug: false }" [forms]="homeForms"></ng-aio-forms>
+<div class="inner-content">
+  <div nz-row nzJustify="start">
+    <div class="text-center" nzSpan="6">
+      {{ "intro.manage" | translate }}
+    </div>
+  </div>
+  <div nz-row>
+    <div class="text-center" nzSpan="3">
+      <app-exemples
+        [data]="homeForms"
+        (inputChange)="onChange($event)"
+      ></app-exemples>
+    </div>
+    <div class="text-center" nzSpan="2">
+      <ng-aio-forms
+        [opts]="{ debug: false }"
+        [forms]="homeForms"
+        (onChange)="onOut($event)"
+        *ngIf="show"
+      ></ng-aio-forms>
+    </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 {
   "appTitle":"ng-aio-forms",
-  "footer": "",
-  "header":"",
+  "Footer": "",
+  "Header":"",
   "Submit":"Valider",
   "Back":"Retour",
   "Cancel":"Annuler",
@@ -11,11 +11,9 @@
   "Home":"Accueil",
   "About":"A propos",
   "Doc":"Documentation",
-  "exemples":"Exemples",
-  "Play":"Play",
-  "":"",
-  "":"",
-  "":"",
-  "":"",
-  "":""
+  "Examples":"Exemples",
+  "Play":"Jouer",
+  "intro":{
+    "manage":"Easily manage complex forms with NgAioForms"
+  }
 }
