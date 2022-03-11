@@ -12,6 +12,13 @@
       *ngSwitchCase="'select'"
     >
     </ng-aio-select>
+    <ng-aio-input-text-box
+      [label]="_forms[formID].label"
+      [value]="_forms[formID].values"
+      (inputChange)="onFormElementChange(_forms[formID].id, $event)"
+      *ngSwitchCase="'text-area'"
+    >
+    </ng-aio-input-text-box>
     <ng-aio-input
       [label]="_forms[formID].label"
       [value]="_forms[formID].value"

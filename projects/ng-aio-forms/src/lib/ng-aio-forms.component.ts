@@ -138,6 +138,18 @@ export class NgAioFormsComponent implements OnInit {
     return this.formBuilder.group(this._formsGroup);
   }
 
+  private reset() {
+    this._forms = {};
+    this.formGroup;
+    this._formsGroup = {};
+    this._formsKeys = [];
+    this._keyStart = '';
+    this.opts = {
+      debug: false,
+      submitIfValid: true,
+    };
+  }
+
   private alertDebug() {
     console.info(
       '%c [Ng-Aio-Forms] Debug Enabled !',
