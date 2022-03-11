@@ -6,7 +6,8 @@ import { NgAioForms } from 'projects/ng-aio-forms/src/lib/models/NgAioForms';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+  public show = true;
   public homeForms: NgAioForms = [
     {
       label: 'Ceci est un input',
@@ -26,8 +27,28 @@ export class HomeComponent implements OnInit {
         console.log('input');
       },
     },
+    {
+      label: 'Ceci est un input',
+      component: 'text-area',
+      value: '',
+      onChange: (e: any) => {
+        console.log(e);
+        console.log('input');
+      },
+    },
   ];
-  constructor() {}
 
-  ngOnInit(): void {}
+  public out = '';
+
+  public onChange(homeForms: any) {
+    this.show = false;
+    this.homeForms = homeForms;
+    setTimeout(() => {
+      this.show = true;
+    });
+  }
+
+  public onOut(out: any) {
+    console.log(out);
+  }
 }

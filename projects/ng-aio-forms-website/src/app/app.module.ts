@@ -39,6 +39,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+
 import { NgAioFormsModule } from 'projects/ng-aio-forms/src/lib/ng-aio-forms.module';
 
 registerLocaleData(en);
@@ -80,6 +82,7 @@ registerLocaleData(en);
     NzLayoutModule,
     NzDividerModule,
     NgAioFormsModule,
+    CodemirrorModule,
   ],
   providers: [BackgroundProvider, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

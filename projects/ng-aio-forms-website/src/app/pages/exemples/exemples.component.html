@@ -1,1 +1,9 @@
-<p>exemples works!</p>
+<ngx-codemirror
+  [(ngModel)]="exemple"
+  [options]="{
+    lineNumbers: true,
+    theme: 'material',
+    mode: 'javascript'
+  }"
+  (ngModelChange)="onInputChange($event)"
+></ngx-codemirror>
