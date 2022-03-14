@@ -1,7 +1,7 @@
 <div class="aio-input-label ng-aio-control">
   <textarea
-    [id]="'ngAioTextBox_' + '_' + _index"
-    class="aio-border"
+    [id]="_id"
+    class="aio-border ngAioTextArea"
     [ngClass]="{
       'has-value': value.length > 0
     }"
@@ -9,7 +9,5 @@
     aria-describedby="emailHelp"
     (input)="emit(getValue($event))"
   ></textarea>
-  <label *ngIf="label" [for]="'ngAioTextBox_' + '_' + _index">{{
-    label
-  }}</label>
+  <label *ngIf="label" [for]="_id">{{ label }}</label>
 </div>

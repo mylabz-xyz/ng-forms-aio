@@ -4,15 +4,12 @@
     <input
       class=""
       type="checkbox"
-      [id]="choice + '_' + i + '_' + _index"
+      [id]="_idDynamic(i)"
       [value]="choice.value"
       (input)="emit($event, i, choice)"
     />
-    <label
-      #labelForAnimatedCheckbox
-      class=""
-      [for]="choice + '_' + i + '_' + _index"
-      >{{ choice.label }}</label
-    >
+    <label #labelForAnimatedCheckbox class="" [for]="_idDynamic(i)">{{
+      choice.label
+    }}</label>
   </div>
 </div>
