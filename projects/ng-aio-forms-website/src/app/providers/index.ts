@@ -1,1 +1,2 @@
-export * from './Background.provider'
+export * from './Background.provider';
+export * from './mojs';

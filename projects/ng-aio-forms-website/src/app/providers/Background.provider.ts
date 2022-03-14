@@ -1,4 +1,7 @@
+import { Injectable } from '@angular/core';
 import * as THREE from 'three';
+
+@Injectable({ providedIn: 'root' })
 export class BackgroundProvider {
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;

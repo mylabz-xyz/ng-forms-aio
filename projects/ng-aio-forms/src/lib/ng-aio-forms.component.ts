@@ -59,14 +59,14 @@ export class NgAioFormsComponent implements OnInit {
     }
   }
 
-  public onFormElementChange(id: any, value: any) {
+  public onFormElementChange(id: any, event: any) {
     this._forms[id].oldValue = this._forms[id].value;
-    this._forms[id].value = value;
+    this._forms[id].value = event.value;
     if (this._forms[id].onChange) {
       //@ts-ignore
-      this._forms[id].onChange(value, id);
+      this._forms[id].onChange(event.value, id);
     }
-    this.updateFormByKey(id, value);
+    this.updateFormByKey(id, event.value);
     this.onChange.emit(this.formGroup);
 
     if (this.opts.debug) {

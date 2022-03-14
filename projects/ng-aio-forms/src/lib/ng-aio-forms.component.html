@@ -8,14 +8,14 @@
       [label]="_forms[formID].label"
       [values]="_forms[formID].values"
       [value]="_forms[formID].value"
-      (choicesSelected)="onFormElementChange(_forms[formID].id, $event)"
+      (onChange)="onFormElementChange(_forms[formID].id, $event)"
       *ngSwitchCase="'select'"
     >
     </ng-aio-select>
     <ng-aio-input-text-box
       [label]="_forms[formID].label"
       [value]="_forms[formID].values"
-      (inputChange)="onFormElementChange(_forms[formID].id, $event)"
+      (onChange)="onFormElementChange(_forms[formID].id, $event)"
       *ngSwitchCase="'text-area'"
     >
     </ng-aio-input-text-box>
@@ -23,7 +23,7 @@
       [label]="_forms[formID].label"
       [value]="_forms[formID].value"
       [type]="_forms[formID].type"
-      (inputChange)="onFormElementChange(_forms[formID].id, $event)"
+      (onChange)="onFormElementChange(_forms[formID].id, $event)"
       *ngSwitchCase="'input'"
     >
     </ng-aio-input>
@@ -31,7 +31,7 @@
       [label]="_forms[formID].label"
       [value]="_forms[formID].values"
       [values]="_forms[formID].values"
-      (choicesSelected)="onFormElementChange(_forms[formID].id, $event)"
+      (onChange)="onFormElementChange(_forms[formID].id, $event)"
       *ngSwitchCase="'checkbox'"
     >
     </ng-aio-checkbox>

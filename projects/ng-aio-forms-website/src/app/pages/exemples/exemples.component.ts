@@ -1,7 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
 
 import 'codemirror/mode/javascript/javascript.js';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-exemples',
   templateUrl: './exemples.component.html',
@@ -9,7 +18,12 @@ import 'codemirror/mode/javascript/javascript.js';
 })
 export class ExemplesComponent implements OnInit {
   @Input() data?: any;
+  @Input() reloadData?: BehaviorSubject<boolean>;
   @Output() inputChange = new EventEmitter();
+  @ViewChild('editor') editor!: CodemirrorComponent;
+
+  private textArea!: HTMLTextAreaElement;
+
   public options: CodemirrorComponent['options'] = {
     lineNumbers: true,
     theme: 'material',
@@ -19,7 +33,7 @@ export class ExemplesComponent implements OnInit {
   public exemple = '';
 
   ngOnInit(): void {
-    this.exemple = JSON.stringify(this.data);
+    this.exemple = JSON.stringify(this.data, null, '\t');
   }
 
   public onInputChange(value: any) {
