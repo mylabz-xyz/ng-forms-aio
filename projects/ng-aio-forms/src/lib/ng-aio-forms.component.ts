@@ -9,6 +9,7 @@ import {
 import './extends/String';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { map, pairwise, startWith } from 'rxjs';
+import { NgAioTheme } from './const';
 
 @Component({
   selector: 'ng-aio-forms',
@@ -27,6 +28,8 @@ export class NgAioFormsComponent implements OnInit {
   public _formsGroup: { [key: string]: FormControl } = {};
 
   public _formsKeys: string[] | any = [];
+
+  public theme: NgAioTheme = 'background-center-to-edges';
   private _keyStart = '';
 
   @Output() onChange = new EventEmitter();

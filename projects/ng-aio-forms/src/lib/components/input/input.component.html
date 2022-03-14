@@ -1,14 +1,19 @@
-<div class="aio-input-label ng-aio-control">
-  <input
-    [id]="_id"
-    [type]="type"
-    class="aio-border"
-    [ngClass]="{
-      'has-value': value.length > 0
-    }"
-    [(value)]="value"
-    aria-describedby="emailHelp"
-    (input)="emit(getValue($event))"
-  />
-  <label *ngIf="label" [for]="_id">{{ label }}</label>
+<div class="ng-aio-control">
+  <div class="aio-input-label">
+    <input
+      [id]="_id"
+      [type]="type"
+      class="aio-input float-label borders-diagonal"
+      [class]="themes[theme].inputClass"
+      [ngClass]="{
+        'has-content': value.length > 0
+      }"
+      [(value)]="value"
+      aria-describedby="emailHelp"
+      (input)="emit(getValue($event))"
+      [placeholder]="label"
+    />
+    <label *ngIf="label" [for]="_id">{{ label }}</label>
+    <span [class]="themes[theme].focusClass"></span>
+  </div>
 </div>

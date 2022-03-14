@@ -6,6 +6,7 @@
   <div *ngFor="let formID of _formsKeys" [ngSwitch]="_forms[formID].component">
     <ng-aio-select
       [label]="_forms[formID].label"
+      [theme]="theme"
       [values]="_forms[formID].values"
       [value]="_forms[formID].value"
       (onChange)="onFormElementChange(_forms[formID].id, $event)"
@@ -14,6 +15,7 @@
     </ng-aio-select>
     <ng-aio-input-text-box
       [label]="_forms[formID].label"
+      [theme]="theme"
       [value]="_forms[formID].values"
       (onChange)="onFormElementChange(_forms[formID].id, $event)"
       *ngSwitchCase="'text-area'"
@@ -21,6 +23,7 @@
     </ng-aio-input-text-box>
     <ng-aio-input
       [label]="_forms[formID].label"
+      [theme]="theme"
       [value]="_forms[formID].value"
       [type]="_forms[formID].type"
       (onChange)="onFormElementChange(_forms[formID].id, $event)"
@@ -29,6 +32,7 @@
     </ng-aio-input>
     <ng-aio-checkbox
       [label]="_forms[formID].label"
+      [theme]="theme"
       [value]="_forms[formID].values"
       [values]="_forms[formID].values"
       (onChange)="onFormElementChange(_forms[formID].id, $event)"

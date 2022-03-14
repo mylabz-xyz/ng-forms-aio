@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgAioTheme, Themes } from '../const';
 
 @Component({
   template: '',
@@ -7,6 +8,8 @@ export class AbstractComponent implements OnInit {
   @Input() label: string | undefined;
   @Input() _index: number | undefined;
   @Input() value?: string | number | any = '';
+  @Input() theme!: NgAioTheme;
+  public themes = Themes;
 
   @Output() onChange: EventEmitter<any> = new EventEmitter();
 
