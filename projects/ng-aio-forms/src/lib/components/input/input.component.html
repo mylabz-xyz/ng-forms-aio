@@ -1,6 +1,6 @@
 <div class="aio-input-label ng-aio-control">
   <input
-    [id]="'ngAioInput_' + '_' + _index"
+    [id]="_id"
     [type]="type"
     class="aio-border"
     [ngClass]="{
@@ -10,5 +10,5 @@
     aria-describedby="emailHelp"
     (input)="emit(getValue($event))"
   />
-  <label *ngIf="label" [for]="'ngAioInput_' + '_' + _index">{{ label }}</label>
+  <label *ngIf="label" [for]="_id">{{ label }}</label>
 </div>

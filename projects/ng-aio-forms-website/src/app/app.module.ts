@@ -10,6 +10,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import {
   AboutComponent,
   BackgroundComponent,
@@ -30,7 +31,11 @@ import {
   SupportPageComponent,
 } from './pages';
 
-import { BackgroundProvider } from './providers';
+import {
+  BackgroundProvider,
+  AnimatedFormProvider,
+  AnimatedIcon,
+} from './providers';
 
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -84,7 +89,12 @@ registerLocaleData(en);
     NgAioFormsModule,
     CodemirrorModule,
   ],
-  providers: [BackgroundProvider, { provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    BackgroundProvider,
+    AnimatedFormProvider,
+    AnimatedIcon,
+    { provide: NZ_I18N, useValue: en_US },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

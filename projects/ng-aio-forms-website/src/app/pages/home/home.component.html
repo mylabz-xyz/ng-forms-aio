@@ -1,22 +1,23 @@
 <div class="inner-content">
-  <div nz-row nzJustify="start">
-    <div class="text-center" nzSpan="6">
+  <div nz-row [nzGutter]="16" nzJustify="start">
+    <div class="text-center" nz-col class="gutter-row" [nzSpan]="24">
       {{ "intro.manage" | translate }}
     </div>
   </div>
-  <div nz-row>
-    <div class="text-center" nzSpan="3">
+  <div nz-row [nzGutter]="[24, 10]">
+    <div nz-col class="gutter-row" [nzSpan]="12">
       <app-exemples
         [data]="homeForms"
         (inputChange)="onChange($event)"
       ></app-exemples>
     </div>
-    <div class="text-center" nzSpan="2">
+    <div class="text-center" nz-col class="gutter-row" [nzSpan]="12">
       <ng-aio-forms
         [opts]="{ debug: false }"
         [forms]="homeForms"
         (onChange)="onOut($event)"
-        *ngIf="show"
+        (onCreate)="onCreate($event)"
+        *ngIf="showForm"
       ></ng-aio-forms>
     </div>
   </div>
