@@ -13,6 +13,7 @@ export class BackgroundProvider {
   private clock!: THREE.Clock;
 
   public init(canvas: HTMLCanvasElement) {
+    console.log('hi');
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0xffffff);
     this.light = new THREE.SpotLight(0xffffff, 1);

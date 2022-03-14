@@ -1,11 +1,22 @@
 <div class="ng-aio-control">
-  <select class="" [id]="_id" (input)="emit(getValue($event))">
-    <option *ngFor="let choice of values; let i = index" [value]="choice.value">
-      {{ choice.label }}
-    </option>
-  </select>
-  <label *ngIf="label" [for]="_id">{{ label }}</label>
-  <small *ngIf="formValueTips" id="emailHelp" class="">{{
-    formValueTips
-  }}</small>
+  <div class="aio-input-label">
+    <select
+      class=""
+      [id]="_id"
+      (input)="emit(getValue($event))"
+      [class]="themes[theme].inputClass"
+    >
+      <option
+        *ngFor="let choice of values; let i = index"
+        [value]="choice.value"
+      >
+        {{ choice.label }}
+      </option>
+    </select>
+    <label *ngIf="label" [for]="_id">{{ label }}</label>
+    <span [class]="themes[theme].focusClass"></span>
+    <small *ngIf="formValueTips" id="emailHelp" class="">{{
+      formValueTips
+    }}</small>
+  </div>
 </div>

@@ -2,18 +2,18 @@
   "appTitle":"ng-aio-forms",
   "Footer": "",
   "Header":"",
-  "Submit":"Valider",
-  "Back":"Retour",
-  "Cancel":"Annuler",
-  "Read":"Lire",
-  "Accept":"Accepter",
-  "Refuse":"Refuser",
-  "Home":"Accueil",
-  "About":"A propos",
+  "Submit":"Submit",
+  "Back":"Back",
+  "Cancel":"Cancel",
+  "Read":"Read",
+  "Accept":"Ok",
+  "Refuse":"Decline",
+  "Home":"Home",
+  "About":"About",
   "Doc":"Documentation",
   "Examples":"Exemples",
-  "Play":"Jouer",
   "intro":{
-    "manage":"Easily manage complex forms with NgAioForms"
+    "manage":"Easily manage complex forms with NgAioForms",
+    "dontWrite":"Don't write <input [(ngModel)]=\"value\"/> anymore"
   }
 }
