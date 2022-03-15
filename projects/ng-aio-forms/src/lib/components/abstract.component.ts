@@ -15,6 +15,7 @@ export class AbstractComponent implements OnInit {
 
   public required = false;
   public invalid = false;
+  public isFocus = false;
 
   public _id: string = '';
 

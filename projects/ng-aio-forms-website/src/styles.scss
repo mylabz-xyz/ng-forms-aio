@@ -1,7 +1,7 @@
 @import './assets/scss/index.scss';
-@import 'codemirror/lib/codemirror.css';
-@import 'codemirror/theme/material.css';
-
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/material.css';
+@import '~codemirror/theme/idea.css';
 .glslCanvas {
   top: 0;
   left: 0;

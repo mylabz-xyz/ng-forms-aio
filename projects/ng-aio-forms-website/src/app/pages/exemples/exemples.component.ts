@@ -18,22 +18,27 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ExemplesComponent implements OnInit {
   @Input() data?: any;
+  @Input() stringify?: boolean;
   @Input() reloadData?: BehaviorSubject<boolean>;
+  @Input() _class: string = '';
   @Output() inputChange = new EventEmitter();
   @ViewChild('editor') editor!: CodemirrorComponent;
 
   private textArea!: HTMLTextAreaElement;
 
-  public options: CodemirrorComponent['options'] = {
+  @Input() options: CodemirrorComponent['options'] = {
     lineNumbers: true,
     theme: 'material',
     mode: 'javascript',
+    viewportMargin: 23,
   };
 
   public exemple = '';
 
   ngOnInit(): void {
-    this.exemple = JSON.stringify(this.data, null, '\t');
+    this.exemple = this.stringify
+      ? JSON.stringify(this.data, null, '\t')
+      : this.data;
   }
 
   public onInputChange(value: any) {
