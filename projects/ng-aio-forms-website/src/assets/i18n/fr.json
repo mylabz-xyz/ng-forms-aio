@@ -15,5 +15,13 @@
   "Play":"Jouer",
   "intro":{
     "manage":"Complex forms management made easy with NgAioForms"
+  },
+  "question":{
+    "withAntularForm":"Can i use it with FormControl ?",
+    "howCanIUseIt":"How can i use it ?",
+    "isItReative":"Yeah, you can try and edit the json below, the form will follow change !"
+  },
+  "respond":{
+    "withAntularForm":"Yeah, he already use it ! You also can use AsyncFormControl ;)"
   }
 }

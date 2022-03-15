@@ -21,7 +21,11 @@ import {
   HeaderComponent,
   SupportComponent,
   JsonExempleComponent,
+  IntroComponent,
+  ZorroDropdownComponent,
 } from './components';
+
+import { AbstractWithForm } from './abstract';
 
 import {
   AboutComponent as AboutComponentPage,
@@ -41,6 +45,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
@@ -66,7 +71,10 @@ registerLocaleData(en);
     HomeComponentPage,
     JsonExempleComponent,
     SupportComponent,
+    IntroComponent,
     SupportPageComponent,
+    ZorroDropdownComponent,
+    AbstractWithForm,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +91,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     NzGridModule,
     NzButtonModule,
+    NzDropDownModule,
     NzTypographyModule,
     NzLayoutModule,
     NzDividerModule,

@@ -1,19 +1,24 @@
 <div class="ng-aio-control">
-  <div class="aio-input-label">
+  <div class="ng-aio-input-label">
     <input
       [id]="_id"
       [type]="type"
-      class="aio-input float-label borders-diagonal"
+      class="ng-aio-input"
       [class]="themes[theme].inputClass"
       [ngClass]="{
         'has-content': value.length > 0
       }"
+      (focus)="isFocus = themes[theme].showLabel && true"
+      (focusout)="isFocus = themes[theme].showLabel && false"
       [(value)]="value"
       aria-describedby="emailHelp"
       (input)="emit(getValue($event))"
-      [placeholder]="label"
+      [placeholder]="!isFocus && themes[theme].showLabel === false ? label : ''"
     />
-    <label *ngIf="label" [for]="_id">{{ label }}</label>
+
+    <label *ngIf="label && themes[theme].showLabel === true" [for]="_id">{{
+      label
+    }}</label>
     <span [class]="themes[theme].focusClass"></span>
   </div>
 </div>
