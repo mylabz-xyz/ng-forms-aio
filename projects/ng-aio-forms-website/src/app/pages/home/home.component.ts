@@ -1,72 +1,77 @@
 import { Component } from '@angular/core';
 import { NgAioForms } from 'projects/ng-aio-forms/src/lib/models/NgAioForms';
+import { AbstractWithForm } from '../../abstract';
 import { AnimatedFormProvider, AnimatedIcon } from './../../providers';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
-  public showForm = true;
-  public showCode = true;
-  public homeForms: NgAioForms = [
+export class HomeComponent extends AbstractWithForm {
+  public previewTypescript = `
+  // Create a form
+  public introForm: NgAioForms = [
     {
       label: 'Ceci est un input',
       component: 'input',
       value: '',
-      onChange: (e: any) => {
-        console.log(e);
-        console.log('input');
-      },
-    },
-    {
-      label: 'Ceci est un input',
-      component: 'input',
-      value: '',
-      onChange: (e: any) => {
-        console.log(e);
-        console.log('input');
-      },
     },
     {
       label: 'Ceci est un input',
       component: 'text-area',
       value: '',
-      onChange: (e: any) => {
-        console.log(e);
-        console.log('input');
-      },
+    },
+  ];
+  `;
+
+  public previewTemplate = `
+  // Call ngAioForms, pass form to it and listen for change
+  <ng-aio-forms
+  [forms]="forms"
+  (onChange)="onFormChange($event)"
+  ></ng-aio-forms>
+
+  // That it !`;
+  public introForm: NgAioForms = [
+    {
+      label: 'Ceci est un input',
+      component: 'input',
+      value: '',
+    },
+    {
+      label: 'Ceci est un input',
+      component: 'input',
+      value: '',
+    },
+    {
+      label: 'Ceci est un input',
+      component: 'text-area',
+      value: '',
     },
   ];
 
-  public out = '';
+  public submitForm: NgAioForms = [
+    {
+      label: 'This input is required',
+      component: 'input',
+      value: '',
+      required: true,
+      onChange: (value) => {
+        console.log(value);
+      },
+    },
+    {
+      label: 'This checkbox is optional',
+      component: 'checkbox',
+      values: [
+        { value: 1, label: 'Option 1' },
+        { value: 2, label: 'Option 2' },
+      ],
+      value: '',
+    },
+  ];
 
-  constructor(private animatedForm: AnimatedFormProvider) {}
-
-  public onChange(homeForms: any) {
-    console.log(homeForms);
-    this.showForm = false;
-    this.homeForms = homeForms;
-    setTimeout(() => {
-      this.showForm = true;
-    });
-  }
-
-  public onCreate(homeForms: any) {
-    console.log(homeForms);
-  }
-
-  public onOut(out: any) {
-    this.showCode = false;
-    console.log(out);
-
-    const allForms = Object.keys(out.value);
-    allForms.forEach((_formKey, index) => {
-      this.homeForms[index].value = out.value[_formKey];
-    });
-
-    setTimeout(() => {
-      this.showCode = true;
-    });
+  constructor(private animatedForm: AnimatedFormProvider) {
+    super();
   }
 }

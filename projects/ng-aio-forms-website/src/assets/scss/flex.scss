@@ -1,6 +1,12 @@
 .d-flex{
   display: flex !important;
 }
+.flex-row{
+  flex-direction: row !important;
+}
+.flex-column{
+  flex-direction: column !important;
+}
 .align-items-center{
   align-items: center !important;
 }

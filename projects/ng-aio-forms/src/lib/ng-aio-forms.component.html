@@ -3,7 +3,11 @@
   [formGroup]="formGroup"
   *ngIf="_formsKeys.length > 0"
 >
-  <div *ngFor="let formID of _formsKeys" [ngSwitch]="_forms[formID].component">
+  <div
+    class="position-relative"
+    *ngFor="let formID of _formsKeys"
+    [ngSwitch]="_forms[formID].component"
+  >
     <ng-aio-select
       [label]="_forms[formID].label"
       [theme]="theme"
@@ -42,5 +46,5 @@
     <div *ngSwitchDefault>...</div>
   </div>
 
-  <button>submit</button>
+  <button *ngIf="displaySubmitBtn">submit</button>
 </form>

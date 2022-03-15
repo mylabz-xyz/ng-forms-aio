@@ -18,10 +18,14 @@ import { NgAioTheme } from './const';
 })
 export class NgAioFormsComponent implements OnInit {
   @Input() forms!: NgAioForms;
+  @Input() displaySubmitBtn: boolean = false;
   @Input() opts: NgAioFormsOptions = {
     debug: false,
     submitIfValid: true,
   };
+  @Input() theme: NgAioTheme = 'background-center-to-edges';
+  @Input() formId?: string;
+
   public _forms: { [key: string]: NgAioItem } = {};
 
   public formGroup!: FormGroup;
@@ -29,7 +33,6 @@ export class NgAioFormsComponent implements OnInit {
 
   public _formsKeys: string[] | any = [];
 
-  public theme: NgAioTheme = 'background-center-to-edges';
   private _keyStart = '';
 
   @Output() onChange = new EventEmitter();

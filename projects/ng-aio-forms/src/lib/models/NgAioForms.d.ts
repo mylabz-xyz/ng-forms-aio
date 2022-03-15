@@ -26,7 +26,7 @@ export interface NgAioItem {
   /**
    * @description Component to use for form object
    */
-  component: 'input' | 'text-area' | 'checkbox' | 'select' | 'select-input';
+  component: 'input' | 'text-area' | 'checkbox' | 'select';
   /**
    * @description Actual or init value of form
    * @default
@@ -40,7 +40,7 @@ export interface NgAioItem {
    * '' if type input;
    * 0 if type checkbox | select;
    */
-  values?: { value?: any; label?: any }[] | number[] | undefined;
+  values?: { value?: any; label?: any }[];
   /**
    * @description Last value of form
    * @default
@@ -64,7 +64,7 @@ export interface NgAioItem {
   /**
    * @description Name is usefull to generate EventEmitter
    */
-  required?: string;
+  required?: boolean;
   /**
    * TODO
    */
