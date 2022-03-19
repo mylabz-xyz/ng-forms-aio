@@ -7,7 +7,6 @@ import { NgAioForms } from 'projects/ng-aio-forms/src/lib/models/NgAioForms';
 })
 export class AbstractWithForm {
   @Input() form!: NgAioForms;
-  @Input() themeForm!: NgAioForms;
   @Input() opts: any;
   @Input() theme: any;
 
@@ -43,8 +42,6 @@ export class AbstractWithForm {
 
   public onOut(key: any, out: any) {
     this.showCode = false;
-    console.log(out);
-
     const allForms = Object.keys(out.value);
     allForms.forEach((_formKey, index) => {
       //@ts-ignore

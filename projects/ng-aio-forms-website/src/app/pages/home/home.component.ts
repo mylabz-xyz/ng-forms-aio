@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Validators } from '@angular/forms';
 import { NgAioForms } from 'projects/ng-aio-forms/src/lib/models/NgAioForms';
 import { AbstractWithForm } from '../../abstract';
 import { AnimatedFormProvider, AnimatedIcon } from './../../providers';
@@ -7,7 +8,7 @@ import { AnimatedFormProvider, AnimatedIcon } from './../../providers';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent extends AbstractWithForm {
+export class HomeComponent {
   public previewTypescript = `
   // Create a form
   public introForm: NgAioForms = [
@@ -42,11 +43,16 @@ export class HomeComponent extends AbstractWithForm {
       label: 'Ceci est un input',
       component: 'input',
       value: '',
+      required: true,
     },
     {
       label: 'Ceci est un input',
       component: 'text-area',
       value: '',
+      formControlFeedBack: {
+        required: 'is required',
+        pattern: 'need to respect pattern',
+      },
     },
   ];
 
@@ -71,7 +77,5 @@ export class HomeComponent extends AbstractWithForm {
     },
   ];
 
-  constructor(private animatedForm: AnimatedFormProvider) {
-    super();
-  }
+  constructor(private animatedForm: AnimatedFormProvider) {}
 }

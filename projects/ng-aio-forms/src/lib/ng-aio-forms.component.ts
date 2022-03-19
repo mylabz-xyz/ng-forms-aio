@@ -7,7 +7,12 @@ import {
 } from './models/NgAioForms';
 
 import './extends/String';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { map, pairwise, startWith } from 'rxjs';
 import { NgAioTheme } from './const';
 
@@ -75,6 +80,8 @@ export class NgAioFormsComponent implements OnInit {
     this.updateFormByKey(id, event.value);
     this.onChange.emit(this.formGroup);
 
+    console.log(this._formsGroup);
+
     if (this.opts.debug) {
       this.debug(this._formsGroup, 'on form change');
     }
@@ -110,8 +117,17 @@ export class NgAioFormsComponent implements OnInit {
         writable: true,
       });
 
+      var validator = null;
+
+      if (form.validator) {
+        validator = form.validator;
+      }
+      if (form.required) {
+        validator = Validators.required;
+      }
+
       Object.defineProperty(this._formsGroup, id, {
-        value: new FormControl(form.value || '', form.validator || null),
+        value: new FormControl(form.value || '', validator),
         enumerable: true,
         writable: true,
       });

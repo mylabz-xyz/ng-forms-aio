@@ -43,6 +43,21 @@
       *ngSwitchCase="'checkbox'"
     >
     </ng-aio-checkbox>
+
+    <div *ngIf="_formsGroup[formID] && _formsGroup[formID].errors">
+      <span
+        *ngIf="_formsGroup[formID].errors!['required'] === true"
+        class="fadeIn error"
+        >error required</span
+      >
+
+      <span
+        *ngIf="_formsGroup[formID].errors!['pattern'] === true"
+        class="fadeIn error"
+        >error pattern</span
+      >
+    </div>
+
     <div *ngSwitchDefault>...</div>
   </div>
 

@@ -7,8 +7,12 @@
   left: 0;
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: absolute !important;
   z-index: -1;
+}
+
+app-background{
+  position: fixed !important;
 }
 
 .ant-layout,.ant-layout-footer,.ant-layout-header {
