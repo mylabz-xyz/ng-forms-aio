@@ -25,8 +25,8 @@
       <div nz-col class="gutter-row" nzJustify="center" [nzSpan]="24">
         <ng-aio-forms
           [opts]="{ debug: false }"
-          [forms]="themeForm"
-          [theme]="theme"
+          [forms]="themeSelectForm"
+          [theme]="themeSelected"
           (onChange)="onThemeselect($event)"
           *ngIf="showForm"
         ></ng-aio-forms>
