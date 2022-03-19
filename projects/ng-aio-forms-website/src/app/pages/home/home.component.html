@@ -1,0 +1,53 @@
+<div class="inner-content">
+  <div nz-row nzJustify="center" [nzGutter]="[24, 10]">
+    <div
+      class="text-center d-flex flex-row"
+      nz-col
+      class="gutter-row"
+      [nzSpan]="12"
+    >
+      <div>
+        {{ "intro.manage" | translate }}
+      </div>
+      <div>
+        {{ "intro.dontWrite" | translate }}
+      </div>
+    </div>
+    <div class="text-center" nz-col class="gutter-row" [nzSpan]="12">
+      <div class="w-auto">
+        <app-exemples
+          _class="h-auto"
+          [data]="previewTypescript"
+          [options]="{
+            lineNumbers: false,
+            theme: 'idea _custom-codemirror-full',
+            mode: 'javascript',
+            scrollbarStyle: null,
+            readOnly: true,
+            fixedGutter: false,
+            class: 'h-auto'
+          }"
+        ></app-exemples>
+        <app-exemples
+          _class="h-auto"
+          [data]="previewTemplate"
+          [options]="{
+            lineNumbers: false,
+            theme: 'idea _custom-codemirror-full',
+            mode: 'htmlmixed',
+            scrollbarStyle: null,
+            readOnly: true,
+            fixedGutter: false
+          }"
+        ></app-exemples>
+      </div>
+    </div>
+  </div>
+  <nz-divider></nz-divider>
+  <app-intro [form]="introForm"></app-intro>
+  <nz-divider></nz-divider>
+  <app-intro [form]="introForm"></app-intro>
+  <nz-divider></nz-divider>
+  <app-intro [form]="introForm"></app-intro>
+  <nz-divider></nz-divider>
+</div>

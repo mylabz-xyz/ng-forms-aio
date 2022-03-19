@@ -1,0 +1,22 @@
+<div class="ng-aio-control">
+  <div class="ng-aio-input-label">
+    <textarea
+      [id]="_id"
+      class="aio-text-box w-100"
+      [class]="themes[theme].inputClass"
+      [ngClass]="{
+        'has-content': value.length > 0
+      }"
+      (focus)="isFocus = themes[theme].showLabel && true"
+      (focusout)="isFocus = themes[theme].showLabel && false"
+      [value]="value"
+      aria-describedby="emailHelp"
+      (input)="emit(getValue($event))"
+      [placeholder]="!isFocus && !themes[theme].showLabel ? label : ''"
+    ></textarea>
+    <label *ngIf="label && themes[theme].showLabel" [for]="_id">{{
+      label
+    }}</label>
+    <span [class]="themes[theme].focusClass"></span>
+  </div>
+</div>

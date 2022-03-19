@@ -1,20 +1,27 @@
-<div class="form-floating border-0 mb-3 p-1">
-  <select
-    class="form-control"
-    [id]="label + '_choice_component' + '_' + _index"
-    (input)="emit(getValue($event))"
-  >
-    <option *ngFor="let choice of values; let i = index" [value]="choice.value">
-      {{ choice.label }}
-    </option>
-  </select>
-  <label *ngIf="label" [for]="label + '_choice_component' + '_' + _index">{{
-    label
-  }}</label>
-  <small
-    *ngIf="formValueTips"
-    id="emailHelp"
-    class="d-flex align-self-start form-text text-muted"
-    >{{ formValueTips }}</small
-  >
+<div class="ng-aio-control">
+  <div class="ng-aio-select-label">
+    <label *ngIf="label && themes[theme].showLabel" [for]="_id">{{
+      label
+    }}</label>
+    <div class="position-relative">
+      <select
+        [id]="_id"
+        class="ng-aio-select w-100 h-100"
+        (input)="emit(getValue($event))"
+        [class]="themes[theme].inputClass"
+      >
+        <option
+          *ngFor="let choice of values; let i = index"
+          [value]="choice.value"
+        >
+          {{ choice.label }}
+        </option>
+      </select>
+      <span [class]="themes[theme].focusClass"></span>
+    </div>
+
+    <small *ngIf="formValueTips" id="emailHelp" class="">{{
+      formValueTips
+    }}</small>
+  </div>
 </div>

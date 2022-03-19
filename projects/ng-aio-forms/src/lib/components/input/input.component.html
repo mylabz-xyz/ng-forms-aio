@@ -1,13 +1,24 @@
-<div class="form-floating border-0 mb-3 p-1">
-  <input
-    [id]="'floating_' + label + '_' + _index"
-    type="text"
-    class="form-control rounded"
-    aria-describedby="emailHelp"
-    placeholder="Enter email"
-    (input)="emit(getValue($event))"
-  />
-  <label *ngIf="label" [for]="'floating_' + label + '_' + _index">{{
-    label
-  }}</label>
+<div class="ng-aio-control">
+  <div class="ng-aio-input-label">
+    <input
+      [id]="_id"
+      [type]="type"
+      class="ng-aio-input"
+      [class]="themes[theme].inputClass"
+      [ngClass]="{
+        'has-content': value.length > 0
+      }"
+      (focus)="isFocus = themes[theme].showLabel && true"
+      (focusout)="isFocus = themes[theme].showLabel && false"
+      [(value)]="value"
+      aria-describedby="emailHelp"
+      (input)="emit(getValue($event))"
+      [placeholder]="!isFocus && themes[theme].showLabel === false ? label : ''"
+    />
+
+    <label *ngIf="label && themes[theme].showLabel === true" [for]="_id">{{
+      label
+    }}</label>
+    <span [class]="themes[theme].focusClass"></span>
+  </div>
 </div>

@@ -13,44 +13,58 @@ export interface NgAioFormsOptions {
 export interface NgAioItem {
   /**
    * @description Label of form
-   * @default null
+   * @default
+   * null;
    */
   label?: string | undefined;
-  type: 'input' | 'checkbox' | 'select' | 'select-input';
+  /**
+   * @description Field type (only for input component)
+   * @default
+   * 'text';
+   */
+  type?: 'text' | 'password';
+  /**
+   * @description Component to use for form object
+   */
+  component: 'input' | 'text-area' | 'checkbox' | 'select';
   /**
    * @description Actual or init value of form
-   * @default '' if type input
-   * @default 0 if type checkbox | select
+   * @default
+   * '' if type input;
+   * 0 if type checkbox | select;
    */
   value?: string | number | undefined;
   /**
    * @description Actual or init value of form (only for checkbox)
-   * @default '' if type input
-   * @default 0 if type checkbox | select
+   * @default
+   * '' if type input;
+   * 0 if type checkbox | select;
    */
-  values?: { value?: any; label?: any }[] | number[] | undefined;
+  values?: { value?: any; label?: any }[];
   /**
    * @description Last value of form
-   * @default '' if type input
-   * @default 0 if type checkbox | select
+   * @default
+   * '' if type NgAioInput;
+   *  0 if type NgAioCheckbox;
+   *  0 if type NgAioSelect;
    */
   oldValue?: string | number | string[] | number[] | undefined;
   /**
    * @description Calback called on any form change
-   * @default null
+   * @property value
+   * @property formKey
    */
-  onChange?: Function;
+  onChange?: (value?: any, formKey?: any) => void;
   /**
    * @description Name is usefull to generate EventEmmiter
    * @description **If null type is used instead of name**
    * @description **If null and objects with same type, type and index is used**
-   * @default null
    */
   id?: string;
   /**
-   * @description Name is usefull to generate EventEmmiter
+   * @description Name is usefull to generate EventEmitter
    */
-  required?: string;
+  required?: boolean;
   /**
    * TODO
    */
@@ -69,6 +83,17 @@ export interface NgAioItem {
     | null
     | undefined;
   asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null | undefined;
+
+  /**
+   * @description formControls feedback
+   */
+  formControlFeedBack?: {
+    [key: string]: string;
+    //@ts-ignore
+    required?: string;
+    //@ts-ignore
+    pattern?: string;
+  };
 }
 
 export interface NgAioBase extends NgAioItem {

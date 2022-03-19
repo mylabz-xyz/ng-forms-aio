@@ -1,21 +1,21 @@
-<div class="form-floating mb-3 rounded">
-  <div class="form-control text-start position-relative">
+<div class="ng-aio-control">
+  <div class="ng-aio-checkbox-label">
     <label *ngIf="label" id="inputGroup-sizing-default">{{ label }}</label>
-    <div
-      class="form-check form-check-inline"
-      *ngFor="let choice of values; let i = index"
-    >
+    <div class="" *ngFor="let choice of values; let i = index">
       <input
-        class="form-check-input"
+        class="ng-aio-checkbox"
         type="checkbox"
-        [id]="choice + '_' + i + '_' + _index"
+        (focus)="isFocus = themes[theme].showLabel && true"
+        (focusout)="isFocus = themes[theme].showLabel && false"
+        [id]="_idDynamic(i)"
         [value]="choice.value"
         (input)="emit($event, i, choice)"
       />
       <label
         #labelForAnimatedCheckbox
-        class="form-check-label"
-        [for]="choice + '_' + i + '_' + _index"
+        class=""
+        *ngIf="label && themes[theme].showLabel"
+        [for]="_idDynamic(i)"
         >{{ choice.label }}</label
       >
     </div>

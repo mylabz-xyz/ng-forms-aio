@@ -1,0 +1,29 @@
+:host ::ng-deep {
+  @import "~normalize.css";
+  @import "./scss/input-border.scss";
+  @import "./scss/input-default.scss";
+  @import "./scss/input-box.scss";
+  @import "./scss/input-label.scss";
+
+  ._d-flex {
+    display: flex !important;
+  }
+
+  ._flex-row {
+    flex-direction: row !important;
+  }
+
+  ._flex-col {
+    flex-direction: column !important;
+  }
+
+  .ng-aio-control {
+    label{
+      text-align: start;
+    }
+    input {
+      width: 100%;
+    }
+
+  }
+}

@@ -4,6 +4,8 @@ import {
   NgAioCheckboxFormComponent,
   NgAioInputFormComponent,
   NgAioSelectFormComponent,
+  NgAioInputTextBoxComponent,
+  AbstractComponent,
 } from './components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +16,8 @@ import { BrowserModule } from '@angular/platform-browser';
     NgAioCheckboxFormComponent,
     NgAioInputFormComponent,
     NgAioSelectFormComponent,
+    NgAioInputTextBoxComponent,
+    AbstractComponent,
   ],
   imports: [ReactiveFormsModule, BrowserModule],
   exports: [
