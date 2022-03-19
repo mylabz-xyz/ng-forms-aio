@@ -83,6 +83,17 @@ export interface NgAioItem {
     | null
     | undefined;
   asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null | undefined;
+
+  /**
+   * @description formControls feedback
+   */
+  formControlFeedBack?: {
+    [key: string]: string;
+    //@ts-ignore
+    required?: string;
+    //@ts-ignore
+    pattern?: string;
+  };
 }
 
 export interface NgAioBase extends NgAioItem {
