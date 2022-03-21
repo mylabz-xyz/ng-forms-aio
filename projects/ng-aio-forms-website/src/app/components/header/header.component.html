@@ -1,1 +1,21 @@
-{{ "appTitle" | translate }}
+<div class="inner-content">
+  <div nz-row nzJustify="center" [nzGutter]="[24, 10]">
+    <div nz-col class="gutter-row" nzOffset="6" [nzSpan]="12">
+      <div>
+        {{ "appTitle" | translate }}
+      </div>
+    </div>
+
+    <div nz-col class="gutter-row" [nzSpan]="6">
+      <app-zorro-dropdown
+        [items]="langs"
+        svgSelectedPattern="-white.svg"
+        svgNotSelectedPattern="-black.svg"
+        svgFolder="assets/svg/"
+        [defaultSelectedItem]="{ value: 'en', label: 'english' }"
+        [isSvgBtn]="true"
+        (isItemSelected)="setTranslation($event.value)"
+      ></app-zorro-dropdown>
+    </div>
+  </div>
+</div>

@@ -14,6 +14,10 @@
   "Examples":"Exemples",
   "intro":{
     "manage":"Easily manage complex forms with NgAioForms",
-    "dontWrite":"Don't write <input [(ngModel)]=\"value\"/> anymore"
+    "dontWrite":"Don't write <input [(ngModel)]=\"value\"/> anymore",
+    "codeExemple":{
+      "forms": "public introForm: NgAioForms = [",
+      "declaration":""
+    }
   }
 }

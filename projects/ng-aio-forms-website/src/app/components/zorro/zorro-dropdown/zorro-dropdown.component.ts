@@ -1,4 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import {
+  NzDropDownADirective,
+  NzDropdownButtonDirective,
+  NzDropDownDirective,
+  NzDropdownMenuComponent,
+} from 'ng-zorro-antd/dropdown';
 
 interface _item {
   value: any;
@@ -10,12 +23,23 @@ interface _item {
   templateUrl: './zorro-dropdown.component.html',
   styleUrls: ['./zorro-dropdown.component.scss'],
 })
-export class ZorroDropdownComponent {
+export class ZorroDropdownComponent implements OnInit {
   @Input() items!: _item[];
   @Input() isSvgBtn?: boolean;
+  @Input() svgFolder: string = '';
+  @Input() svgSelectedPattern: string = '';
+  @Input() svgNotSelectedPattern: string = '';
+  @Input() defaultSelectedItem!: _item;
 
   @Output() isItemSelected: EventEmitter<_item> = new EventEmitter();
-  private selectedItem!: _item;
+
+  @ViewChild('menu') nzDropdownMenu!: NzDropdownMenuComponent;
+
+  public selectedItem!: _item;
+
+  ngOnInit(): void {
+    this.selectedItem = this.defaultSelectedItem;
+  }
 
   public isSelected(item: _item) {
     this.selectedItem = item;

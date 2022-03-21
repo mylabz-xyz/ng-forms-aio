@@ -4,16 +4,27 @@
   display: none;
 }
 
-
-.ng-aio-control{
-.error{
+.ng-aio-wrap-error{
+  margin: 0.5em;
+.ng-aio-error{
   border: 2px solid red;
   height: 2px ;
   transition: 0.4s;
 }
+}
 
-  width: 27.33%; margin: 40px 3%; position: relative;
-input[type="text"]{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
+.ng-aio-control{
+  margin: 0.75em 0em;
+  .ng-aio-checkbox-label{
+  label{
+    padding: 1em 0.25em;
+    display: flex;
+  }
+}
+  width: 100%; position: relative;
+
+  input[type="text"]{font: 15px/24px "Lato", Arial, sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 1px;}
+
 }
 // Border bottom effects
 .border-default,

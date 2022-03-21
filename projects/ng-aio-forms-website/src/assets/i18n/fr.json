@@ -14,8 +14,11 @@
   "Examples":"Exemples",
   "Play":"Jouer",
   "intro":{
-    "manage":"Complex forms management made easy with NgAioForms"
-  },
+    "manage":"Gérer simplement des formulaires complexes a l'aide de NgAioForms",
+    "codeExemple":{
+      "forms":"// Create a form\t  public introForm: NgAioForms = [\t    {\t      label: 'Ceci est un input',\t      component: 'input',\t      value: '',\t    },\t    {\t      label: 'Ceci est un input',\t      component: 'text-area',\t      value: '',\t    },\t  ];",
+      "declaration":""
+    }  },
   "question":{
     "withAntularForm":"Can i use it with FormControl ?",
     "howCanIUseIt":"How can i use it ?",

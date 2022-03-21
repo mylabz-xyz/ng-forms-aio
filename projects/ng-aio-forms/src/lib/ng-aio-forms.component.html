@@ -2,9 +2,11 @@
   (ngSubmit)="submit()"
   [formGroup]="formGroup"
   *ngIf="_formsKeys.length > 0"
+  class="row d-flex align-items-end"
 >
   <div
     class="position-relative"
+    [class]="_forms[formID].col"
     *ngFor="let formID of _formsKeys"
     [ngSwitch]="_forms[formID].component"
   >
@@ -44,16 +46,18 @@
     >
     </ng-aio-checkbox>
 
-    <div *ngIf="_formsGroup[formID] && _formsGroup[formID].errors">
+    <div
+      *ngIf="_formsGroup[formID] && _formsGroup[formID].errors"
+      class="w-100 ng-aio-wrap-error"
+    >
       <span
         *ngIf="_formsGroup[formID].errors!['required'] === true"
-        class="fadeIn error"
-        >error required</span
+        class="fadeIn ng-aio-error"
+        >{{ defaultErrors[_forms[formID].component] }}</span
       >
-
       <span
         *ngIf="_formsGroup[formID].errors!['pattern'] === true"
-        class="fadeIn error"
+        class="fadeIn ng-aio-error"
         >error pattern</span
       >
     </div>

@@ -1,16 +1,11 @@
-<div class="zorro-dropdown">
-  <button
-    *ngIf="!isSvgBtn; else svgBtnMenu"
-    nz-button
-    nz-dropdown
-    [nzDropdownMenu]="menu4"
-  >
+<div class="zorro-dropdown" *ngIf="!isSvgBtn; else svgBtn">
+  <button nz-button nz-dropdown [nzDropdownMenu]="menu">
     Button
     <i nz-icon nzType="down"></i>
   </button>
 
-  <nz-dropdown-menu #menu4="nzDropdownMenu">
-    <ul nz-menu *ngIf="!isSvgBtn; else svgBtnMenu">
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
       <li *ngFor="let item of items" nz-menu-item>menu4 1st menu item</li>
       <li nz-menu-item>menu4 2nd menu item</li>
       <li nz-menu-item>menu4 3rd menu item</li>
@@ -18,16 +13,22 @@
   </nz-dropdown-menu>
 </div>
 
-<ng-template #svgBtnMenu>
-  <ul nz-menu *ngIf="!isSvgBtn">
-    <li *ngFor="let item of items" nz-menu-item>menu4 1st menu item</li>
-    <li nz-menu-item>menu4 2nd menu item</li>
-    <li nz-menu-item>menu4 3rd menu item</li>
-  </ul>
-</ng-template>
+<ng-template #svgBtnMenu> </ng-template>
 
 <ng-template #svgBtn>
-  <button nz-button nz-dropdown [nzDropdownMenu]="menu4">
-    <img src="" /> <i nz-icon nzType="down"></i>
+  <button nz-button nz-dropdown [nzDropdownMenu]="menu">
+    <img
+      width="50px"
+      [src]="svgFolder + selectedItem.label + svgNotSelectedPattern"
+    />
+    <i nz-icon nzType="down"></i>
   </button>
+
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+      <li (click)="isSelected(item)" *ngFor="let item of items" nz-menu-item>
+        <img width="50px" [src]="svgFolder + item.label + svgSelectedPattern" />
+      </li>
+    </ul>
+  </nz-dropdown-menu>
 </ng-template>

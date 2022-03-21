@@ -16,9 +16,11 @@
       [placeholder]="!isFocus && themes[theme].showLabel === false ? label : ''"
     />
 
-    <label *ngIf="label && themes[theme].showLabel === true" [for]="_id">{{
-      label
-    }}</label>
-    <span [class]="themes[theme].focusClass"></span>
+    <label
+      *ngIf="label && themes[theme].showLabel === true"
+      [for]="_id"
+      [innerHtml]="label"
+    ></label>
+    <span [class]="themes[theme].focusClass"> <i></i></span>
   </div>
 </div>

@@ -1,10 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {
-  MapSchema,
-  NgAioForms,
-  NgAioFormsOptions,
-  NgAioItem,
-} from './models/NgAioForms';
+import { NgAioForms, NgAioFormsOptions, NgAioItem } from './models/NgAioForms';
 
 import './extends/String';
 import {
@@ -43,6 +38,13 @@ export class NgAioFormsComponent implements OnInit {
   @Output() onChange = new EventEmitter();
   @Output() onCreate = new EventEmitter();
   @Output() onSubmit = new EventEmitter();
+
+  public defaultErrors: any = {
+    input: 'Field is required',
+    'text-area': 'Field is required',
+    checkbox: 'Select at least one element',
+    select: 'Select at least one element',
+  };
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -92,23 +94,33 @@ export class NgAioFormsComponent implements OnInit {
       console.error('ERROR : provide forms input');
     }
     const count: any = {};
-    var id = '';
-    var eventId = '';
+
     this.forms.forEach((form: NgAioItem, index: number) => {
       count[form.component as never] =
         count[form.component as never] !== undefined
           ? count[form.component as never] + 1
           : 0;
-      id = form?.id || this._formatID(form, count);
-      eventId = form?.id || this._formatEventID(form.component as never, count);
+
+      const id = form?.id || this._formatID(form, count);
+      const eventId =
+        form?.id || this._formatEventID(form.component as never, count);
+      const defaultClass = 'float-left ';
+
+      var label = form?.label || '';
+
+      if (form?.required) {
+        label = '*' + label;
+      }
+
       Object.defineProperty(this._forms, id, {
         value: {
           value: form?.value || '',
           values: form?.values || [],
-          label: form?.label || '',
+          label: label,
           component: form?.component,
           type: form?.type,
           id: id,
+          col: defaultClass + (form?.col || ' d-flex flex-col col-12'),
           required: form?.required || false,
           eventId: eventId,
           onChange: form?.onChange || false,
@@ -150,10 +162,6 @@ export class NgAioFormsComponent implements OnInit {
 
   public updateFormByKey(key: string, value: any) {
     this.formGroup.patchValue({ [key]: value });
-  }
-
-  public updateFormTypeById(id: string, value: any) {
-    this._forms[id];
   }
 
   private toFormGroup() {

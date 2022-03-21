@@ -1,21 +1,29 @@
+@import "./scss/bootstrap/bootstrap-grid.css";
 :host ::ng-deep {
   @import "~normalize.css";
   @import "./scss/input-border.scss";
   @import "./scss/input-default.scss";
   @import "./scss/input-box.scss";
   @import "./scss/input-label.scss";
+  @import "./scss/commons.scss";
+  @import "./scss/animations/index.scss";
 
-  ._d-flex {
+  .d-flex {
     display: flex !important;
   }
 
-  ._flex-row {
+  .flex-row {
     flex-direction: row !important;
   }
 
-  ._flex-col {
+  .flex-col {
     flex-direction: column !important;
   }
+
+  .align-items-end{
+    align-items: end !important;
+  }
+
 
   .ng-aio-control {
     label{

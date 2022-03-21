@@ -10,7 +10,8 @@ export class AbstractComponent implements OnInit {
   @Input() _index: number | undefined;
   @Input() value?: string | number | any = '';
   @Input() formControl!: FormControl;
-  @Input() theme!: NgAioTheme;
+  @Input() theme: NgAioTheme = '_hide';
+  @Input() isSubmitted = false;
   public themes = Themes;
 
   @Output() onChange: EventEmitter<any> = new EventEmitter();

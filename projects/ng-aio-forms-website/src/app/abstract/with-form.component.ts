@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgAioTheme, Themes } from 'projects/ng-aio-forms/src/lib/const';
 import { NgAioForms } from 'projects/ng-aio-forms/src/lib/models/NgAioForms';
 
@@ -9,6 +9,8 @@ export class AbstractWithForm {
   @Input() form!: NgAioForms;
   @Input() opts: any;
   @Input() theme: any;
+
+  @Output() formChange: EventEmitter<any> = new EventEmitter();
 
   public showForm = true;
   public showCode = true;
@@ -24,8 +26,6 @@ export class AbstractWithForm {
   ];
 
   public out = '';
-
-  constructor() {}
 
   public onThemeselect(form: any) {
     this.themeSelected = form.value.select;

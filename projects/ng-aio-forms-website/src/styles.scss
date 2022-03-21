@@ -27,6 +27,20 @@ div.code {
 nz-header {
   position: fixed;
   width: 100%;
+  z-index: 999 !important;
+}
+
+.ant-layout-header{
+  background: transparent !important;
+  background-color: transparent !important;
+  transition:  0.75s;
+}
+html:not([data-scroll='0']) .ant-layout-header {
+  -webkit-box-shadow: 1px 5px 11px 0px rgba(0,0,0,0.28);
+  box-shadow: 1px 5px 11px 0px rgba(0,0,0,0.28);
+  background: white !important;
+  background-color: white !important;
+  transition:  0.75s;
 }
 
 .layout {
@@ -42,4 +56,12 @@ nz-footer {
 nz-content {
   padding: 0 50px;
   margin-top: 64px;
+}
+
+
+p{
+  cursor: default !important;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }

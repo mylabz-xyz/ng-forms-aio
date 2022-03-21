@@ -1,5 +1,5 @@
 <div class="ng-aio-control">
-  <div class="ng-aio-input-label">
+  <div class="ng-aio-input-label position-relative">
     <textarea
       [id]="_id"
       class="aio-text-box w-100"
@@ -14,9 +14,11 @@
       (input)="emit(getValue($event))"
       [placeholder]="!isFocus && !themes[theme].showLabel ? label : ''"
     ></textarea>
-    <label *ngIf="label && themes[theme].showLabel" [for]="_id">{{
-      label
-    }}</label>
-    <span [class]="themes[theme].focusClass"></span>
+    <label
+      *ngIf="label && themes[theme].showLabel"
+      [for]="_id"
+      [innerHtml]="label"
+    ></label>
+    <span [class]="themes[theme].focusClass"> <i></i></span>
   </div>
 </div>
