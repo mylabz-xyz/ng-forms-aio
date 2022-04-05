@@ -1,5 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AnimatedLinkProvider } from './providers';
 
 @Component({
   selector: 'app-root',

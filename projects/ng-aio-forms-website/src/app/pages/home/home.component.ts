@@ -1,18 +1,23 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { NgAioForms } from 'projects/ng-aio-forms/src/lib/models/NgAioForms';
 import { AbstractWithForm } from '../../abstract';
-import { AnimatedFormProvider, AnimatedIcon } from './../../providers';
+import { AnimatedFormProvider, AnimatedIcon,AnimatedLinkProvider } from './../../providers';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
   public previewTypescript: any = {
-    fr: `
-    // On déclare la structure de notre form
+    fr: `// On déclare la structure de notre form
     public introForm: NgAioForms = [
       {
         label: 'Ceci est un input',
@@ -25,8 +30,7 @@ export class HomeComponent {
         value: '',
       },
     ];`,
-    en: `
-    // Create a form
+    en: `// Create a form
     public introForm: NgAioForms = [
       {
         label: 'This is an input',
@@ -42,16 +46,14 @@ export class HomeComponent {
   };
 
   public previewTemplate: any = {
-    fr: `
-    // On appel NgAioForms et on lui passe notre valeur form
+    fr: `// On appel NgAioForms et on lui passe notre valeur form
     <ng-aio-forms
     [forms]="forms"
     (onChange)="onFormChange($event)"
     ></ng-aio-forms>
 
     // Et voila!`,
-    en: `
-    // Call ngAioForms, pass form to it and listen for change
+    en: `// Call ngAioForms, pass form to it and listen for change
     <ng-aio-forms
     [forms]="forms"
     (onChange)="onFormChange($event)"
@@ -110,20 +112,65 @@ export class HomeComponent {
     },
     {
       label: 'This checkbox is optional',
-      component: 'checkbox',
+      component: 'checkbox-list',
       values: [
         { value: 1, label: 'Option 1' },
         { value: 2, label: 'Option 2' },
       ],
+    },
+  ];
+
+  public animatedForm: NgAioForms = [
+    {
+      label: 'Title',
+      component: 'select',
+      values: [
+        { value: 0, label: 'Mr' },
+        { value: 1, label: 'Mrs' },
+        { value: 2, label: 'Ms' },
+      ],
+      required: true,
+      onChange: (value) => {
+        console.log(value);
+      },
+      col: 'col-2',
+    },
+    {
+      label: 'Name your pet',
+      component: 'input',
       value: '',
+      required: true,
+      onChange: (value) => {
+        console.log(value);
+      },
+      col: 'col-10',
+    },
+    {
+      label: 'Name your pet',
+      component: 'input',
+      value: '',
+      required: true,
+      onChange: (value) => {
+        console.log(value);
+      },
+    },
+    {
+      label: 'My animal is a :',
+      component: 'checkbox-list',
+      values: [
+        { value: 1, label: 'A Bog' },
+        { value: 2, label: 'A Cat' },
+      ],
     },
   ];
 
   public langChangeAnimation = false;
+  public formSvg = ``;
 
   constructor(
-    private animatedForm: AnimatedFormProvider,
-    public translateService: TranslateService
+    private animatedFormProvider: AnimatedFormProvider,
+    public translateService: TranslateService,
+    public animatedLinkProvider:AnimatedLinkProvider
   ) {
     translateService.onDefaultLangChange.subscribe(() => {
       this.langChangeAnimation = true;
@@ -131,5 +178,9 @@ export class HomeComponent {
         this.langChangeAnimation = false;
       });
     });
+  }
+
+  ngAfterViewInit(): void {
+
   }
 }

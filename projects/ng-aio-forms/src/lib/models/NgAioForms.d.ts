@@ -26,14 +26,14 @@ export interface NgAioItem {
   /**
    * @description Component to use for form object
    */
-  component: 'input' | 'text-area' | 'checkbox' | 'select';
+  component: 'input' | 'text-area' | 'checkbox'| 'checkbox-list' | 'select';
   /**
    * @description Actual or init value of form
    * @default
    * '' if type input;
    * 0 if type checkbox | select;
    */
-  value?: string | number | undefined;
+  value?: string | number | [] |undefined;
   /**
    * @description Actual or init value of form (only for checkbox)
    * @default

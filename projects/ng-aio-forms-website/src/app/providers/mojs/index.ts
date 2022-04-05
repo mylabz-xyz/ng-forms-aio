@@ -15,6 +15,8 @@ import { increase, scale } from './utils';
 
 export * from './AnimatedForm.provider';
 export * from './AnimatedIcon.provider';
+export * from './AnimatedLink.provider'
+
 const COLORS = {
   white: '#ffffff',
   black: '#000000',
@@ -32,7 +34,8 @@ const HIDE_THEN = {
 };
 
 // return svg path
-const _path = (d: string) => `<path  d="${d}"></path>`;
+export const _path = (d: string) => `<path  d="${d}"></path>`;
+export const _xlink = (d: string) => `<use xlink:href="#${d}" />`;
 
 // ADD CUSTOM SHAPES
 class _Input extends CustomShape {

@@ -6,6 +6,8 @@ import {
   NgAioSelectFormComponent,
   NgAioInputTextBoxComponent,
   AbstractComponent,
+  NgAioCheckboxListFormComponent,
+  ButtonComponent,
 } from './components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,14 +19,20 @@ import { BrowserModule } from '@angular/platform-browser';
     NgAioInputFormComponent,
     NgAioSelectFormComponent,
     NgAioInputTextBoxComponent,
+    NgAioCheckboxListFormComponent,
     AbstractComponent,
+    ButtonComponent,
   ],
-  imports: [ReactiveFormsModule, BrowserModule],
+  imports: [BrowserModule,ReactiveFormsModule],
   exports: [
     NgAioFormsComponent,
     NgAioCheckboxFormComponent,
     NgAioInputFormComponent,
     NgAioSelectFormComponent,
+    NgAioInputTextBoxComponent,
+    NgAioCheckboxListFormComponent,
+    AbstractComponent,
+    ButtonComponent,
   ],
 })
 export class NgAioFormsModule {}

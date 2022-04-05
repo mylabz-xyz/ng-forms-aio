@@ -12,7 +12,6 @@ import { AbstractComponent } from './../abstract.component';
 export class NgAioSelectFormComponent
   extends AbstractComponent
 {
-  @Input() values: string[] | any;
   @Input() formValueTips: number | any;
 
   public override _idMarker = 'ngAioSelect_';

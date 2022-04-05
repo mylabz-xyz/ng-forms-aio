@@ -1,5 +1,5 @@
 <div
-  class="inner-content fadeIn"
+  class="inner-content pt-2 fadeIn"
   *ngIf="!langChangeAnimation; else _langChangeAnimation"
 >
   <div nz-row nzJustify="center" [nzGutter]="[24, 10]">
@@ -12,21 +12,29 @@
         flex-column
         align-items-center
         justify-content-center
+        px-2
       "
       [nzSpan]="12"
     >
-      <p
-        class="w-100"
-        nz-typography
-        [nzContent]="'intro.manage' | translate"
-      ></p>
-      <p nz-typography [nzContent]="'intro.dontWrite' | translate"></p>
+      <div class="w-100 h-100 neumo-default-card">
+        <div class="justify-self-start mb-auto">
+          <p nz-typography [nzContent]="'intro.manage' | translate"></p>
+          <p nz-typography [nzContent]="'intro.dontWrite' | translate"></p>
+          <p nz-typography [nzContent]="'intro.tryExemple' | translate"></p>
+        </div>
+
+        <div class="home-exemple-form mb-auto">
+          <ng-aio-forms
+            [opts]="{ debug: false }"
+            [forms]="animatedForm"
+            [displaySubmitBtn]="true"
+          ></ng-aio-forms>
+        </div>
+      </div>
     </div>
+
     <div nz-col class="gutter-row" [nzSpan]="12">
       <div class="w-auto">
-        {{ "intro.codeExemple.forms" | translate
-        }}{{ translateService.getDefaultLang() }}
-
         <app-exemples
           _class="h-auto"
           [data]="previewTypescript[translateService.getDefaultLang()]"
@@ -51,17 +59,30 @@
             mode: 'htmlmixed',
             scrollbarStyle: null,
             readOnly: 'nocursor',
-            fixedGutter: false
+            fixedGutter: false,
+            focus: false,
+            blur: false,
+            class: 'h-auto'
           }"
         ></app-exemples>
       </div>
     </div>
   </div>
-  <nz-divider></nz-divider>
+
+  <div nz-row nzJustify="center" [nzGutter]="[24, 10]">
+    <div
+      nz-col
+      class="d-flex flex-column align-items-center justify-content-center px-2"
+      [nzSpan]="24"
+    >
+      <app-features></app-features>
+    </div>
+  </div>
+  <nz-divider nzText="Exemple formulaire multiline"></nz-divider>
   <app-intro [(form)]="multiLineForm"></app-intro>
-  <nz-divider></nz-divider>
+  <nz-divider nzText="Exemple avec des inputs obligatoires"></nz-divider>
   <app-intro [form]="submitForm"></app-intro>
-  <nz-divider></nz-divider>
+  <nz-divider nzText="Exemple blablabla"></nz-divider>
   <app-intro [form]="submitForm"></app-intro>
   <nz-divider></nz-divider>
 </div>

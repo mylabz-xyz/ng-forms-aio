@@ -1,9 +1,9 @@
 export const Themes = {
-  _hide: {
-    inputClass: '_hide',
-    focusClass: '_hide',
-    showLabel: false,
-  },
+  // _hide: {
+  //   inputClass: '_hide',
+  //   focusClass: '_hide',
+  //   showLabel: false,
+  // },
   'float-label-default': {
     inputClass: 'float-label border-default',
     focusClass: 'focus-border',

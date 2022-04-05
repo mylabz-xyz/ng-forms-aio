@@ -1,23 +1,33 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { FormControl, ValidationErrors } from '@angular/forms';
 import { NgAioTheme, Themes } from '../const';
 
 @Component({
   template: '',
 })
-export class AbstractComponent implements OnInit {
+export class AbstractComponent implements OnInit, AfterViewInit {
   @Input() label: string | undefined;
   @Input() _index: number | undefined;
   @Input() value?: string | number | any = '';
+  @Input() values: string[] | any = null;
+
   @Input() formControl!: FormControl;
-  @Input() theme: NgAioTheme = '_hide';
+  @Input() theme: NgAioTheme = 'float-label-default';
   @Input() isSubmitted = false;
+  @Input() invalid: ValidationErrors | null = null;
+  @Input() required = false;
+
   public themes = Themes;
 
   @Output() onChange: EventEmitter<any> = new EventEmitter();
 
-  public required = false;
-  public invalid = false;
   public isFocus = false;
 
   public _id: string = '';
@@ -31,9 +41,20 @@ export class AbstractComponent implements OnInit {
     this.initIndex();
     this.initId();
 
-    if (this.constructor.name === 'NgAioCheckboxFormComponent') {
-      this.checkDefaultSelected();
+    if (
+      this.constructor.name === 'NgAioCheckboxFormComponent' ||
+      this.constructor.name === 'NgAioCheckboxListFormComponent'
+    ) {
+      this.checkCheckboxSelected();
     }
+    if (this.constructor.name === 'NgAioSelectFormComponent' && this.values) {
+      this.value = this.values[0]
+      this.emit(this.value)
+    }
+  }
+
+  ngAfterViewInit(): void {
+
   }
 
   public emit(value: any): void {
@@ -56,9 +77,9 @@ export class AbstractComponent implements OnInit {
   }
 
   // on init select component
-  private checkDefaultSelected() {
+  public checkCheckboxSelected() {
     if (this.value === undefined || this.value === null) {
-      this.value = 0;
+      this.value = false;
     }
   }
 }

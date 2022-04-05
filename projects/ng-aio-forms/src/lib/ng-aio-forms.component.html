@@ -1,17 +1,25 @@
 <form
-  (ngSubmit)="submit()"
+  (keyup.enter)="submit()"
   [formGroup]="formGroup"
   *ngIf="_formsKeys.length > 0"
-  class="row d-flex align-items-end"
+  class="row d-flex align-items-end ng-aio-wrap"
 >
   <div
-    class="position-relative"
-    [class]="_forms[formID].col"
+    class="position-relative ng-aio-item"
+    [class]="_forms[formID].col || 'col-12'"
     *ngFor="let formID of _formsKeys"
     [ngSwitch]="_forms[formID].component"
+    [ngClass]="{
+      'ng-aio-pristine':
+        _formsGroup[formID].pristine && !_formsGroup[formID].errors,
+      'ng-aio-dirty': _formsGroup[formID].dirty && !_formsGroup[formID].errors,
+      'ng-aio-invalid': _formsGroup[formID].errors && submitted
+    }"
   >
     <ng-aio-select
+      [isSubmitted]="submitted"
       [label]="_forms[formID].label"
+      [invalid]="_formsGroup[formID].errors"
       [theme]="theme"
       [values]="_forms[formID].values"
       [value]="_forms[formID].value"
@@ -20,7 +28,9 @@
     >
     </ng-aio-select>
     <ng-aio-input-text-box
+      [isSubmitted]="submitted"
       [label]="_forms[formID].label"
+      [invalid]="_formsGroup[formID].errors"
       [theme]="theme"
       [value]="_forms[formID].values"
       (onChange)="onFormElementChange(_forms[formID].id, $event)"
@@ -28,7 +38,9 @@
     >
     </ng-aio-input-text-box>
     <ng-aio-input
+      [isSubmitted]="submitted"
       [label]="_forms[formID].label"
+      [invalid]="_formsGroup[formID].errors"
       [theme]="theme"
       [value]="_forms[formID].value"
       [type]="_forms[formID].type"
@@ -36,8 +48,21 @@
       *ngSwitchCase="'input'"
     >
     </ng-aio-input>
-    <ng-aio-checkbox
+    <ng-aio-checkbox-list
+      [isSubmitted]="submitted"
       [label]="_forms[formID].label"
+      [invalid]="_formsGroup[formID].errors"
+      [theme]="theme"
+      [value]="_forms[formID].value"
+      [values]="_forms[formID].values"
+      (onChange)="onFormElementChange(_forms[formID].id, $event)"
+      *ngSwitchCase="'checkbox-list'"
+    >
+    </ng-aio-checkbox-list>
+    <ng-aio-checkbox
+      [isSubmitted]="submitted"
+      [label]="_forms[formID].label"
+      [invalid]="_formsGroup[formID].errors"
       [theme]="theme"
       [value]="_forms[formID].values"
       [values]="_forms[formID].values"
@@ -46,24 +71,50 @@
     >
     </ng-aio-checkbox>
 
-    <div
-      *ngIf="_formsGroup[formID] && _formsGroup[formID].errors"
-      class="w-100 ng-aio-wrap-error"
-    >
-      <span
-        *ngIf="_formsGroup[formID].errors!['required'] === true"
-        class="fadeIn ng-aio-error"
-        >{{ defaultErrors[_forms[formID].component] }}</span
-      >
-      <span
-        *ngIf="_formsGroup[formID].errors!['pattern'] === true"
-        class="fadeIn ng-aio-error"
-        >error pattern</span
-      >
-    </div>
-
     <div *ngSwitchDefault>...</div>
   </div>
 
-  <button *ngIf="displaySubmitBtn">submit</button>
+  <div class="w-100 text-start">
+    <div
+      *ngIf="formGroup && formGroup.status === 'INVALID' && submitted"
+      class="w-100 ng-aio-wrap-error"
+    >
+      <div *ngFor="let control of formGroup.controls | keyvalue">
+        <div
+          *ngIf="
+            _forms[control.key].formControlFeedBack;
+            else defaultControlFeedback
+          "
+        >
+          <div *ngFor="let errors of control.value.errors | keyvalue">
+            <div
+              *ngIf="
+              control.value.status === 'INVALID' &&
+              _forms[control.key].formControlFeedBack?.[errors.key]
+            "
+            >
+              {{ _forms[control.key].formControlFeedBack![errors.key] }}
+            </div>
+          </div>
+        </div>
+
+        <ng-template #defaultControlFeedback>
+          <div *ngIf="control.value.status === 'INVALID'">
+            {{ _forms[control.key].label }}
+            {{ defaultErrors[_forms[control.key].component] }}
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="w-100 text-end">
+    <ng-aio-button
+      [theme]="theme"
+      [isSubmitted]="submitted"
+      [label]="submitLabel"
+      *ngIf="displaySubmitBtn"
+      [label]="submitLabel"
+      (onChange)="submit()"
+    ></ng-aio-button>
+  </div>
 </form>

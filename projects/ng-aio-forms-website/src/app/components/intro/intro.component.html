@@ -5,7 +5,8 @@
     nzJustify="center"
     [nzSpan]="24"
   >
-    dlddlldldl
+
+  {{title}}
   </div>
   <div
     nz-col
@@ -27,7 +28,7 @@
           [opts]="{ debug: false }"
           [forms]="themeSelectForm"
           [theme]="themeSelected"
-          (onChange)="onThemeselect($event)"
+          (onChange)="onThemeselect( $event)"
           *ngIf="showForm"
         ></ng-aio-forms>
       </div>

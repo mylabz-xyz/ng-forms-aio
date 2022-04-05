@@ -23,6 +23,9 @@ import {
   JsonExempleComponent,
   IntroComponent,
   ZorroDropdownComponent,
+  VersionComponent,
+  FeaturesComponent,
+  MenuComponent,
 } from './components';
 
 import { AbstractWithForm } from './abstract';
@@ -47,6 +50,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
@@ -74,7 +78,10 @@ registerLocaleData(en);
     IntroComponent,
     SupportPageComponent,
     ZorroDropdownComponent,
+    VersionComponent,
     AbstractWithForm,
+    FeaturesComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +98,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     NzGridModule,
     NzButtonModule,
+    NzMenuModule,
     NzDropDownModule,
     NzTypographyModule,
     NzLayoutModule,
@@ -102,6 +110,7 @@ registerLocaleData(en);
     BackgroundProvider,
     AnimatedFormProvider,
     AnimatedIcon,
+    AnimatedFormProvider,
     { provide: NZ_I18N, useValue: en_US },
   ],
   bootstrap: [AppComponent],

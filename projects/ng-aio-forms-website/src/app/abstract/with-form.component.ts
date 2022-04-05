@@ -9,6 +9,7 @@ export class AbstractWithForm {
   @Input() form!: NgAioForms;
   @Input() opts: any;
   @Input() theme: any;
+  @Input() title:string=''
 
   @Output() formChange: EventEmitter<any> = new EventEmitter();
 
@@ -28,7 +29,8 @@ export class AbstractWithForm {
   public out = '';
 
   public onThemeselect(form: any) {
-    this.themeSelected = form.value.select;
+    console.log(form.value.select)
+    this.themeSelected = form.value.select.value;
   }
 
   public onChange(key: any, forms: any) {
@@ -54,6 +56,6 @@ export class AbstractWithForm {
   }
 
   public onCreate(homeForms: any) {
-    console.log(homeForms);
+    console.warn(homeForms);
   }
 }

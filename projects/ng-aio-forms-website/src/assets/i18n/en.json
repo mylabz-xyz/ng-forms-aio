@@ -1,23 +1,36 @@
 {
-  "appTitle":"ng-aio-forms",
+  "appTitle": "NG AIO FORMS",
   "Footer": "",
-  "Header":"",
-  "Submit":"Submit",
-  "Back":"Back",
-  "Cancel":"Cancel",
-  "Read":"Read",
-  "Accept":"Ok",
-  "Refuse":"Decline",
-  "Home":"Home",
-  "About":"About",
-  "Doc":"Documentation",
-  "Examples":"Exemples",
-  "intro":{
-    "manage":"Easily manage complex forms with NgAioForms",
-    "dontWrite":"Don't write <input [(ngModel)]=\"value\"/> anymore",
-    "codeExemple":{
-      "forms": "public introForm: NgAioForms = [",
-      "declaration":""
-    }
-  }
+  "Header": "",
+  "Submit": "Submit",
+  "Back": "Back",
+  "Cancel": "Cancel",
+  "Read": "Read",
+  "Accept": "Ok",
+  "Refuse": "Decline",
+  "Home": "Home",
+  "About": "About",
+  "Doc": "Documentation",
+  "Examples": "Exemples",
+  "intro": {
+    "manage": "Easily manage complex forms with NgAioForms",
+    "dontWrite": "Don't write <input [(ngModel)]=\"value\"/> anymore",
+    "tryExemple": "Customised exemple bellow, try it !"
+    },
+  "features": {
+    "title": "FEATURES",
+    "useJSON": "Use simple JSON as input.",
+    "15Themes": "15 Themes ready to use.",
+    "customFeedBacks": "Easy provided custom feedbacks.",
+    "grids": "Use <a (mouseover)='animatedLinkProvider.burst($event.srcElement)' href='https://getbootstrap.com/docs/4.0/layout/grid/'>Bootstrap Grid System.</a> to combine fields",
+    "events": "3 Events to listen (onChange, onCreate, onSubmit).",
+    "controls": "Angular <a href='https://getbootstrap.com/docs/4.0/layout/grid/'>FormControl</a> for custom validations.",
+    "listens": "Easy listening old and new values.",
+    "typed": "Typed for <a href='https://code.visualstudio.com/docs/editor/intellisense'>vscode Autocompletion.</a>",
+    "debug": "Debug mode provided.",
+    "collision": "No collision in case of many forms.",
+    "noDep":"No other dependency."
+
+  },
+  "version": "Version"
 }

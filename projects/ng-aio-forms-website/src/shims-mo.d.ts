@@ -1,4 +1,6 @@
 //@ts-nocheck
+
+declare module 'razer-chroma-nodejs'
 declare module '@mojs/core' {
   export = mojs;
 }

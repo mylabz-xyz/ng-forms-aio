@@ -9,8 +9,6 @@ import { AbstractComponent } from './../abstract.component';
 export class NgAioCheckboxFormComponent
   extends AbstractComponent
 {
-  @Input() values: any = [];
-
   public override _idMarker = 'ngAioCheckBox_';
 
   public override emit(event: any, i?: any, choice?: any): void {

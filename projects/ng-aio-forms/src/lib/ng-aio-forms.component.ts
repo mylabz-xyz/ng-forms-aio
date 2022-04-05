@@ -19,11 +19,12 @@ import { NgAioTheme } from './const';
 export class NgAioFormsComponent implements OnInit {
   @Input() forms!: NgAioForms;
   @Input() displaySubmitBtn: boolean = false;
+  @Input() submitLabel: string = 'Submit';
   @Input() opts: NgAioFormsOptions = {
     debug: false,
     submitIfValid: true,
   };
-  @Input() theme: NgAioTheme = 'background-center-to-edges';
+  @Input() theme: NgAioTheme = 'float-label-default';
   @Input() formId?: string;
 
   public _forms: { [key: string]: NgAioItem } = {};
@@ -35,16 +36,21 @@ export class NgAioFormsComponent implements OnInit {
 
   private _keyStart = '';
 
+
   @Output() onChange = new EventEmitter();
   @Output() onCreate = new EventEmitter();
   @Output() onSubmit = new EventEmitter();
 
   public defaultErrors: any = {
-    input: 'Field is required',
-    'text-area': 'Field is required',
-    checkbox: 'Select at least one element',
-    select: 'Select at least one element',
+    input: ' is required',
+    'text-area': ' is required',
+    checkbox: ': Select at least one element',
+    'checkbox-list': ': Select at least one element',
+    select: ': Select at least one element',
   };
+
+  public submitted = false
+
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -67,6 +73,9 @@ export class NgAioFormsComponent implements OnInit {
   }
 
   public submit() {
+    this.submitted = true
+    console.log(this.formGroup)
+
     if (this.formGroup.valid) {
       this.onSubmit.emit(this.formGroup);
     }
@@ -104,7 +113,7 @@ export class NgAioFormsComponent implements OnInit {
       const id = form?.id || this._formatID(form, count);
       const eventId =
         form?.id || this._formatEventID(form.component as never, count);
-      const defaultClass = 'float-left ';
+      const defaultClass = 'float-left';
 
       var label = form?.label || '';
 
@@ -114,13 +123,13 @@ export class NgAioFormsComponent implements OnInit {
 
       Object.defineProperty(this._forms, id, {
         value: {
-          value: form?.value || '',
+          value: form?.value || [],
           values: form?.values || [],
           label: label,
           component: form?.component,
           type: form?.type,
           id: id,
-          col: defaultClass + (form?.col || ' d-flex flex-col col-12'),
+          col: defaultClass +' '+ (form?.col || 'd-flex flex-col col-12')+' ',
           required: form?.required || false,
           eventId: eventId,
           onChange: form?.onChange || false,
@@ -143,6 +152,7 @@ export class NgAioFormsComponent implements OnInit {
         enumerable: true,
         writable: true,
       });
+
 
       this._formsGroup[id].valueChanges.pipe(
         startWith(null),
