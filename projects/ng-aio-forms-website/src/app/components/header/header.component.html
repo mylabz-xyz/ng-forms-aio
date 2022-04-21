@@ -1,12 +1,17 @@
 <div class="inner-content">
   <div nz-row nzJustify="center" [nzGutter]="[24, 10]">
-    <div nz-col class="gutter-row" nzOffset="6" [nzSpan]="12">
+    <div nz-col class="gutter-row" nzOffset="3" [nzSpan]="12">
       <div class="_app_title">
         {{ "appTitle" | translate }}
       </div>
     </div>
-
-    <div nz-col class="gutter-row" [nzSpan]="3">
+    <div nz-col class="gutter-row">
+      <app-version></app-version>
+    </div>
+    <div nz-col class="gutter-row">
+      <app-menu [items]="mainRouter" mode="horizontal"> </app-menu>
+    </div>
+    <div nz-col class="gutter-row">
       <app-zorro-dropdown
         [items]="langs"
         svgSelectedPattern="-white.svg"
@@ -16,9 +21,6 @@
         [isSvgBtn]="true"
         (isItemSelected)="setTranslation($event.value)"
       ></app-zorro-dropdown>
-      </div>
-    <div nz-col class="gutter-row" [nzSpan]="3">
-      <app-version></app-version>
-      </div>
+    </div>
   </div>
 </div>

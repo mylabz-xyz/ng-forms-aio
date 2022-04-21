@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { DefaultListArray } from '../../models';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
-  @Input() items: [{ label: string; value: string }] = [
+  @Input() items:DefaultListArray= [
     { label: '', value: '' },
   ];
 
-  constructor(public router:Router){}
+  @Input() mode: 'horizontal' | 'inline' = 'inline';
+
+  constructor(public router: Router) {}
 }

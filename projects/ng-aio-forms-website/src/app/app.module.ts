@@ -25,7 +25,7 @@ import {
   ZorroDropdownComponent,
   VersionComponent,
   FeaturesComponent,
-  MenuComponent,
+  MenuComponent
 } from './components';
 
 import { AbstractWithForm } from './abstract';
