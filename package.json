@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:dev": "ng test ng-aio-forms --watch=true"
   },
   "private": false,
   "dependencies": {
@@ -35,7 +36,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.0.4",
-    "@angular/cli": "~13.0.4",
+    "@angular/cli": "~1x3.0.4",
     "@angular/compiler-cli": "~13.0.0",
     "@babel/core": "^7.17.0",
     "@compodoc/compodoc": "^1.1.18",

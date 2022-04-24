@@ -48,14 +48,12 @@ export class AbstractComponent implements OnInit, AfterViewInit {
       this.checkCheckboxSelected();
     }
     if (this.constructor.name === 'NgAioSelectFormComponent' && this.values) {
-      this.value = this.values[0]
-      this.emit(this.value)
+      this.value = this.values[0];
+      this.emit(this.value);
     }
   }
 
-  ngAfterViewInit(): void {
-
-  }
+  ngAfterViewInit(): void {}
 
   public emit(value: any): void {
     this.value = value;

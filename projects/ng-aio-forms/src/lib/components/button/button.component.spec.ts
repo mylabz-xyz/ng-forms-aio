@@ -1,25 +1,46 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { BaseAbstractGridSpecs } from 'projects/ng-aio-forms/src/test/index';
 
 import { ButtonComponent } from './button.component';
-
+import { fakeAsync } from '@angular/core/testing';
+@Component({
+  selector: 'test-btn',
+  template: `<div>
+    <ng-aio-button (onChange)="onSubmit($event)"></ng-aio-button>
+  </div>`,
+})
+class ButtonWrapComponent {
+  public lastEvent = '';
+  public onSubmit(event:string) {
+    this.lastEvent = event;
+  }
+}
 describe('ButtonComponent', () => {
-  let component: ButtonComponent;
-  let fixture: ComponentFixture<ButtonComponent>;
+  let baseTestComponent = new BaseAbstractGridSpecs<ButtonWrapComponent>();
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ButtonComponent ]
-    })
-    .compileComponents();
-  });
+  baseTestComponent.init(ButtonComponent, ButtonWrapComponent);
+  baseTestComponent.baseTest();
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ButtonComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  describe(`Button test`, () => {
+    it(`It should emit onSubmit on click event `, fakeAsync(() => {
+      const button =
+        baseTestComponent.fixture.debugElement.nativeElement.querySelector(
+          'button'
+        );
+      const spyChildOnSubmit = spyOn(
+        baseTestComponent.child as ButtonComponent,
+        'onSubmit'
+      ).and.callThrough();
+      const spyParentOnSubmit = spyOn(
+        baseTestComponent.component,
+        'onSubmit'
+      ).and.callThrough();
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+      button.click();
+
+      expect(spyChildOnSubmit).toHaveBeenCalled();
+      expect(spyParentOnSubmit).toHaveBeenCalled();
+      expect(baseTestComponent.component.lastEvent).toBe('Submit event !');
+    }));
   });
 });

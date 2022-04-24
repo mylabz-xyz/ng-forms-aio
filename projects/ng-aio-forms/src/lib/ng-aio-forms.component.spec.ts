@@ -4,6 +4,14 @@ import { BrowserModule, By } from '@angular/platform-browser';
 
 import { NgAioFormsComponent } from './ng-aio-forms.component';
 
+import {
+  emptyForm,
+  simpleForm,
+  submitForm,
+  invalidForm,
+  complexeForm,
+} from './../test/index';
+
 describe('NgAioFormsComponent', () => {
   let component: NgAioFormsComponent;
   let fixture: ComponentFixture<NgAioFormsComponent>;
@@ -19,7 +27,7 @@ describe('NgAioFormsComponent', () => {
     fixture = TestBed.createComponent(NgAioFormsComponent);
     component = fixture.componentInstance;
     component.opts = { debug: false };
-    component.displaySubmitBtn=true;
+    component.displaySubmitBtn = true;
     component.forms = [
       {
         label: 'This input is required',
@@ -78,14 +86,5 @@ describe('NgAioFormsComponent', () => {
     });
   });
 
-  it('Should emit submit function',fakeAsync(()=>{
-   const submitSpy= spyOn(component,'submit')
-
-    const button = fixture.debugElement.query(By.css('ng-aio-button'))
-    console.log(button)
-    fixture.detectChanges();
-    button.triggerEventHandler('click',null);
-    fixture.detectChanges();
-    expect(submitSpy).toHaveBeenCalledTimes(1);
-  }))
+  it('Should emit submit function', fakeAsync(() => {}));
 });

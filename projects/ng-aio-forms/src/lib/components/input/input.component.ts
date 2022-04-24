@@ -14,6 +14,6 @@ export class NgAioInputFormComponent
   @Input() appendLabel: number | any;
   @Input() type: string | any = 'text';
 
-  public override _idMarker = 'ngAioTextBox_';
+  public override _idMarker = 'ngAioInput_';
 
 }
