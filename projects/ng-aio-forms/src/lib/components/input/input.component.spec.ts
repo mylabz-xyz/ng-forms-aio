@@ -5,18 +5,19 @@ import { BaseAbstractGridSpecs } from 'projects/ng-aio-forms/src/test/index';
 import { NgAioInputFormComponent } from './input.component';
 
 @Component({
-  selector: 'test-btn',
+  selector: 'test-input',
   template: `<div>
-    <ng-aio-input (onChange)="onChange($event)"></ng-aio-input>
+    <ng-aio-input (onChange)="onChange($event)" [value]="value"></ng-aio-input>
   </div>`,
 })
 class InputWrapComponent {
   public lastEvent = '';
-  public onChange(event: {value:string,id:string}) {
+  public value = '';
+  public onChange(event: { value: string; id: string }) {
     this.lastEvent = event.value;
   }
 }
-describe('Input test', () => {
+describe('Input Component :', () => {
   let baseTestComponent = new BaseAbstractGridSpecs<InputWrapComponent>();
 
   baseTestComponent.init(NgAioInputFormComponent, InputWrapComponent);
@@ -36,11 +37,23 @@ describe('Input test', () => {
       'onChange'
     ).and.callThrough();
 
-    input.value = 'someValue';
+    input.value = 'foo';
     input.dispatchEvent(new Event('input'));
 
     expect(spyChildEmitEvent).toHaveBeenCalled();
     expect(spyParentOnSubmit).toHaveBeenCalled();
-    expect(baseTestComponent.component.lastEvent).toBe('someValue');
+    expect(baseTestComponent.component.lastEvent).toBe('foo');
   }));
+
+  it('It should get an intial value', () => {
+    baseTestComponent.component.value = 'foo';
+
+    baseTestComponent.fixture.detectChanges();
+
+    const input =
+      baseTestComponent.fixture.debugElement.nativeElement.querySelector(
+        'input'
+      );
+    expect(input.value).toBe('foo');
+  });
 });

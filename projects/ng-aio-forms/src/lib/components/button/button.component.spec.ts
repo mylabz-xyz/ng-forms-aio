@@ -15,7 +15,7 @@ class ButtonWrapComponent {
     this.lastEvent = event;
   }
 }
-describe('ButtonComponent', () => {
+describe('Button Component', () => {
   let baseTestComponent = new BaseAbstractGridSpecs<ButtonWrapComponent>();
 
   baseTestComponent.init(ButtonComponent, ButtonWrapComponent);
