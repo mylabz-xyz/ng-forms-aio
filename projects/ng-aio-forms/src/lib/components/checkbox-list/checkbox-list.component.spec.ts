@@ -4,7 +4,7 @@ import { BaseAbstractGridSpecs } from 'projects/ng-aio-forms/src/test/index';
 import { NgAioCheckboxListFormComponent } from '..';
 
 @Component({
-  selector: 'test-checkbox',
+  selector: 'test-checkbox-list',
   template: `<div>
     <ng-aio-checkbox-list
       (onChange)="onChange($event)"
