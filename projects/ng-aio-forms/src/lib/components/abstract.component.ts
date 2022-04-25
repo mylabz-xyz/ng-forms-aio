@@ -41,17 +41,19 @@ export class AbstractComponent implements OnInit, AfterViewInit {
     this.initIndex();
     this.initId();
 
-    if (
-      this.constructor.name === 'NgAioCheckboxFormComponent' ||
-      this.constructor.name === 'NgAioCheckboxListFormComponent'
-    ) {
+    if (this.constructor.name === 'NgAioCheckboxFormComponent') {
       this.checkCheckboxSelected();
     }
-    if (this.constructor.name === 'NgAioSelectFormComponent' && this.values) {
-      this.value = this.values[0];
-      this.emit(this.value);
+    if (this.constructor.name === 'NgAioCheckboxListFormComponent') {
+      this.checkCheckboxListSelected();
     }
-  }
+
+    if (this.constructor.name === 'NgAioSelectFormComponent' && this.values) {
+      this.dropDownSelected();
+    }
+
+    this.onChange.emit({ value: this.value, id: this._id });
+    }
 
   ngAfterViewInit(): void {}
 
@@ -78,6 +80,20 @@ export class AbstractComponent implements OnInit, AfterViewInit {
   public checkCheckboxSelected() {
     if (this.value === undefined || this.value === null) {
       this.value = false;
+    }
+  }
+
+  // on init select component
+  public checkCheckboxListSelected() {
+    if (this.value === undefined || this.value === null) {
+      this.value = [];
+    }
+  }
+
+  // on init select component
+  public dropDownSelected() {
+    if (this.value === undefined || this.value === null) {
+      this.value = this.values[0];
     }
   }
 }

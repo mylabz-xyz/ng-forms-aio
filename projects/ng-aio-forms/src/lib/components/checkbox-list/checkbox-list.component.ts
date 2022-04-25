@@ -23,11 +23,4 @@ export class NgAioCheckboxListFormComponent
        this.onChange.emit({ value: this.value, id: this._idDynamic(i) });
   }
 
-  // on init select component
-  public override checkCheckboxSelected() {
-    if (this.value === undefined || this.value === null) {
-      this.value = [];
-
-    }
-  }
 }

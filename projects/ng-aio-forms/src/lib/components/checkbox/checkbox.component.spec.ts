@@ -21,11 +21,10 @@ class CheckBoxWrapComponent {
     { label: 'bar', value: 'bar' },
   ];
   public onChange(event: { value: string; id: string }) {
-    console.log(event);
     this.lastEvent = event.value;
   }
 }
-describe('TextBox Component :', () => {
+describe('Checkbox Component :', () => {
   let baseTestComponent = new BaseAbstractGridSpecs<CheckBoxWrapComponent>();
 
   baseTestComponent.init(NgAioCheckboxFormComponent, CheckBoxWrapComponent);
