@@ -1,5 +1,5 @@
 {
-  "name": "@mylabz.xyz/ng-aio-forms",
+  "name": "@mylabz.xyz/ng-forms-aio",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:dev": "ng test ng-aio-forms --watch=true"
+    "test:dev": "ng test ng-forms-aio --watch=true"
   },
   "private": false,
   "dependencies": {
@@ -27,6 +27,7 @@
     "highlight.js": "^11.4.0",
     "install": "^0.13.0",
     "ng-zorro-antd": "^13.1.1",
+    "ngx-markdown": "^13.1.0",
     "normalize.css": "^8.0.1",
     "npm": "^8.5.5",
     "rxjs": "~7.4.0",
@@ -58,7 +59,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mylabz-xyz/ng-aio-forms.git"
+    "url": "git+https://github.com/mylabz-xyz/ng-forms-aio.git"
   },
   "keywords": [
     "angular",
@@ -72,7 +73,7 @@
   "author": "Boucham Amine",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mylabz-xyz/ng-aio-forms/issues"
+    "url": "https://github.com/mylabz-xyz/ng-forms-aio/issues"
   },
-  "homepage": "https://github.com/mylabz-xyz/ng-aio-forms#readme"
+  "homepage": "https://github.com/mylabz-xyz/ng-forms-aio#readme"
 }

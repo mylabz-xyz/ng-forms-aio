@@ -12,8 +12,8 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
-      "ng-aio-forms": [
-        "projects/ng-aio-forms/src/public-api"
+      "ng-forms-aio": [
+        "projects/ng-forms-aio/src/public-api"
       ],
     },
     "declaration": false,
