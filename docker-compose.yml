@@ -1,0 +1,12 @@
+version: '3'
+services:
+  angular:
+    build:
+      context: ./angular
+      dockerfile: Dockerfile
+    command: npm run start:dev
+    volumes:
+      - ./angular:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 4200:4200

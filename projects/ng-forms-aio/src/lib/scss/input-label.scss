@@ -1,0 +1,921 @@
+.ng-aio-wrap {
+  --redInvalid: #dc3545;
+  --blueDefault: #3399ff;
+  --pristine: #3399ff;
+  --dirty: #ffffff;
+  --invalid: #dc3545;
+
+  --borderDefault: var(--pristine) ;
+
+  .ng-aio-invalid {
+    --borderDefault: var(--invalid)
+  }
+.ng-aio-pristine {
+    --borderDefault: var(--pristine);
+  }
+.ng-aio-dirty {
+    --borderDefault: var(--dirty);
+  }
+
+
+
+  .ng-aio-wrap-error {
+    text-align: start !important;
+    color: --redInvalid !important;
+    margin: 0.5em;
+    .ng-aio-error {
+      height: 2px;
+      transition: 0.4s;
+    }
+  }
+  .ng-aio-control {
+    margin: 0.75em 0em;
+    .ng-aio-checkbox-label {
+      label {
+        padding: 1em 0.25em;
+        display: flex;
+      }
+    }
+    width: 100%;
+    position: relative;
+    input[type="text"] {
+      font: 15px/24px "Lato", Arial, sans-serif;
+      color: #333;
+      width: 100%;
+      box-sizing: border-box;
+      letter-spacing: 1px;
+    }
+  }
+
+  :focus {
+    outline: none;
+  }
+  ._hide {
+    display: none;
+  }
+
+  // Border bottom effects
+  .border-default,
+  .border-center-to-edges,
+  .border-edges-to-center {
+    border: 0;
+    padding: 7px 0;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .border-default ~ .focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--borderDefault);
+    transition: 0.4s;
+  }
+  .border-default:focus ~ .focus-border {
+    width: 100%;
+    transition: 0.4s;
+  }
+
+  .border-center-to-edges ~ .focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--borderDefault);
+    transition: 0.4s;
+  }
+  .border-center-to-edges:focus ~ .focus-border {
+    width: 100%;
+    transition: 0.4s;
+    left: 0;
+  }
+
+  .border-edges-to-center ~ .focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    z-index: 99;
+  }
+  .border-edges-to-center ~ .focus-border:before,
+  .border-edges-to-center ~ .focus-border:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--borderDefault);
+    transition: 0.4s;
+  }
+  .border-edges-to-center ~ .focus-border:after {
+    left: auto;
+    right: 0;
+  }
+  .border-edges-to-center:focus ~ .focus-border:before,
+  .border-edges-to-center:focus ~ .focus-border:after {
+    width: 50%;
+    transition: 0.4s;
+  }
+
+  .border-reveal,
+  .border-slide,
+  .border-slide-invert {
+    border: 0;
+    padding: 5px 0 7px;
+    border: 1px solid transparent;
+    border-bottom-color: #ccc;
+    transition: 0.4s;
+  }
+
+  .border-reveal:focus,
+  .border-slide:focus,
+  .border-slide-invert:focus {
+    padding: 5px 14px 7px;
+    transition: 0.4s;
+  }
+
+  .border-reveal ~ .focus-border {
+    position: absolute;
+    height: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transition: 0.4s;
+    z-index: -1;
+  }
+  .border-reveal:focus ~ .focus-border {
+    transition: 0.4s;
+    height: 100%;
+    border: 2px solid var(--borderDefault);
+    z-index: 1;
+  }
+
+  .border-slide ~ .focus-border {
+    position: absolute;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    transition: 0.4s;
+  }
+  .border-slide:focus ~ .focus-border {
+    width: 100%;
+    transition: 0.4s;
+    border: 2px solid var(--borderDefault);
+  }
+
+  .border-slide-invert ~ .focus-border {
+    position: absolute;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    transition: 0.4s;
+  }
+  .border-slide-invert:focus ~ .focus-border {
+    width: 100%;
+    transition: 0.4s;
+    border: 2px solid var(--borderDefault);
+  }
+
+  .borders-default,
+  .borders-diagonal,
+  .borders-fill {
+    border: 1px solid #ccc;
+    padding: 7px 14px 9px;
+    transition: 0.4s;
+  }
+
+  .borders-default ~ .focus-border:before,
+  .borders-default ~ .focus-border:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--borderDefault);
+    transition: 0.4s;
+  }
+  .borders-default ~ .focus-border:after {
+    top: auto;
+    bottom: 0;
+  }
+  .borders-default ~ .focus-border i:before,
+  .borders-default ~ .focus-border i:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 2px;
+    height: 0;
+    background-color: var(--borderDefault);
+    transition: 0.6s;
+  }
+  .borders-default ~ .focus-border i:after {
+    left: auto;
+    right: 0;
+  }
+  .borders-default:focus ~ .focus-border:before,
+  .borders-default:focus ~ .focus-border:after {
+    left: 0;
+    width: 100%;
+    transition: 0.4s;
+  }
+  .borders-default:focus ~ .focus-border i:before,
+  .borders-default:focus ~ .focus-border i:after {
+    top: 0;
+    height: 100%;
+    transition: 0.6s;
+  }
+
+  .borders-diagonal ~ .focus-border:before,
+  .borders-diagonal ~ .focus-border:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--borderDefault);
+    transition: 0.3s;
+  }
+  .borders-diagonal ~ .focus-border:after {
+    top: auto;
+    bottom: 0;
+    left: auto;
+    right: 0;
+  }
+  .borders-diagonal ~ .focus-border i:before,
+  .borders-diagonal ~ .focus-border i:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 0;
+    background-color: var(--borderDefault);
+    transition: 0.4s;
+  }
+  .borders-diagonal ~ .focus-border i:after {
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: 0;
+  }
+  .borders-diagonal:focus ~ .focus-border:before,
+  .borders-diagonal:focus ~ .focus-border:after {
+    width: 100%;
+    transition: 0.3s;
+  }
+  .borders-diagonal:focus ~ .focus-border i:before,
+  .borders-diagonal:focus ~ .focus-border i:after {
+    height: 100%;
+    transition: 0.4s;
+  }
+
+  .borders-fill ~ .focus-border:before,
+  .borders-fill ~ .focus-border:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--borderDefault);
+    transition: 0.2s;
+    transition-delay: 0.2s;
+  }
+  .borders-fill ~ .focus-border:after {
+    top: auto;
+    bottom: 0;
+    right: auto;
+    left: 0;
+    transition-delay: 0.6s;
+  }
+  .borders-fill ~ .focus-border i:before,
+  .borders-fill ~ .focus-border i:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 0;
+    background-color: var(--borderDefault);
+    transition: 0.2s;
+  }
+  .borders-fill ~ .focus-border i:after {
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    transition-delay: 0.4s;
+  }
+  .borders-fill:focus ~ .focus-border:before,
+  .borders-fill:focus ~ .focus-border:after {
+    width: 100%;
+    transition: 0.2s;
+    transition-delay: 0.6s;
+  }
+  .borders-fill:focus ~ .focus-border:after {
+    transition-delay: 0.2s;
+  }
+  .borders-fill:focus ~ .focus-border i:before,
+  .borders-fill:focus ~ .focus-border i:after {
+    height: 100%;
+    transition: 0.2s;
+  }
+  .borders-fill:focus ~ .focus-border i:after {
+    transition-delay: 0.4s;
+  }
+
+  .background-fade,
+  .background-slide,
+  .background-center-to-edges,
+  .background-edges-to-center,
+  .background-appear,
+  .background-fill {
+    border: 0;
+    padding: 7px 15px;
+    border: 1px solid #ccc;
+    position: relative;
+    background: transparent;
+  }
+
+  .background-fade ~ .focus-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ededed;
+    opacity: 0;
+    transition: 0.5s;
+    z-index: -1;
+  }
+  .background-fade:focus ~ .focus-bg {
+    transition: 0.5s;
+    opacity: 1;
+  }
+
+  .background-slide ~ .focus-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ededed;
+    transition: 0.3s;
+    z-index: -1;
+  }
+  .background-slide:focus ~ .focus-bg {
+    transition: 0.3s;
+    width: 100%;
+  }
+
+  .background-center-to-edges ~ .focus-bg {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ededed;
+    transition: 0.3s;
+    z-index: -1;
+  }
+  .background-center-to-edges:focus ~ .focus-bg {
+    transition: 0.3s;
+    width: 100%;
+    left: 0;
+  }
+
+  .background-edges-to-center ~ .focus-bg:before,
+  .background-edges-to-center ~ .focus-bg:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ededed;
+    transition: 0.3s;
+    z-index: -1;
+  }
+  .background-edges-to-center:focus ~ .focus-bg:before {
+    transition: 0.3s;
+    width: 50%;
+  }
+  .background-edges-to-center ~ .focus-bg:after {
+    left: auto;
+    right: 0;
+  }
+  .background-edges-to-center:focus ~ .focus-bg:after {
+    transition: 0.3s;
+    width: 50%;
+  }
+
+  .background-appear ~ .focus-bg:before,
+  .background-appear ~ .focus-bg:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    background-color: #ededed;
+    transition: 0.3s;
+    z-index: -1;
+  }
+  .background-appear:focus ~ .focus-bg:before {
+    transition: 0.3s;
+    width: 50%;
+    height: 100%;
+  }
+  .background-appear ~ .focus-bg:after {
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: 0;
+  }
+  .background-appear:focus ~ .focus-bg:after {
+    transition: 0.3s;
+    width: 50%;
+    height: 100%;
+  }
+
+  .background-fill ~ .focus-bg:before,
+  .background-fill ~ .focus-bg:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    background-color: #ededed;
+    transition: 0.3s;
+    z-index: -1;
+  }
+  .background-fill:focus ~ .focus-bg:before {
+    transition: 0.3s;
+    width: 50%;
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
+  .background-fill ~ .focus-bg:after {
+    left: auto;
+    right: 50%;
+    top: auto;
+    bottom: 50%;
+  }
+  .background-fill:focus ~ .focus-bg:after {
+    transition: 0.3s;
+    width: 50%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+  }
+
+  .float-label.border-default,
+  .float-label.border-center-to-edges,
+  .float-label.border-edges-to-center {
+    border: 0;
+    padding: 4px 0;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+  }
+
+  .float-label.border-default ~ .focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--borderDefault);
+    transition: 0.4s;
+  }
+  .float-label.border-default:focus ~ .focus-border,
+  .has-content.float-label-default.border-default ~ .focus-border {
+    width: 100%;
+    transition: 0.4s;
+  }
+  .float-label.border-default ~ label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 9px;
+    color: #aaa;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px;
+  }
+  .float-label.border-default:focus ~ label,
+  .has-content.float-label.border-default ~ label {
+    top: -16px;
+    font-size: 12px;
+    color: var(--borderDefault);
+    transition: 0.3s;
+  }
+
+  .float-label.border-center-to-edges ~ .focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--borderDefault);
+    transition: 0.4s;
+  }
+  .float-label.border-center-to-edges:focus ~ .focus-border,
+  .has-content.float-label.border-center-to-edges ~ .focus-border {
+    width: 100%;
+    transition: 0.4s;
+    left: 0;
+  }
+  .float-label.border-center-to-edges ~ label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 9px;
+    color: #aaa;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px;
+  }
+  .float-label.border-center-to-edges:focus ~ label,
+  .has-content.float-label.border-center-to-edges ~ label {
+    top: -16px;
+    font-size: 12px;
+    color: var(--borderDefault);
+    transition: 0.3s;
+  }
+
+  .float-label.border-edges-to-center ~ .focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    z-index: 99;
+  }
+  .float-label.border-edges-to-center ~ .focus-border:before,
+  .float-label.border-edges-to-center ~ .focus-border:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--borderDefault);
+    transition: 0.4s;
+  }
+  .float-label.border-edges-to-center ~ .focus-border:after {
+    left: auto;
+    right: 0;
+  }
+  .float-label.border-edges-to-center:focus ~ .focus-border:before,
+  .float-label.border-edges-to-center:focus ~ .focus-border:after,
+  .has-content.float-label.border-edges-to-center ~ .focus-border:before,
+  .has-content.float-label.border-edges-to-center ~ .focus-border:after {
+    width: 50%;
+    transition: 0.4s;
+  }
+  .float-label.border-edges-to-center ~ label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 9px;
+    color: #aaa;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px;
+  }
+  .float-label.border-edges-to-center:focus ~ label,
+  .has-content.float-label.border-edges-to-center ~ label {
+    top: -16px;
+    font-size: 12px;
+    color: var(--borderDefault);
+    transition: 0.3s;
+  }
+
+  .float-label.borders-default,
+  .float-label.border-center-to-edges,
+  .float-label.border-edges-to-center {
+    border: 1px solid #ccc;
+    padding: 7px 14px;
+    transition: 0.4s;
+    background: transparent;
+  }
+
+  .float-label.borders-default ~ .focus-border:before,
+  .float-label.borders-default ~ .focus-border:after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--borderDefault);
+    transition: 0.4s;
+  }
+  .float-label.borders-default ~ .focus-border:after {
+    top: auto;
+    bottom: 0;
+  }
+  .float-label.borders-default ~ .focus-border i:before,
+  .float-label.borders-default ~ .focus-border i:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 2px;
+    height: 0;
+    background-color: var(--borderDefault);
+    transition: 0.6s;
+  }
+  .float-label.borders-default ~ .focus-border i:after {
+    left: auto;
+    right: 0;
+  }
+  .float-label.borders-default:focus ~ .focus-border:before,
+  .float-label.borders-default:focus ~ .focus-border:after,
+  .has-content.float-label.borders-default ~ .focus-border:before,
+  .has-content.float-label.borders-default ~ .focus-border:after {
+    left: 0;
+    width: 100%;
+    transition: 0.4s;
+  }
+  .float-label.borders-default:focus ~ .focus-border i:before,
+  .float-label.borders-default:focus ~ .focus-border i:after,
+  .has-content.float-label.borders-default ~ .focus-border i:before,
+  .has-content.float-label.borders-default ~ .focus-border i:after {
+    top: -1px;
+    height: 100%;
+    transition: 0.6s;
+  }
+  .float-label.borders-default ~ label {
+    position: absolute;
+    left: 14px;
+    width: 100%;
+    top: 10px;
+    color: #aaa;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px;
+  }
+  .float-label.borders-default:focus ~ label,
+  .has-content.float-label.borders-default ~ label {
+    top: -18px;
+    left: 0;
+    font-size: 12px;
+    color: var(--borderDefault);
+    transition: 0.3s;
+  }
+
+  .float-label.borders-diagonal ~ .focus-border:before,
+  .float-label.borders-diagonal ~ .focus-border:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--borderDefault);
+    transition: 0.3s;
+  }
+  .float-label.borders-diagonal ~ .focus-border:after {
+    top: auto;
+    bottom: 0;
+    left: auto;
+    right: 0;
+  }
+  .float-label.borders-diagonal ~ .focus-border i:before,
+  .float-label.borders-diagonal ~ .focus-border i:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 0;
+    background-color: var(--borderDefault);
+    transition: 0.4s;
+  }
+  .float-label.borders-diagonal ~ .focus-border i:after {
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: 0;
+  }
+  .float-label.borders-diagonal:focus ~ .focus-border:before,
+  .float-label.borders-diagonal:focus ~ .focus-border:after,
+  .has-content.float-label.borders-diagonal ~ .focus-border:before,
+  .has-content.float-label.borders-diagonal ~ .focus-border:after {
+    width: 100%;
+    transition: 0.3s;
+  }
+  .float-label.borders-diagonal:focus ~ .focus-border i:before,
+  .float-label.borders-diagonal:focus ~ .focus-border i:after,
+  .has-content.float-label.borders-diagonal ~ .focus-border i:before,
+  .has-content.float-label.borders-diagonal ~ .focus-border i:after {
+    height: 100%;
+    transition: 0.4s;
+  }
+  .float-label.borders-diagonal ~ label {
+    position: absolute;
+    left: 14px;
+    width: 100%;
+    top: 10px;
+    color: #aaa;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px;
+  }
+  .float-label.borders-diagonal:focus ~ label,
+  .has-content.float-label.borders-diagonal ~ label {
+    top: -18px;
+    left: 0;
+    font-size: 12px;
+    color: var(--borderDefault);
+    transition: 0.3s;
+  }
+
+  .float-label.borders-fill ~ .focus-border:before,
+  .float-label.borders-fill ~ .focus-border:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--borderDefault);
+    transition: 0.2s;
+    transition-delay: 0.2s;
+  }
+  .float-label.borders-fill ~ .focus-border:after {
+    top: auto;
+    bottom: 0;
+    right: auto;
+    left: 0;
+    transition-delay: 0.6s;
+  }
+  .float-label.borders-fill ~ .focus-border i:before,
+  .float-label.borders-fill ~ .focus-border i:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 0;
+    background-color: var(--borderDefault);
+    transition: 0.2s;
+  }
+  .float-label.borders-fill ~ .focus-border i:after {
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    transition-delay: 0.4s;
+  }
+  .float-label.borders-fill:focus ~ .focus-border:before,
+  .float-label.borders-fill:focus ~ .focus-border:after,
+  .has-content.float-label.borders-fill ~ .focus-border:before,
+  .has-content.float-label.borders-fill ~ .focus-border:after {
+    width: 100%;
+    transition: 0.2s;
+    transition-delay: 0.6s;
+  }
+  .float-label.borders-fill:focus ~ .focus-border:after,
+  .has-content.float-label.borders-fill ~ .focus-border:after {
+    transition-delay: 0.2s;
+  }
+  .float-label.borders-fill:focus ~ .focus-border i:before,
+  .float-label.borders-fill:focus ~ .focus-border i:after,
+  .has-content.float-label.borders-fill ~ .focus-border i:before,
+  .has-content.float-label.borders-fill ~ .focus-border i:after {
+    height: 100%;
+    transition: 0.2s;
+  }
+  .float-label.borders-fill:focus ~ .focus-border i:after,
+  .has-conten.float-label.borders-fill ~ .focus-border i:after {
+    transition-delay: 0.4s;
+  }
+  .float-label.borders-fill ~ label {
+    position: absolute;
+    left: 14px;
+    width: 100%;
+    top: 10px;
+    color: #aaa;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px;
+  }
+  .float-label.borders-fill:focus ~ label,
+  .has-content.float-label.borders-fill ~ label {
+    top: -18px;
+    left: 0;
+    font-size: 12px;
+    color: var(--borderDefault);
+    transition: 0.3s;
+  }
+
+  .float-label.background-slide,
+  .float-label.background-appear {
+    border: 0;
+    padding: 7px 15px;
+    border: 1px solid #ccc;
+    position: relative;
+    background: transparent;
+  }
+
+  .float-label.background-slide ~ .focus-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: transparent;
+    transition: 0.4s;
+    z-index: -1;
+  }
+  .float-label.background-slide:focus ~ .focus-bg,
+  .has-content.float-label.background-slide ~ .focus-bg {
+    transition: 0.4s;
+    width: 100%;
+    background-color: #ededed;
+  }
+  .float-label.background-slide ~ label {
+    position: absolute;
+    left: 14px;
+    width: 100%;
+    top: 10px;
+    color: #aaa;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px;
+  }
+  .float-label.background-slide:focus ~ label,
+  .has-content.float-label.background-slide ~ label {
+    top: -18px;
+    left: 0;
+    font-size: 12px;
+    color: #333;
+    transition: 0.3s;
+  }
+
+  .float-label.background-appear ~ .focus-bg:before,
+  .float-label.background-appear ~ .focus-bg:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    background-color: #ededed;
+    transition: 0.3s;
+    z-index: -1;
+  }
+  .float-label.background-appear:focus ~ .focus-bg:before,
+  .has-content.float-label.background-appear ~ .focus-bg:before {
+    transition: 0.3s;
+    width: 50%;
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
+  .float-label.background-appear ~ .focus-bg:after {
+    left: auto;
+    right: 50%;
+    top: auto;
+    bottom: 50%;
+  }
+  .float-label.background-appear:focus ~ .focus-bg:after,
+  .has-content.float-label.background-appear ~ .focus-bg:after {
+    transition: 0.3s;
+    width: 50%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+  }
+  .float-label.background-appear ~ label {
+    position: absolute;
+    left: 14px;
+    width: 100%;
+    top: 10px;
+    color: #aaa;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px;
+  }
+  .float-label.background-appear:focus ~ label,
+  .has-content.float-label.background-appear ~ label {
+    top: -18px;
+    left: 0;
+    font-size: 12px;
+    color: #333;
+    transition: 0.3s;
+  }
+}
