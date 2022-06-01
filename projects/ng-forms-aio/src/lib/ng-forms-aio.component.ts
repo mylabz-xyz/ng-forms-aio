@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { NgFormsAio, NgFormsAioOptions, NgFormsAioItem } from './models/NgFormsAio';
 
 import './extends/String';
@@ -25,7 +25,7 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
 
   public _forms: { [key: string]: NgFormsAioItem } = {};
 
-  public formGroup!: FormGroup;
+  public formGroup!: FormGroup
   public _formsGroup: { [key: string]: FormControl } = {};
 
   public _formsKeys: string[] | any = [];
@@ -68,12 +68,15 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
   }
 
   private listenConfig() {
-   this.subs.push( this.ngFormsAioService.getConfig$().subscribe((config:NgFormsAioConfig)=>{
-    if(config.opts) this.opts = {...this.opts,...config.opts}
-    if(config?.displaySubmitBtn === false || config?.displaySubmitBtn === true) this.displaySubmitBtn = config.displaySubmitBtn
-    if(config.submitLabel) this.submitLabel = config.submitLabel
-    if(config.theme) this.theme = config.theme
-  }))
+    this.subs.push(
+      this.ngFormsAioService.getConfig$().subscribe((config: NgFormsAioConfig) => {
+        if (config.opts) this.opts = { ...this.opts, ...config.opts };
+        if (config?.displaySubmitBtn === false || config?.displaySubmitBtn === true)
+          this.displaySubmitBtn = config.displaySubmitBtn;
+        if (config.submitLabel) this.submitLabel = config.submitLabel;
+        if (config.theme) this.theme = config.theme;
+      })
+    );
   }
 
   public submit() {
@@ -97,8 +100,6 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
     }
   }
 
-  private openAPI2() {}
-  private openAPI3() {}
   private installPlugins() {}
 
   private toObject() {
@@ -179,7 +180,8 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
 
   private reset() {
     this._forms = {};
-    this.formGroup;
+    //@ts-ignore
+    this.formGroup = null;
     this._formsGroup = {};
     this._formsKeys = [];
     this._keyStart = '';

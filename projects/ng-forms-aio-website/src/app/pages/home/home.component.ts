@@ -1,14 +1,9 @@
 import {
   AfterViewInit,
-  ChangeDetectorRef,
   Component,
-  ElementRef,
-  ViewChild,
 } from '@angular/core';
-import { Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { NgFormsAio } from 'projects/ng-forms-aio/src/lib/models/NgFormsAio';
-import { AbstractWithForm } from '../../abstract';
 import { AnimatedFormProvider, AnimatedIcon,AnimatedLinkProvider } from './../../providers';
 @Component({
   selector: 'app-home',
@@ -164,6 +159,7 @@ export class HomeComponent implements AfterViewInit {
     },
   ];
 
+
   public langChangeAnimation = false;
   public formSvg = ``;
 
@@ -172,15 +168,15 @@ export class HomeComponent implements AfterViewInit {
     public translateService: TranslateService,
     public animatedLinkProvider:AnimatedLinkProvider
   ) {
-    translateService.onDefaultLangChange.subscribe(() => {
+
+  }
+
+  ngAfterViewInit(): void {
+    this.translateService.onLangChange.subscribe(() => {
       this.langChangeAnimation = true;
       setTimeout(() => {
         this.langChangeAnimation = false;
       },250);
     });
-  }
-
-  ngAfterViewInit(): void {
-
   }
 }

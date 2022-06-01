@@ -1,7 +1,7 @@
 <form
   (keyup.enter)="submit()"
   [formGroup]="formGroup"
-  *ngIf="_formsKeys.length > 0"
+  *ngIf="_formsKeys && _formsKeys.length > 0 && formGroup"
   class="row d-flex align-items-end ng-aio-wrap"
 >
   <div
@@ -75,6 +75,7 @@
   </div>
 
   <div class="w-100 text-start">
+   submitted :  {{submitted}}
     <div
       *ngIf="formGroup && formGroup.status === 'INVALID' && submitted"
       class="w-100 ng-aio-wrap-error"

@@ -1,16 +1,9 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, ValidationErrors } from '@angular/forms';
 import { NgAioTheme, Themes } from '../const';
 
 @Component({
-  template: '',
+  template: ''
 })
 export class AbstractComponent implements OnInit, AfterViewInit {
   @Input() label: string | undefined;
@@ -34,8 +27,7 @@ export class AbstractComponent implements OnInit, AfterViewInit {
 
   public _idMarker: string = '';
 
-  public _idDynamic = (id: string | number): string =>
-    this._idMarker + id + '_' + this._index;
+  public _idDynamic = (id: string | number): string => this._idMarker + id + '_' + this._index;
 
   ngOnInit(): void {
     this.initIndex();
@@ -51,14 +43,16 @@ export class AbstractComponent implements OnInit, AfterViewInit {
     if (this.constructor.name === 'NgAioSelectFormComponent' && this.values) {
       this.dropDownSelected();
     }
+  }
 
-    this.onChange.emit({ value: this.value, id: this._id });
+  ngAfterViewInit(): void {
+    if (this.constructor.name !== 'ButtonComponent') {
+      this.onChange.emit({ value: this.value, id: this._id });
     }
-
-  ngAfterViewInit(): void {}
+  }
 
   public emit(value: any): void {
-    console.log(this._id,value)
+    console.log(this._id, value);
     this.value = value;
     this.onChange.emit({ value: value, id: this._id });
   }
