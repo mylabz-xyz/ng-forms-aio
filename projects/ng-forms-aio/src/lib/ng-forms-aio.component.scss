@@ -1,0 +1,40 @@
+@import "./scss/bootstrap/bootstrap-grid.css";
+:host ::ng-deep {
+  @import "~normalize.css";
+  @import "./scss/input-border.scss";
+  @import "./scss/input-default.scss";
+  @import "./scss/input-box.scss";
+  @import "./scss/input-label.scss";
+  @import "./scss/button.scss";
+  @import "./scss/commons.scss";
+  @import "./scss/animations/index.scss";
+
+  $redInvalid:#dc3545;
+
+  .d-flex {
+    display: flex !important;
+  }
+
+  .flex-row {
+    flex-direction: row !important;
+  }
+
+  .flex-col {
+    flex-direction: column !important;
+  }
+
+  .align-items-end{
+    align-items: end !important;
+  }
+
+
+  .ng-aio-control {
+    label{
+      text-align: start;
+    }
+    input {
+      width: 100%;
+    }
+
+  }
+}

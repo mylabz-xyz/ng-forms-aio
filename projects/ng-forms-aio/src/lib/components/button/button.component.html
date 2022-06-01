@@ -1,0 +1,13 @@
+<div class="ng-aio-control">
+  <button
+    type="submit"
+    class="ng-aio-submit"
+    (click)="onSubmit()"
+    [ngClass]="{
+      'has-content': isSubmitted
+    }"
+  >
+    submit
+  </button>
+  <span [class]="themes[theme].focusClass"> <i></i></span>
+</div>

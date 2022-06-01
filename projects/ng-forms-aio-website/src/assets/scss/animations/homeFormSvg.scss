@@ -1,0 +1,61 @@
+@keyframes textDraw {
+  0%{}
+  50%{}
+  100%{}
+  }
+  @keyframes doubleScale{
+  from{transform: scale(1.0);
+    -ms-transform: scale(1.0);
+  -webkit-transform: scale(1.0);
+  transform-origin: center center;
+  transform-box: fill-box;}
+  to{transform: scale(2.0);
+    -ms-transform: scale(2.0);
+  -webkit-transform: scale(2.0);
+  transform-origin: center center;
+  transform-box: fill-box;}
+}
+
+#noun_form_card{
+}
+
+
+#noun_form_plain-form{}
+#noun_form_plain-form-label{}
+#noun_form_plain-form-content{}
+
+#noun_form_short-form-1{
+  animation: doubleScale 2s ease-in-out 0s;
+  }
+#noun_form_short-form-1-label{
+
+}
+#noun_form_short-form-1-content{
+  animation: doubleScale 2s ease-in-out 0s;
+
+}
+
+#noun_form_short-form-2{
+  display: none;
+}
+#noun_form_short-form-2-label{
+  display: none;
+}
+#noun_form_short-form-2-content{
+  display: none;
+}
+
+
+
+#noun_form_submit-content{
+  display: none;
+}
+#noun_form_submit-btn{
+  display: none;
+}
+#noun_form_about-1{
+  display: none;
+}
+#noun_form_about-2{
+  display: none;
+}

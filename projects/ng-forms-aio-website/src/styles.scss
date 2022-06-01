@@ -1,0 +1,175 @@
+@import "./assets/scss/index.scss";
+@import "~codemirror/lib/codemirror.css";
+@import "~codemirror/theme/material.css";
+@import "~codemirror/theme/idea.css";
+
+.glslCanvas {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute !important;
+  z-index: -1;
+}
+
+
+a:hover:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #333333;
+  z-index: -1;
+}
+
+.mojsContainer {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+
+  @media screen and (max-width: 700px) {
+    width: 75%;
+  }
+}
+a {
+  display: inline-block;
+  position: relative;
+  color: #333333;
+  text-decoration: none;
+  padding: 0.2em 0.05em;
+  border-bottom: 2px solid #333333;
+}
+
+a:hover {
+  color: #efefef;
+}
+
+a:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #333333;
+  z-index: -1;
+  transition: all 0.1s cubic-bezier(0.000, 0.590, 1.000, 0.260);
+}
+
+// fluid type
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+$min_width: 320px;
+$max_width: 1200px;
+$min_font: 12px;
+$max_font: 16px;
+
+* {
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+}
+// fluid type
+
+app-background {
+  position: fixed !important;
+}
+
+.ant-layout,
+.ant-layout-footer,
+.ant-layout-header {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+div.code {
+  white-space: pre;
+}
+
+nz-header {
+  position: fixed;
+  width: 100%;
+  z-index: 999 !important;
+}
+
+.ant-layout-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  transition: 0.75s;
+}
+
+html:not([data-scroll="0"]) .ant-layout-header {
+  -webkit-box-shadow: 1px 5px 11px 0px rgba(0, 0, 0, 0.28);
+  box-shadow: 1px 5px 11px 0px rgba(0, 0, 0, 0.28);
+  background: white !important;
+  background-color: white !important;
+  transition: 0.75s;
+}
+
+.layout {
+  min-height: 100vh;
+}
+
+nz-footer {
+  text-align: center;
+}
+
+nz-content {
+  padding: 0 50px;
+  margin-top: 64px;
+}
+
+p {
+  cursor: default !important;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.home-exemple-form {
+
+}
+
+
+._app_title{
+  font: 1em Arvo, sans-serif;
+
+}
+
+
+.neumo-default-card{
+  padding: 2em;
+  background: #f7f7f787;
+  border-radius: 20px;
+  box-shadow:
+    inset 0 0 15px rgba(55, 84, 170,0),
+    inset 0 0 20px rgba(255, 255, 255,0),
+    7px 7px 15px rgba(55, 84, 170,.15),
+    -7px -7px 20px rgba(255, 255, 255,1),
+    inset 0px 0px 4px rgba(255, 255, 255,.2);
+}

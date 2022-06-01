@@ -1,0 +1,57 @@
+<div nz-row nzJustify="center" [nzGutter]="[24, 10]" class="w-100">
+  <div
+    nz-col
+    class="d-flex flex-column align-items-center justify-content-center p-2"
+    [nzSpan]="24"
+  >
+    <p class="_features_title">{{ "features.title" | translate }}</p>
+  </div>
+  <div
+    nz-col
+    class="d-flex flex-column align-items-start justify-content-center px-2"
+    [nzSpan]="8"
+  >
+    <li>{{ "features.useJSON" | translate }}</li>
+    <li>{{ "features.15Themes" | translate }}</li>
+    <li>{{ "features.customFeedBacks" | translate }}</li>
+    <li
+      class="position-relative"
+       id="_mojs_burst_parent_grids"
+      [innerHTML]="'features.grids' | translate"
+    ></li>
+  </div>
+  <div
+    nz-col
+    class="
+      d-flex
+      flex-column
+      align-items-start
+      justify-content-center
+      px-2
+      position-relative
+    "
+    [nzSpan]="8"
+  >
+    <li>{{ "features.events" | translate }}</li>
+    <li
+      class="position-relative"
+       id="_mojs_burst_parent_controls"
+      [innerHTML]="'features.controls' | translate"
+    ></li>
+    <li>{{ "features.listens" | translate }}</li>
+  </div>
+  <div
+    nz-col
+    class="d-flex flex-column align-items-start justify-content-center px-2"
+    [nzSpan]="8"
+  >
+    <li
+      class="position-relative"
+      id="_mojs_burst_parent_typed"
+      [innerHTML]="'features.typed' | translate"
+    ></li>
+    <li>{{ "features.debug" | translate }}</li>
+    <li>{{ "features.collision" | translate }}</li>
+    <li>{{ "features.noDep" | translate }}</li>
+  </div>
+</div>

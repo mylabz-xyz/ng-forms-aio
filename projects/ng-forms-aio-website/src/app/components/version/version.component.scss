@@ -1,0 +1,36 @@
+._version{
+  text-shadow: 0 3px 2px rgba(169, 169, 169, 0.5);
+font: 1em Arvo, sans-serif;
+padding: 0 !important;
+margin: 0 !important;
+}
+
+._wrap_version{
+width: 4em;
+height: 4em;
+box-sizing: border-box;
+border-radius: 50%;
+margin: 0 auto;
+  margin-bottom: 0px;
+text-align: center;
+color: black;
+z-index: 2;
+margin-bottom: 30px;
+border-width: 1px;
+background: #FFF;
+border-color: #CCC;
+border-style: solid;
+box-shadow: 0 -4px 3px -3px rgba(0, 0, 0, 0.2);
+display: flex;
+flex-direction: column;
+align-content: center;
+justify-content: center;
+}
+
+
+._version_title{
+  text-shadow: 0 3px 2px rgba(169, 169, 169, 0.5);
+  font: 0.75em Arvo, sans-serif;
+  padding: 0 !important;
+  margin: 0 !important;
+}
