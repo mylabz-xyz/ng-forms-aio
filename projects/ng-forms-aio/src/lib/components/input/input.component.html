@@ -1,0 +1,29 @@
+<div
+  class="ng-aio-control"
+>
+  <div class="ng-aio-input-label">
+    <input
+      [id]="_id"
+      [type]="type"
+      class="ng-aio-input"
+      [class]="themes[theme].inputClass"
+      [ngClass]="{
+        'has-content': value.length > 0 || isSubmitted,
+        focus:isSubmitted
+      }"
+      (focus)="isFocus = themes[theme].showLabel && true"
+      (blur)="isFocus = themes[theme].showLabel && false"
+      [(value)]="value"
+      aria-describedby="emailHelp"
+      (input)="emit(getValue($event))"
+      [placeholder]="!isFocus && themes[theme].showLabel === false ? label : ''"
+    />
+    <label
+      *ngIf="label && themes[theme].showLabel === true"
+      [for]="_id"
+      [innerHtml]="label"
+    ></label>
+    <span [class]="themes[theme].focusClass"
+    [attr.focus]="isSubmitted"> <i></i></span>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<ul nz-menu [nzMode]="mode" nzTheme="light">
+  <li nz-menu-item nz-tooltip nzTooltipPlacement="right"  *ngFor="let item of items" >
+    <i nz-icon nzType="mail" (click)="router.navigate([item.value])">{{ item.label }}</i>
+    <span></span>
+  </li>
+</ul>

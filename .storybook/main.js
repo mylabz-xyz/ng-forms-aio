@@ -1,7 +1,7 @@
 const path = require('path')
 module.exports = {
   "stories": [
-    "../projects/ng-aio-forms-website/src/stories/*.stories.ts"
+    "../projects/ng-forms-aio-website/src/stories/*.stories.ts"
   ],
   "addons": [
     "@storybook/addon-links",
@@ -15,7 +15,7 @@ module.exports = {
         },
         rule: {
            test: [/\.stories\.ts?$/],
-          include: [path.resolve(__dirname, '../projects/ng-aio-forms-website/src/stories')], // You can specify directories
+          include: [path.resolve(__dirname, '../projects/ng-forms-aio-website/src/stories')], // You can specify directories
         },
       },
     },

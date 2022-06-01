@@ -1,0 +1,33 @@
+<div class="ng-aio-control">
+  <div class="ng-aio-checkbox-label text-start">
+    <label
+      *ngIf="label"
+      id="inputGroup-sizing-default"
+      [innerHtml]="label"
+    ></label>
+
+    <div class="d-flex position-relative">
+      <div
+        class="d-flex flex-col"
+        [ngStyle]="{ padding: '0 1em' }"
+        *ngFor="let choice of values; let i = index"
+      >
+        <input
+          class="ng-aio-checkbox"
+          type="checkbox"
+          (focus)="isFocus = themes[theme].showLabel && true"
+          (focusout)="isFocus = themes[theme].showLabel && false"
+          [id]="_idDynamic(i)"
+          [value]="choice.value"
+          (input)="emit($event, i, choice)"
+        />
+        <label
+          #labelForAnimatedCheckbox
+          *ngIf="label && themes[theme].showLabel"
+          [for]="_idDynamic(i)"
+          [innerHTML]="choice.label"
+        ></label>
+      </div>
+    </div>
+  </div>
+</div>

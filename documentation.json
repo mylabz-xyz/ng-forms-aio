@@ -40,8 +40,8 @@
     ],
     "injectables": [
         {
-            "name": "NgAioFormsService",
-            "id": "injectable-NgAioFormsService-54d564603a5078013a6118ad062908f7f5e2f7f31b36a20641bbad14d1504f7fb0a87fb381bdda529852c644fca5c705072646b96fd26ebccbb040316b24febb",
+            "name": "NgFormsAioService",
+            "id": "injectable-NgFormsAioService-54d564603a5078013a6118ad062908f7f5e2f7f31b36a20641bbad14d1504f7fb0a87fb381bdda529852c644fca5c705072646b96fd26ebccbb040316b24febb",
             "file": "projects/ng-aio-forms/src/lib/ng-aio-forms.service.ts",
             "properties": [],
             "methods": [],
@@ -49,7 +49,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class NgAioFormsService {\n\n  constructor() { }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class NgFormsAioService {\n\n  constructor() { }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -1637,8 +1637,8 @@
             "templateData": "<div class=\"ng-aio-control\">\n  <label *ngIf=\"label\" id=\"inputGroup-sizing-default\">{{ label }}</label>\n  <div class=\"\" *ngFor=\"let choice of values; let i = index\">\n    <input\n      class=\"\"\n      type=\"checkbox\"\n      [id]=\"choice + '_' + i + '_' + _index\"\n      [value]=\"choice.value\"\n      (input)=\"emit($event, i, choice)\"\n    />\n    <label\n      #labelForAnimatedCheckbox\n      class=\"\"\n      [for]=\"choice + '_' + i + '_' + _index\"\n      >{{ choice.label }}</label\n    >\n  </div>\n</div>\n"
         },
         {
-            "name": "NgAioFormsComponent",
-            "id": "component-NgAioFormsComponent-32542e7d3318e9ea29eea0a310b0d00539ca134fb08cb071d2df3a066d41009305f810447aa322b74a74f3c0c20a7eab6ec8d075036a457d70e609ec0bea2398",
+            "name": "NgFormsAioComponent",
+            "id": "component-NgFormsAioComponent-32542e7d3318e9ea29eea0a310b0d00539ca134fb08cb071d2df3a066d41009305f810447aa322b74a74f3c0c20a7eab6ec8d075036a457d70e609ec0bea2398",
             "file": "projects/ng-aio-forms/src/lib/ng-aio-forms.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1660,7 +1660,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 28,
-                    "type": "NgAioForms",
+                    "type": "NgFormsAio",
                     "decorators": []
                 },
                 {
@@ -1669,7 +1669,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 29,
-                    "type": "NgAioFormsOptions",
+                    "type": "NgFormsAioOptions",
                     "decorators": []
                 }
             ],
@@ -2096,7 +2096,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  EventEmitter,\n  Input,\n  OnInit,\n  Output,\n} from '@angular/core';\nimport {\n  MapSchema,\n  NgAioForms,\n  NgAioFormsOptions,\n  NgAioItem,\n} from './models/NgAioForms';\n\nimport './extends/String';\nimport { FormBuilder, FormControl, FormGroup } from '@angular/forms';\nimport { map, pairwise, startWith } from 'rxjs';\n\nexport type _NgAioFormsComponent = MapSchema<\n  typeof NgAioFormsComponent['prototype']['_forms']\n>;\n@Component({\n  selector: 'ng-aio-forms',\n  templateUrl: './ng-aio-forms.component.html',\n  styleUrls: ['./ng-aio-forms.component.scss'],\n})\nexport class NgAioFormsComponent implements OnInit {\n  @Input() forms!: NgAioForms;\n  @Input() opts: NgAioFormsOptions = {\n    debug: false,\n    submitIfValid: true,\n  };\n  public _forms: any = {};\n\n  public formGroup!: FormGroup;\n  public _formsGroup: { [key: string]: FormControl } = {};\n\n  public _formsKeys: string[] | any = [];\n  private _keyStart = '';\n\n  @Output() onChange = new EventEmitter();\n  @Output() onCreate = new EventEmitter();\n  @Output() onSubmit = new EventEmitter();\n\n  constructor(private formBuilder: FormBuilder) {}\n\n  private _formatID = (form: NgAioItem, count: any) =>\n    `${this._keyStart}${form.component}${\n      count[form.component as never] !== 0 ? '_' + count[form.component as never] : ''\n    }`;\n\n  private _formatEventID = (key: string, count: any) =>\n    `on${key.Capitalize()}${count[key] !== 0 ? count[key] : ''}Change`;\n\n  ngOnInit(): void {\n    if (this.opts.debug) {\n      this.alertDebug();\n    }\n    this.toObject();\n    this.formGroup = this.toFormGroup();\n  }\n\n  public submit() {\n    if (this.formGroup.valid) {\n      this.onSubmit.emit(this.formGroup);\n    }\n  }\n\n  public onFormElementChange(id: string, value: any) {\n    this._forms[id as never].oldValue = this._forms[id as never].value;\n    this._forms[id as never].value = value;\n    if (this._forms[id as never]?.onChange) {\n      this._forms[id as never]?.onChange(value, id);\n    }\n    this.updateFormByKey(id, value);\n    this.onChange.emit(this.formGroup);\n\n    if (this.opts.debug) {\n      this.debug(this._formsGroup, 'on form change');\n    }\n  }\n\n  private toObject() {\n    if (!this.forms) {\n      console.error('ERROR : provide forms input');\n    }\n    const count: any = {};\n    var id = '';\n    var eventId = '';\n    this.forms.forEach((form: NgAioItem, index: number) => {\n      count[form.component as never] =\n        count[form.component as never] !== undefined ? count[form.component as never] + 1 : 0;\n      id = form?.id || this._formatID(form, count);\n\n      console.log(form)\n      console.log(form.component)\n      console.log(count)\n      eventId = form?.id || this._formatEventID(form.component as never, count);\n      Object.defineProperty(this._forms, id, {\n        value: {\n          value: form?.value || '',\n          values: form?.values || [],\n          label: form?.label || '',\n          component: form?.component,\n          type: form?.type,\n          id: id,\n          required: form?.required || false,\n          eventId: eventId,\n          onChange: form?.onChange||false,\n        },\n        enumerable: true,\n        writable: true,\n      });\n\n      Object.defineProperty(this._formsGroup, id, {\n        value: new FormControl(form.value || '', form.validator || null),\n        enumerable: true,\n        writable: true,\n      });\n\n      this._formsGroup[id].valueChanges.pipe(\n        startWith(null),\n        pairwise(),\n        map((pairValues) => {\n          return {\n            current: pairValues[0],\n            previous: pairValues[1],\n          };\n        })\n      );\n    });\n    this._formsKeys = Object.keys(this._forms);\n\n    this.onCreate.emit(this._forms);\n  }\n\n  public updateFormByKey(key: string, value: any) {\n    this.formGroup.patchValue({ [key]: value });\n  }\n\n\n  public updateFormTypeById(id: string, value: any) {\n   this._forms[id]\n  }\n\n  private toFormGroup() {\n    return this.formBuilder.group(this._formsGroup);\n  }\n\n  private alertDebug() {\n    console.info(\n      '%c [Ng-Aio-Forms] Debug Enabled !',\n      'color:red;font-size:1.2rem;background:black;'\n    );\n  }\n\n  private debug(value: any, from?: string) {\n    if (from) console.info(`[Ng-Aio-Forms] ${from}`);\n    console.info(value);\n  }\n\n  private debugTable(value: any, from?: string) {\n    if (from) console.info(`[Ng-Aio-Forms] ${from}`);\n    console.table(value);\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  EventEmitter,\n  Input,\n  OnInit,\n  Output,\n} from '@angular/core';\nimport {\n  MapSchema,\n  NgFormsAio,\n  NgFormsAioOptions,\n  NgFormsAioItem,\n} from './models/NgFormsAio';\n\nimport './extends/String';\nimport { FormBuilder, FormControl, FormGroup } from '@angular/forms';\nimport { map, pairwise, startWith } from 'rxjs';\n\nexport type _NgFormsAioComponent = MapSchema<\n  typeof NgFormsAioComponent['prototype']['_forms']\n>;\n@Component({\n  selector: 'ng-aio-forms',\n  templateUrl: './ng-aio-forms.component.html',\n  styleUrls: ['./ng-aio-forms.component.scss'],\n})\nexport class NgFormsAioComponent implements OnInit {\n  @Input() forms!: NgFormsAio;\n  @Input() opts: NgFormsAioOptions = {\n    debug: false,\n    submitIfValid: true,\n  };\n  public _forms: any = {};\n\n  public formGroup!: FormGroup;\n  public _formsGroup: { [key: string]: FormControl } = {};\n\n  public _formsKeys: string[] | any = [];\n  private _keyStart = '';\n\n  @Output() onChange = new EventEmitter();\n  @Output() onCreate = new EventEmitter();\n  @Output() onSubmit = new EventEmitter();\n\n  constructor(private formBuilder: FormBuilder) {}\n\n  private _formatID = (form: NgFormsAioItem, count: any) =>\n    `${this._keyStart}${form.component}${\n      count[form.component as never] !== 0 ? '_' + count[form.component as never] : ''\n    }`;\n\n  private _formatEventID = (key: string, count: any) =>\n    `on${key.Capitalize()}${count[key] !== 0 ? count[key] : ''}Change`;\n\n  ngOnInit(): void {\n    if (this.opts.debug) {\n      this.alertDebug();\n    }\n    this.toObject();\n    this.formGroup = this.toFormGroup();\n  }\n\n  public submit() {\n    if (this.formGroup.valid) {\n      this.onSubmit.emit(this.formGroup);\n    }\n  }\n\n  public onFormElementChange(id: string, value: any) {\n    this._forms[id as never].oldValue = this._forms[id as never].value;\n    this._forms[id as never].value = value;\n    if (this._forms[id as never]?.onChange) {\n      this._forms[id as never]?.onChange(value, id);\n    }\n    this.updateFormByKey(id, value);\n    this.onChange.emit(this.formGroup);\n\n    if (this.opts.debug) {\n      this.debug(this._formsGroup, 'on form change');\n    }\n  }\n\n  private toObject() {\n    if (!this.forms) {\n      console.error('ERROR : provide forms input');\n    }\n    const count: any = {};\n    var id = '';\n    var eventId = '';\n    this.forms.forEach((form: NgFormsAioItem, index: number) => {\n      count[form.component as never] =\n        count[form.component as never] !== undefined ? count[form.component as never] + 1 : 0;\n      id = form?.id || this._formatID(form, count);\n\n      console.log(form)\n      console.log(form.component)\n      console.log(count)\n      eventId = form?.id || this._formatEventID(form.component as never, count);\n      Object.defineProperty(this._forms, id, {\n        value: {\n          value: form?.value || '',\n          values: form?.values || [],\n          label: form?.label || '',\n          component: form?.component,\n          type: form?.type,\n          id: id,\n          required: form?.required || false,\n          eventId: eventId,\n          onChange: form?.onChange||false,\n        },\n        enumerable: true,\n        writable: true,\n      });\n\n      Object.defineProperty(this._formsGroup, id, {\n        value: new FormControl(form.value || '', form.validator || null),\n        enumerable: true,\n        writable: true,\n      });\n\n      this._formsGroup[id].valueChanges.pipe(\n        startWith(null),\n        pairwise(),\n        map((pairValues) => {\n          return {\n            current: pairValues[0],\n            previous: pairValues[1],\n          };\n        })\n      );\n    });\n    this._formsKeys = Object.keys(this._forms);\n\n    this.onCreate.emit(this._forms);\n  }\n\n  public updateFormByKey(key: string, value: any) {\n    this.formGroup.patchValue({ [key]: value });\n  }\n\n\n  public updateFormTypeById(id: string, value: any) {\n   this._forms[id]\n  }\n\n  private toFormGroup() {\n    return this.formBuilder.group(this._formsGroup);\n  }\n\n  private alertDebug() {\n    console.info(\n      '%c [Ng-Aio-Forms] Debug Enabled !',\n      'color:red;font-size:1.2rem;background:black;'\n    );\n  }\n\n  private debug(value: any, from?: string) {\n    if (from) console.info(`[Ng-Aio-Forms] ${from}`);\n    console.info(value);\n  }\n\n  private debugTable(value: any, from?: string) {\n    if (from) console.info(`[Ng-Aio-Forms] ${from}`);\n    console.table(value);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2567,7 +2567,7 @@
                     "defaultValue": "[\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input obligatoire',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n      validator: Validators.required,\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      component: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      component: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un checkbox',\n      component: 'checkbox',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('checkbox');\n      },\n    },\n  ]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "NgAioForms",
+                    "type": "NgFormsAio",
                     "optional": false,
                     "description": "",
                     "line": 11,
@@ -2616,7 +2616,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Validators } from '@angular/forms';\nimport { NgAioForms } from 'projects/ng-aio-forms/src/lib/models/NgAioForms';\n\n@Component({\n  selector: 'ng-aio-forms-ng-aio-test',\n  templateUrl: './ng-aio-test.component.html',\n  styleUrls: ['./ng-aio-test.component.scss'],\n})\nexport class NgAioTestComponent {\n  public forms: NgAioForms = [\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input obligatoire',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n      validator: Validators.required,\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      component: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      component: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un checkbox',\n      component: 'checkbox',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('checkbox');\n      },\n    },\n  ];\n\n  public onCheckboxChange(value: any) {}\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Validators } from '@angular/forms';\nimport { NgFormsAio } from 'projects/ng-aio-forms/src/lib/models/NgFormsAio';\n\n@Component({\n  selector: 'ng-aio-forms-ng-aio-test',\n  templateUrl: './ng-aio-test.component.html',\n  styleUrls: ['./ng-aio-test.component.scss'],\n})\nexport class NgAioTestComponent {\n  public forms: NgFormsAio = [\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un input obligatoire',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n      validator: Validators.required,\n    },\n    {\n      label: 'Ceci est un input',\n      type: 'text',\n      component:'input',\n      value: '',\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('input');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      component: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un select',\n      component: 'select',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('select');\n      },\n    },\n    {\n      label: 'Ceci est un checkbox',\n      component: 'checkbox',\n      value: '',\n      values: [\n        { label: 'choix 0', value: 0 },\n        { label: 'choix 1', value: 1 },\n      ],\n      onChange: (e: any) => {\n        console.log(e);\n        console.log('checkbox');\n      },\n    },\n  ];\n\n  public onCheckboxChange(value: any) {}\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2834,7 +2834,7 @@
             "deprecated": false,
             "file": "projects/ng-aio-forms-tester/src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { NgAioFormsModule } from 'projects/ng-aio-forms/src/lib/ng-aio-forms.module';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { NgAioTestComponent } from './components/ng-aio-test/ng-aio-test.component';\n\n@NgModule({\n  declarations: [AppComponent, NgAioTestComponent],\n  imports: [BrowserModule, AppRoutingModule, NgAioFormsModule],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { NgFormsAioModule } from 'projects/ng-aio-forms/src/lib/ng-aio-forms.module';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { NgAioTestComponent } from './components/ng-aio-test/ng-aio-test.component';\n\n@NgModule({\n  declarations: [AppComponent, NgAioTestComponent],\n  imports: [BrowserModule, AppRoutingModule, NgFormsAioModule],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -2858,7 +2858,7 @@
                             "name": "AppRoutingModule"
                         },
                         {
-                            "name": "NgAioFormsModule"
+                            "name": "NgFormsAioModule"
                         }
                     ]
                 },
@@ -2888,7 +2888,7 @@
             "deprecated": false,
             "file": "projects/ng-aio-forms-website/src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { HttpClient, HttpClientModule } from '@angular/common/http';\nimport { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { TranslateLoader, TranslateModule } from '@ngx-translate/core';\nimport { TranslateHttpLoader } from '@ngx-translate/http-loader';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport {\n  AboutComponent,\n  BackgroundComponent,\n  ContactComponent,\n  DocsComponent,\n  ExemplesComponent,\n  FooterComponent,\n  HeaderComponent,\n  SupportComponent,\n} from './components';\n\nimport {\n  AboutComponent as AboutComponentPage,\n  DocsComponent as DocsComponentPage,\n  ExemplesComponent as ExemplesComponentPage,\n  HomeComponent as HomeComponentPage,\n  SupportPageComponent,\n} from './pages';\n\nimport { BackgroundProvider } from './providers';\nimport { NzGridModule } from 'ng-zorro-antd/grid';\nimport { NzLayoutModule } from 'ng-zorro-antd/layout';\nimport { NzButtonModule } from 'ng-zorro-antd/button';\nimport { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';\nimport { registerLocaleData } from '@angular/common';\nimport en from '@angular/common/locales/en';\nimport { FormsModule } from '@angular/forms';\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\n\nimport { NgAioFormsModule } from 'projects/ng-aio-forms/src/lib/ng-aio-forms.module';\n\n\nregisterLocaleData(en);\n\n@NgModule({\n  declarations: [\n    AppComponent,\n    AboutComponent,\n    BackgroundComponent,\n    ContactComponent,\n    DocsComponent,\n    ExemplesComponent,\n    FooterComponent,\n    HeaderComponent,\n    AboutComponentPage,\n    DocsComponentPage,\n    ExemplesComponentPage,\n    HomeComponentPage,\n    SupportComponent,\n    SupportPageComponent,\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    TranslateModule.forRoot({\n      loader: {\n        provide: TranslateLoader,\n        useFactory: HttpLoaderFactory,\n        deps: [HttpClient],\n      },\n    }),\n    FormsModule,\n    HttpClientModule,\n    BrowserAnimationsModule,\n    NzGridModule,\n    NzButtonModule,\n    NzLayoutModule,\n    NgAioFormsModule\n  ],\n  providers: [BackgroundProvider, { provide: NZ_I18N, useValue: en_US }],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n\n// AoT requires an exported function for factories\nexport function HttpLoaderFactory(http: HttpClient) {\n  return new TranslateHttpLoader(http);\n}\n",
+            "sourceCode": "import { HttpClient, HttpClientModule } from '@angular/common/http';\nimport { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { TranslateLoader, TranslateModule } from '@ngx-translate/core';\nimport { TranslateHttpLoader } from '@ngx-translate/http-loader';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport {\n  AboutComponent,\n  BackgroundComponent,\n  ContactComponent,\n  DocsComponent,\n  ExemplesComponent,\n  FooterComponent,\n  HeaderComponent,\n  SupportComponent,\n} from './components';\n\nimport {\n  AboutComponent as AboutComponentPage,\n  DocsComponent as DocsComponentPage,\n  ExemplesComponent as ExemplesComponentPage,\n  HomeComponent as HomeComponentPage,\n  SupportPageComponent,\n} from './pages';\n\nimport { BackgroundProvider } from './providers';\nimport { NzGridModule } from 'ng-zorro-antd/grid';\nimport { NzLayoutModule } from 'ng-zorro-antd/layout';\nimport { NzButtonModule } from 'ng-zorro-antd/button';\nimport { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';\nimport { registerLocaleData } from '@angular/common';\nimport en from '@angular/common/locales/en';\nimport { FormsModule } from '@angular/forms';\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\n\nimport { NgFormsAioModule } from 'projects/ng-aio-forms/src/lib/ng-aio-forms.module';\n\n\nregisterLocaleData(en);\n\n@NgModule({\n  declarations: [\n    AppComponent,\n    AboutComponent,\n    BackgroundComponent,\n    ContactComponent,\n    DocsComponent,\n    ExemplesComponent,\n    FooterComponent,\n    HeaderComponent,\n    AboutComponentPage,\n    DocsComponentPage,\n    ExemplesComponentPage,\n    HomeComponentPage,\n    SupportComponent,\n    SupportPageComponent,\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    TranslateModule.forRoot({\n      loader: {\n        provide: TranslateLoader,\n        useFactory: HttpLoaderFactory,\n        deps: [HttpClient],\n      },\n    }),\n    FormsModule,\n    HttpClientModule,\n    BrowserAnimationsModule,\n    NzGridModule,\n    NzButtonModule,\n    NzLayoutModule,\n    NgFormsAioModule\n  ],\n  providers: [BackgroundProvider, { provide: NZ_I18N, useValue: en_US }],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n\n// AoT requires an exported function for factories\nexport function HttpLoaderFactory(http: HttpClient) {\n  return new TranslateHttpLoader(http);\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -2936,7 +2936,7 @@
                             "name": "AppRoutingModule"
                         },
                         {
-                            "name": "NgAioFormsModule"
+                            "name": "NgFormsAioModule"
                         }
                     ]
                 },
@@ -3031,14 +3031,14 @@
             ]
         },
         {
-            "name": "NgAioFormsModule",
-            "id": "module-NgAioFormsModule-449e3212ae67acd8cd419335c62a7cf4b9257db52a9dadfef575bad497e765cb638b61843a80790ac3e23bc9601d3ebdbc6ec807bbba425d172c4f616e871825",
+            "name": "NgFormsAioModule",
+            "id": "module-NgFormsAioModule-449e3212ae67acd8cd419335c62a7cf4b9257db52a9dadfef575bad497e765cb638b61843a80790ac3e23bc9601d3ebdbc6ec807bbba425d172c4f616e871825",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/ng-aio-forms/src/lib/ng-aio-forms.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { NgAioFormsComponent } from './ng-aio-forms.component';\nimport {\n  NgAioCheckboxFormComponent,\n  NgAioInputFormComponent,\n  NgAioSelectFormComponent,\n} from './components';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { BrowserModule } from '@angular/platform-browser';\n\n@NgModule({\n  declarations: [\n    NgAioFormsComponent,\n    NgAioCheckboxFormComponent,\n    NgAioInputFormComponent,\n    NgAioSelectFormComponent,\n  ],\n  imports: [ReactiveFormsModule, BrowserModule],\n  exports: [\n    NgAioFormsComponent,\n    NgAioCheckboxFormComponent,\n    NgAioInputFormComponent,\n    NgAioSelectFormComponent,\n  ],\n})\nexport class NgAioFormsModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { NgFormsAioComponent } from './ng-aio-forms.component';\nimport {\n  NgAioCheckboxFormComponent,\n  NgAioInputFormComponent,\n  NgAioSelectFormComponent,\n} from './components';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { BrowserModule } from '@angular/platform-browser';\n\n@NgModule({\n  declarations: [\n    NgFormsAioComponent,\n    NgAioCheckboxFormComponent,\n    NgAioInputFormComponent,\n    NgAioSelectFormComponent,\n  ],\n  imports: [ReactiveFormsModule, BrowserModule],\n  exports: [\n    NgFormsAioComponent,\n    NgAioCheckboxFormComponent,\n    NgAioInputFormComponent,\n    NgAioSelectFormComponent,\n  ],\n})\nexport class NgFormsAioModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -3051,7 +3051,7 @@
                             "name": "NgAioCheckboxFormComponent"
                         },
                         {
-                            "name": "NgAioFormsComponent"
+                            "name": "NgFormsAioComponent"
                         },
                         {
                             "name": "NgAioInputFormComponent"
@@ -3072,7 +3072,7 @@
                             "name": "NgAioCheckboxFormComponent"
                         },
                         {
-                            "name": "NgAioFormsComponent"
+                            "name": "NgFormsAioComponent"
                         },
                         {
                             "name": "NgAioInputFormComponent"
@@ -3102,7 +3102,7 @@
                 "file": "projects/ng-aio-forms-website/src/stories/Forms.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<NgAioFormsComponent>",
+                "type": "Story<NgFormsAioComponent>",
                 "defaultValue": "(args) => {\nconsole.log(args)\n\n  return ({\n    props: {\n      ...args\n    },\n    template\n  })\n}"
             },
             {
@@ -3182,7 +3182,7 @@
                 "file": "projects/ng-aio-forms-website/src/stories/Forms.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "NgAioForms",
+                "type": "NgFormsAio",
                 "defaultValue": "[\n  {\n    label: 'Ceci est un input',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Ceci est un input',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Ceci est un input obligatoire',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n    validator: Validators.required,\n  },\n  {\n    label: 'Ceci est un input',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Ceci est un select',\n    component: 'select',\n    value: '',\n    values: [\n      { label: 'choix 0', value: 0 },\n      { label: 'choix 1', value: 1 },\n    ],\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('select');\n    },\n  },\n  {\n    label: 'Ceci est un select',\n    component: 'select',\n    value: '',\n    values: [\n      { label: 'choix 0', value: 0 },\n      { label: 'choix 1', value: 1 },\n    ],\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('select');\n    },\n  },\n  {\n    label: 'Ceci est un checkbox',\n    component: 'checkbox',\n    value: '',\n    values: [\n      { label: 'choix 0', value: 0 },\n      { label: 'choix 1', value: 1 },\n    ],\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('checkbox');\n    },\n  },\n]"
             },
             {
@@ -3329,7 +3329,7 @@
                 "file": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<NgAioFormsComponent>",
+                "type": "Story<NgFormsAioComponent>",
                 "defaultValue": "(args) => ({\n  props: {\n    ...args,\n  },\n  template,\n})"
             },
             {
@@ -3415,7 +3415,7 @@
         ],
         "typealiases": [
             {
-                "name": "_NgAioFormsComponent",
+                "name": "_NgFormsAioComponent",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "MapSchema<>",
@@ -3436,7 +3436,7 @@
                     "file": "projects/ng-aio-forms-website/src/stories/Forms.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story<NgAioFormsComponent>",
+                    "type": "Story<NgFormsAioComponent>",
                     "defaultValue": "(args) => {\nconsole.log(args)\n\n  return ({\n    props: {\n      ...args\n    },\n    template\n  })\n}"
                 },
                 {
@@ -3446,7 +3446,7 @@
                     "file": "projects/ng-aio-forms-website/src/stories/Forms.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "NgAioForms",
+                    "type": "NgFormsAio",
                     "defaultValue": "[\n  {\n    label: 'Ceci est un input',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Ceci est un input',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Ceci est un input obligatoire',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n    validator: Validators.required,\n  },\n  {\n    label: 'Ceci est un input',\n    type: 'text',\n    component:'input',\n    value: '',\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('input');\n    },\n  },\n  {\n    label: 'Ceci est un select',\n    component: 'select',\n    value: '',\n    values: [\n      { label: 'choix 0', value: 0 },\n      { label: 'choix 1', value: 1 },\n    ],\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('select');\n    },\n  },\n  {\n    label: 'Ceci est un select',\n    component: 'select',\n    value: '',\n    values: [\n      { label: 'choix 0', value: 0 },\n      { label: 'choix 1', value: 1 },\n    ],\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('select');\n    },\n  },\n  {\n    label: 'Ceci est un checkbox',\n    component: 'checkbox',\n    value: '',\n    values: [\n      { label: 'choix 0', value: 0 },\n      { label: 'choix 1', value: 1 },\n    ],\n    onChange: (e: any) => {\n      console.log(e);\n      console.log('checkbox');\n    },\n  },\n]"
                 },
                 {
@@ -3609,7 +3609,7 @@
                     "file": "projects/ng-aio-forms-website/src/stories/Test.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story<NgAioFormsComponent>",
+                    "type": "Story<NgFormsAioComponent>",
                     "defaultValue": "(args) => ({\n  props: {\n    ...args,\n  },\n  template,\n})"
                 },
                 {
@@ -3776,7 +3776,7 @@
         "groupedTypeAliases": {
             "projects/ng-aio-forms/src/lib/ng-aio-forms.component.ts": [
                 {
-                    "name": "_NgAioFormsComponent",
+                    "name": "_NgFormsAioComponent",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "MapSchema<>",
@@ -4175,7 +4175,7 @@
                 "filePath": "projects/ng-aio-forms/src/lib/ng-aio-forms.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "NgAioFormsComponent",
+                "name": "NgFormsAioComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/24",
                 "status": "low"
@@ -4184,7 +4184,7 @@
                 "filePath": "projects/ng-aio-forms/src/lib/ng-aio-forms.service.ts",
                 "type": "injectable",
                 "linktype": "injectable",
-                "name": "NgAioFormsService",
+                "name": "NgFormsAioService",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
                 "status": "low"
