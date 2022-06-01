@@ -37,7 +37,7 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
   @Output() onSubmit = new EventEmitter();
 
   public defaultErrors: any = {
-    input: ' is required',
+    input: ' is required ',
     'text-area': ' is required',
     checkbox: ': Select at least one element',
     'checkbox-list': ': Select at least one element',
