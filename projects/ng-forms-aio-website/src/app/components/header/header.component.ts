@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   ];
 
   public mainRouter: DefaultListArray = [
+    { label: 'home', value: '/' },
     { label: 'doc', value: 'doc' },
     { label: 'faq', value: 'faq' },
     { label: 'about', value: 'about' },

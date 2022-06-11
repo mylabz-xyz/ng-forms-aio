@@ -1,0 +1,38 @@
+[
+  {
+    "title": "start",
+    "file": "started"
+  },
+  {
+    "title": "schematics",
+    "file": "schematics"
+  },
+  {
+    "title": "i18n",
+    "file": "internationalization"
+  },
+  {
+    "title": "theme",
+    "file": "theme"
+  },
+  {
+    "title": "config",
+    "file": "global-config"
+  },
+  {
+    "title": "resources",
+    "file": "resources"
+  },
+  {
+    "title": "fag",
+    "file": "fag"
+  },
+  {
+    "title": "contribute",
+    "file": "contribute"
+  },
+  {
+    "title": "changelog",
+    "file": "changelog"
+  }
+]

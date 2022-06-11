@@ -48,5 +48,8 @@
   },
   "javascript.updateImportsOnFileMove.enabled": "never",
   "explorer.confirmDragAndDrop": false,
-  "window.zoomLevel": -1
+  "window.zoomLevel": -1,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
