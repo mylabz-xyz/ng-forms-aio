@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DocFiles } from 'projects/ng-forms-aio-website/src/assets/doc';
 
 @Component({
@@ -7,5 +7,5 @@ import { DocFiles } from 'projects/ng-forms-aio-website/src/assets/doc';
   styleUrls: ['./docs.component.scss']
 })
 export class DocsComponent {
-  public links = DocFiles;
+  public links = Object.values(DocFiles).filter(val => val.title);
 }

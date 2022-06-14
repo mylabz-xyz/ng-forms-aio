@@ -1,5 +1,9 @@
 [
   {
+    "title": "introduce",
+    "file": "introduce"
+  },
+  {
     "title": "start",
     "file": "started"
   },
@@ -24,8 +28,8 @@
     "file": "resources"
   },
   {
-    "title": "fag",
-    "file": "fag"
+    "title": "faq",
+    "file": "faq"
   },
   {
     "title": "contribute",

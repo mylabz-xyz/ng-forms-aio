@@ -5,21 +5,20 @@ import { DefaultListArray } from './../../models';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
   public langs = [
     { value: 'fr', label: 'french' },
-    { value: 'en', label: 'english' },
+    { value: 'en', label: 'english' }
   ];
 
   public mainRouter: DefaultListArray = [
     { label: 'home', value: '/' },
     { label: 'doc', value: 'doc' },
-    { label: 'faq', value: 'faq' },
     { label: 'about', value: 'about' },
     { label: 'github', value: 'github' },
-    { label: 'npm', value: 'npm' },
+    { label: 'npm', value: 'npm' }
   ];
 
   constructor(private translateService: TranslateService) {}
@@ -27,6 +26,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   public setTranslation(lang: string) {
-    this.translateService.setDefaultLang(lang);
+    this.translateService.use(lang);
   }
 }

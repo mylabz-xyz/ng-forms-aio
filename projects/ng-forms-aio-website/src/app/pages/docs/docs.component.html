@@ -2,10 +2,10 @@
   <nz-sider>
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <li nz-menu-item *ngFor="let linkKey of links">
+      <a nz-menu-item *ngFor="let linkKey of links" [href]="'/doc/' + linkKey.file">
         {{ linkKey.file }}
         <i nz-icon nzType="file"></i>
-      </li>
+      </a>
     </ul>
   </nz-sider>
   <nz-content>
