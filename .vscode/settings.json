@@ -1,7 +1,7 @@
 {
   "security.workspace.trust.untrustedFiles": "open",
   "typescript.updateImportsOnFileMove.enabled": "never",
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "thunder-client.codeSnippetLanguage": "js-axios",
   "prettier.useEditorConfig": true,
   "files.insertFinalNewline": false,

@@ -1,1 +1,8 @@
-<p>docs works!</p>
+<markdown
+  *ngIf="id && id.length > 0"
+  class="doc_markdown"
+  lineNumbers
+  ngPreserveWhitespaces
+  [src]="'/assets/doc/' + id + '.en-US.md'"
+>
+</markdown>

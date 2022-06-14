@@ -1,5 +1,14 @@
 <nz-layout class="layout">
+  <nz-sider>
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item *ngFor="let linkKey of links">
+        {{ linkKey.file }}
+        <i nz-icon nzType="file"></i>
+      </li>
+    </ul>
+  </nz-sider>
   <nz-content>
-    <router-outlet></router-outlet>
+    <app-doc></app-doc>
   </nz-content>
 </nz-layout>
