@@ -40,8 +40,6 @@ $ cd PROJECT-NAME
 $ ng add ng-forms-aio
 ```
 
-<img style="display: block; border-radius: 4px; box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.2);" src="https://img.alicdn.com/tfs/TB19fFHdkxz61VjSZFtXXaDSVXa-680-243.svg">
-
 `Ng-Forms-Aio` supports initializing configuration with schematics, more information is available in the [schematics](/docs/schematics/en) section.
 
 ### Development & Debugging
@@ -51,8 +49,6 @@ Your project is now ready to run. After running the following command, a welcome
 ```bash
 $ ng serve --port 0 --open
 ```
-
-<img style="display: block;padding: 30px 30%;height: 260px;" src="https://img.alicdn.com/tfs/TB1X.qJJgHqK1RjSZFgXXa7JXXa-89-131.svg">
 
 ### Building & Deployment
 

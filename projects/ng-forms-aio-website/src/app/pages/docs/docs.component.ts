@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { DocFiles } from 'projects/ng-forms-aio-website/src/assets/doc';
 
 @Component({
@@ -8,4 +9,6 @@ import { DocFiles } from 'projects/ng-forms-aio-website/src/assets/doc';
 })
 export class DocsComponent {
   public links = Object.values(DocFiles).filter(val => val.title);
+
+  constructor(public router: Router) {}
 }

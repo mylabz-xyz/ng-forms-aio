@@ -2,7 +2,11 @@
   <nz-sider>
     <div class="logo"></div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
-      <a nz-menu-item *ngFor="let linkKey of links" [href]="'/doc/' + linkKey.file">
+      <a
+        nz-menu-item
+        *ngFor="let linkKey of links"
+        (click)="router.navigate(['/doc/' + linkKey.file], { preserveFragment: false })"
+      >
         {{ linkKey.file }}
         <i nz-icon nzType="file"></i>
       </a>

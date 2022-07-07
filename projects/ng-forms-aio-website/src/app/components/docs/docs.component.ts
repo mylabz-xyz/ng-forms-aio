@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { debounceTime, filter } from 'rxjs';
 import { MarkdownProvider } from '../../providers';
 
 @Component({
@@ -18,21 +19,23 @@ export class DocsComponent implements OnInit {
 
   constructor(
     public route: ActivatedRoute,
+    private router: Router,
     private markdownProvider: MarkdownProvider,
     private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
-    this.translateService.onLangChange.subscribe(i18n => {
-      console.log(i18n.lang);
-      console.log(i18n.translations);
-    });
-    this.id = this.route.snapshot.paramMap.get('id') as string;
+    this.translateService.onLangChange.subscribe(i18n => {});
 
-    if (!this.id) {
-      this.id = this.id_default;
-    }
-
-    this.markdownProvider.formatTitle();
+    this.router.events
+      .pipe(
+        filter((event: any) => event?.snapshot),
+        debounceTime(400)
+      )
+      .subscribe((event: any) => {
+        this.id = this.route.snapshot.paramMap.get('id') as string;
+        console.log(this.id);
+        this.markdownProvider.formatTitle();
+      });
   }
 }
