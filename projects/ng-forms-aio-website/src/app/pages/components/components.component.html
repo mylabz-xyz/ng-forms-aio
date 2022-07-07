@@ -1,0 +1,18 @@
+<nz-layout class="layout">
+  <nz-sider>
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <a
+        nz-menu-item
+        *ngFor="let linkKey of links"
+        (click)="router.navigate(['/doc/' + linkKey.file], { preserveFragment: false })"
+      >
+        {{ linkKey.file }}
+        <i nz-icon nzType="file"></i>
+      </a>
+    </ul>
+  </nz-sider>
+  <nz-content>
+    <app-doc></app-doc>
+  </nz-content>
+</nz-layout>
