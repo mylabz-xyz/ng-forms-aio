@@ -3,7 +3,7 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, SecurityContext } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -25,7 +25,8 @@ import {
   ZorroDropdownComponent,
   VersionComponent,
   FeaturesComponent,
-  MenuComponent
+  MenuComponent,
+  ComponentsComponent
 } from './components';
 
 import { AbstractWithForm } from './abstract';
@@ -36,13 +37,10 @@ import {
   ExemplesComponent as ExemplesComponentPage,
   HomeComponent as HomeComponentPage,
   SupportPageComponent,
+  ComponentsComponent as ComponentsPageComponent
 } from './pages';
 
-import {
-  BackgroundProvider,
-  AnimatedFormProvider,
-  AnimatedIcon,
-} from './providers';
+import { BackgroundProvider, AnimatedFormProvider, AnimatedIcon, MarkdownProvider } from './providers';
 
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -56,6 +54,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
 import { NgFormsAioModule } from 'projects/ng-forms-aio/src/lib/ng-forms-aio.module';
+import { MarkdownModule } from 'ngx-markdown';
 
 registerLocaleData(en);
 
@@ -82,6 +81,8 @@ registerLocaleData(en);
     AbstractWithForm,
     FeaturesComponent,
     MenuComponent,
+    ComponentsComponent,
+    ComponentsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -90,8 +91,8 @@ registerLocaleData(en);
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
+        deps: [HttpClient]
+      }
     }),
     FormsModule,
     HttpClientModule,
@@ -103,17 +104,22 @@ registerLocaleData(en);
     NzTypographyModule,
     NzLayoutModule,
     NzDividerModule,
-    NgFormsAioModule.forRoot({theme:'background-edges-to-center'}),
+    NgFormsAioModule.forRoot({ theme: 'background-edges-to-center' }),
     CodemirrorModule,
+    MarkdownModule.forRoot({
+      loader: HttpClient,
+      sanitize: SecurityContext.NONE
+    })
   ],
   providers: [
     BackgroundProvider,
     AnimatedFormProvider,
     AnimatedIcon,
     AnimatedFormProvider,
-    { provide: NZ_I18N, useValue: en_US },
+    MarkdownProvider,
+    { provide: NZ_I18N, useValue: en_US }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
 

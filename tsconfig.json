@@ -12,9 +12,8 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
-      "ng-forms-aio": [
-        "projects/ng-forms-aio/src/public-api"
-      ],
+      "ng-forms-aio": ["projects/ng-forms-aio/src/public-api"],
+      "@doc/*": ["doc/*"]
     },
     "declaration": false,
     "downlevelIteration": true,
@@ -23,10 +22,8 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "lib": ["es2020", "dom"],
+    "resolveJsonModule": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

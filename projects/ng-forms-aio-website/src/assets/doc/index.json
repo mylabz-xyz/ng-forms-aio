@@ -1,0 +1,42 @@
+[
+  {
+    "title": "introduce",
+    "file": "introduce"
+  },
+  {
+    "title": "start",
+    "file": "started"
+  },
+  {
+    "title": "schematics",
+    "file": "schematics"
+  },
+  {
+    "title": "i18n",
+    "file": "internationalization"
+  },
+  {
+    "title": "theme",
+    "file": "theme"
+  },
+  {
+    "title": "config",
+    "file": "global-config"
+  },
+  {
+    "title": "resources",
+    "file": "resources"
+  },
+  {
+    "title": "faq",
+    "file": "faq"
+  },
+  {
+    "title": "contribute",
+    "file": "contribute"
+  },
+  {
+    "title": "changelog",
+    "file": "changelog"
+  }
+]

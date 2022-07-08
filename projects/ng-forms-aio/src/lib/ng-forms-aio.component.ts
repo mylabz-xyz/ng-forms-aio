@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { NgFormsAio, NgFormsAioOptions, NgFormsAioItem } from './models/NgFormsAio';
 
 import './extends/String';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, pairwise, startWith, Subscription } from 'rxjs';
 import { NgAioTheme } from './const';
 import { NgFormsAioConfig, NgFormsAioService } from './ng-forms-aio.service';
@@ -25,7 +25,7 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
 
   public _forms: { [key: string]: NgFormsAioItem } = {};
 
-  public formGroup!: FormGroup
+  public formGroup!: FormGroup;
   public _formsGroup: { [key: string]: FormControl } = {};
 
   public _formsKeys: string[] | any = [];
