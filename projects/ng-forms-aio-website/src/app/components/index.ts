@@ -7,8 +7,9 @@ export * from './footer/footer.component';
 export * from './header/header.component';
 export * from './support/support.component';
 export * from './intro/intro.component';
-export * from './version/version.component'
+export * from './version/version.component';
 export * from './highlight';
 export * from './zorro';
-export * from './features/features.component'
-export * from './menu/menu.component'
+export * from './features/features.component';
+export * from './menu/menu.component';
+export * from './components/components.component';

@@ -185,7 +185,7 @@
   .borders-default,
   .borders-diagonal,
   .borders-fill {
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     padding: 7px 14px 9px;
     transition: 0.4s;
   }
@@ -341,7 +341,7 @@
   .background-fill {
     border: 0;
     padding: 7px 15px;
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     position: relative;
     background: transparent;
   }
@@ -605,7 +605,7 @@
   .float-label.borders-default,
   .float-label.border-center-to-edges,
   .float-label.border-edges-to-center {
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     padding: 7px 14px;
     transition: 0.4s;
     background: transparent;
@@ -826,7 +826,7 @@
   .float-label.background-appear {
     border: 0;
     padding: 7px 15px;
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     position: relative;
     background: transparent;
   }

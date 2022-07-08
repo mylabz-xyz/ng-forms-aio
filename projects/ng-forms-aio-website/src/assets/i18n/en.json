@@ -16,7 +16,7 @@
     "manage": "Easily manage complex forms with NgFormsAio",
     "dontWrite": "Don't write <input [(ngModel)]=\"value\"/> anymore",
     "tryExemple": "Customised exemple bellow, try it !   dev"
-    },
+  },
   "features": {
     "title": "FEATURES",
     "useJSON": "Use simple JSON as input.",
@@ -29,7 +29,21 @@
     "typed": "Typed for <a  href='https://code.visualstudio.com/docs/editor/intellisense'>vscode Autocompletion.</a>",
     "debug": "Debug mode provided.",
     "collision": "No collision in case of many forms.",
-    "noDep":"No other dependency."
+    "noDep": "No other dependency."
   },
-  "version": "Version"
+  "version": "{{value}}",
+  "router": {
+    "doc": {
+      "title": "Ng-Forms All In One",
+      "start": "Getting Started",
+      "schematics": "Schematics",
+      "i18n": "Internationalization",
+      "theme": "Theme Customization",
+      "config": "Global Configuration",
+      "resources": "Resources",
+      "fag": "FAQ",
+      "contribute": "How to Contribute",
+      "changelog": "Change Log"
+    }
+  }
 }

@@ -38,7 +38,21 @@
     "typed": "Typé pour l'auto-complétion vscode.",
     "debug": "Debug mode fournit.",
     "collision": "Pas de collision en cas de plusieurs formulaires.",
-    "noDep":"Aucune dépendance tiers. (Ok il y a Angular et Tslib, mais bon...)"
+    "noDep": "Aucune dépendance tiers. (Ok il y a Angular et Tslib, mais bon...)"
   },
-  "version": "Version"
+  "version": "Version",
+  "router": {
+    "doc": {
+      "title": "Ng-Forms tout en un",
+      "start": "Installation",
+      "schémas": "Schémas",
+      "i18n": "Internationalisation",
+      "theme": "Personnalisation du thème",
+      "config": "Configuration globale",
+      "ressources": "Ressources",
+      "fag": "FAQ",
+      "contribute": "Comment contribuer",
+      "changelog": "Journal des versions"
+    }
+  }
 }
