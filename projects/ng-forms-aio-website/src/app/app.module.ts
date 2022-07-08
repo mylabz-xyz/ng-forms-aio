@@ -25,7 +25,8 @@ import {
   ZorroDropdownComponent,
   VersionComponent,
   FeaturesComponent,
-  MenuComponent
+  MenuComponent,
+  ComponentsComponent
 } from './components';
 
 import { AbstractWithForm } from './abstract';
@@ -35,7 +36,8 @@ import {
   DocsComponent as DocsComponentPage,
   ExemplesComponent as ExemplesComponentPage,
   HomeComponent as HomeComponentPage,
-  SupportPageComponent
+  SupportPageComponent,
+  ComponentsComponent as ComponentsPageComponent
 } from './pages';
 
 import { BackgroundProvider, AnimatedFormProvider, AnimatedIcon, MarkdownProvider } from './providers';
@@ -78,7 +80,9 @@ registerLocaleData(en);
     VersionComponent,
     AbstractWithForm,
     FeaturesComponent,
-    MenuComponent
+    MenuComponent,
+    ComponentsComponent,
+    ComponentsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -103,7 +107,7 @@ registerLocaleData(en);
     NgFormsAioModule.forRoot({ theme: 'background-edges-to-center' }),
     CodemirrorModule,
     MarkdownModule.forRoot({
-      loader: HttpClient, // optional, only if you use [src] attribute
+      loader: HttpClient,
       sanitize: SecurityContext.NONE
     })
   ],

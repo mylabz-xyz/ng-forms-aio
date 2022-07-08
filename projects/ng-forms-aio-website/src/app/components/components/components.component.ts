@@ -1,12 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { debounceTime, filter } from 'rxjs';
-import { MarkdownProvider } from '../../providers';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-doc',
-  templateUrl: './docs.component.html',
-  styleUrls: ['./docs.component.scss']
+  selector: 'app-components',
+  templateUrl: './components.component.html',
+  styleUrls: ['./components.component.scss']
 })
-export class DocsComponent implements OnInit {}
+export class ComponentsComponent {}
