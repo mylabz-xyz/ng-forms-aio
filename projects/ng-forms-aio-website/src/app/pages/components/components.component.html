@@ -5,7 +5,7 @@
       <a
         nz-menu-item
         *ngFor="let linkKey of links"
-        (click)="router.navigate(['/doc/' + linkKey.file], { preserveFragment: false })"
+        (click)="router.navigate(['/components/' + linkKey.file], { preserveFragment: false })"
       >
         {{ linkKey.file }}
         <i nz-icon nzType="file"></i>
