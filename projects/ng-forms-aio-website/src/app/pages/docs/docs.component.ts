@@ -10,7 +10,5 @@ import { DocFiles } from 'projects/ng-forms-aio-website/src/assets/doc';
 export class DocsComponent {
   public links = Object.values(DocFiles).filter(val => val.title);
 
-  constructor(public router: Router) {
-    console.log('test');
-  }
+  constructor(public router: Router) {}
 }
