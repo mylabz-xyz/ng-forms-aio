@@ -1,19 +1,8 @@
-<div
-  class="inner-content pt-2 fadeIn"
-  *ngIf="!langChangeAnimation; else _langChangeAnimation"
->
+<div class="inner-content pt-2 fadeIn" *ngIf="!langChangeAnimation; else _langChangeAnimation">
   <div nz-row nzJustify="center" [nzGutter]="[24, 10]">
     <div
       nz-col
-      class="
-        gutter-row
-        text-center
-        d-flex
-        flex-column
-        align-items-center
-        justify-content-center
-        px-2
-      "
+      class="gutter-row text-center d-flex flex-column align-items-center justify-content-center px-2"
       [nzSpan]="12"
     >
       <div class="w-100 h-100 neumo-default-card">
@@ -24,11 +13,7 @@
         </div>
 
         <div class="home-exemple-form mb-auto">
-          <ng-forms-aio
-            [opts]="{ debug: false }"
-            [forms]="animatedForm"
-            [displaySubmitBtn]="true"
-          ></ng-forms-aio>
+          <ng-forms-aio [opts]="{ debug: false }" [forms]="animatedForm" [displaySubmitBtn]="true"></ng-forms-aio>
         </div>
       </div>
     </div>
@@ -69,14 +54,8 @@
     </div>
   </div>
 
-
-
   <div nz-row nzJustify="center" [nzGutter]="[24, 10]">
-  <div
-      nz-col
-      class="d-flex flex-column align-items-center justify-content-center px-2"
-      [nzSpan]="24"
-    >
+    <div nz-col class="d-flex flex-column align-items-center justify-content-center px-2" [nzSpan]="24">
       <app-features></app-features>
     </div>
   </div>
@@ -88,9 +67,6 @@
   <app-intro [form]="submitForm"></app-intro>
 
   <nz-divider></nz-divider>
-
-
-
 </div>
 
 <ng-template #_langChangeAnimation>

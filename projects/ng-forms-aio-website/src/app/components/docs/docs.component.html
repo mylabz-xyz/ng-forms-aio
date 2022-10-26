@@ -2,7 +2,10 @@
   *ngIf="id && id.length > 0"
   class="doc_markdown"
   lineNumbers
+  katex
+  clipboard
   ngPreserveWhitespaces
+  [katexOptions]="options"
   [src]="path + id + '.en-US.md'"
 >
 </markdown>

@@ -24,12 +24,8 @@
     "file": "global-config"
   },
   {
-    "title": "resources",
-    "file": "resources"
-  },
-  {
-    "title": "faq",
-    "file": "faq"
+    "title": "upgrade",
+    "file": "upgrade"
   },
   {
     "title": "contribute",
