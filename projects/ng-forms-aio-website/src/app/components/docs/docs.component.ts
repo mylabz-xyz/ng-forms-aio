@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { debounceTime, filter, tap } from 'rxjs';
+
 import { MarkdownProvider } from '../../providers';
 
 @Component({
@@ -31,7 +32,6 @@ export class DocsComponent implements OnInit {
 
     this.router.events
       .pipe(
-        tap(e => console.log(e)),
         filter((event: any) => event?.snapshot),
         debounceTime(400)
       )
@@ -45,4 +45,6 @@ export class DocsComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id') as string;
     this.markdownProvider.formatTitle();
   }
+      
+  
 }
