@@ -17,14 +17,16 @@ export class MarkdownProvider {
       '<h' +
       level +
       '>' +
-      '<a name="' +
+      '<a class="markdown_anchor" name="' +
       escapedText +
-      '" class="anchor" href="#' +
+      ' href="' +
+      document.URL +
+      '#' +
       escapedText +
       '">' +
-      '<span class="header-link"></span>' +
-      '</a>' +
       text +
+      '<span class="markdown_anchor_sigle">#</span>' +
+      '</a>' +
       '</h' +
       level +
       '>'

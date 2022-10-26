@@ -8,7 +8,9 @@ import { DocFiles } from 'projects/ng-forms-aio-website/src/assets/doc';
   styleUrls: ['./docs.component.scss']
 })
 export class DocsComponent {
-  public links: typeof DocFiles = Object.values(DocFiles).filter(val => val.title);
+  public links = Object.values(DocFiles).filter(val => val.title);
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) {
+    console.log('test');
+  }
 }
