@@ -1,8 +1,3 @@
----
-order: 7
-title: Global Configuration
----
-
 We add a **global configuration** support to many components. You can define the default behavior of these components through the global configuration, which reduces redundant codes that must be written in the templates (makes your codes concise). Moreover, it supports altering the global configuration at runtime.
 
 ## How to Use?

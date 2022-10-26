@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { debounceTime, filter, tap } from 'rxjs';
+import { debounceTime, filter } from 'rxjs';
 
 import { MarkdownProvider } from '../../providers';
 
@@ -15,19 +14,17 @@ export class DocsComponent implements OnInit {
   @Input() lang: string = '/assets/doc/';
 
   public id!: String;
+  public options = {
+    displayMode: true,
+    throwOnError: false,
+    errorColor: '#cc0000'
+  };
 
   private id_default = 'started';
 
-  constructor(
-    public route: ActivatedRoute,
-    private router: Router,
-    private markdownProvider: MarkdownProvider,
-    private translateService: TranslateService
-  ) {}
+  constructor(public route: ActivatedRoute, private router: Router, private markdownProvider: MarkdownProvider) {}
 
   ngOnInit(): void {
-    this.translateService.onLangChange.subscribe(i18n => {});
-
     this.firstLoad();
 
     this.router.events
@@ -45,6 +42,4 @@ export class DocsComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id') as string;
     this.markdownProvider.formatTitle();
   }
-      
-  
 }

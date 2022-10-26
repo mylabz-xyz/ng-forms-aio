@@ -1,7 +1,7 @@
-@import "./assets/scss/index.scss";
-@import "~codemirror/lib/codemirror.css";
-@import "~codemirror/theme/material.css";
-@import "~codemirror/theme/idea.css";
+@import './assets/scss/index.scss';
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/material.css';
+@import '~codemirror/theme/idea.css';
 
 .glslCanvas {
   top: 0;
@@ -11,7 +11,6 @@
   position: absolute !important;
   z-index: -1;
 }
-
 
 a:hover:after {
   content: '';
@@ -57,7 +56,7 @@ a:after {
   left: 0;
   background: #333333;
   z-index: -1;
-  transition: all 0.1s cubic-bezier(0.000, 0.590, 1.000, 0.260);
+  transition: all 0.1s cubic-bezier(0, 0.59, 1, 0.26);
 }
 
 // fluid type
@@ -123,7 +122,7 @@ nz-header {
   transition: 0.75s;
 }
 
-html:not([data-scroll="0"]) .ant-layout-header {
+html:not([data-scroll='0']) .ant-layout-header {
   -webkit-box-shadow: 1px 5px 11px 0px rgba(0, 0, 0, 0.28);
   box-shadow: 1px 5px 11px 0px rgba(0, 0, 0, 0.28);
   background: white !important;
@@ -152,24 +151,17 @@ p {
 }
 
 .home-exemple-form {
-
 }
 
-
-._app_title{
+._app_title {
   font: 1em Arvo, sans-serif;
-
 }
 
-
-.neumo-default-card{
+.neumo-default-card {
   padding: 2em;
   background: #f7f7f787;
   border-radius: 20px;
-  box-shadow:
-    inset 0 0 15px rgba(55, 84, 170,0),
-    inset 0 0 20px rgba(255, 255, 255,0),
-    7px 7px 15px rgba(55, 84, 170,.15),
-    -7px -7px 20px rgba(255, 255, 255,1),
-    inset 0px 0px 4px rgba(255, 255, 255,.2);
+  box-shadow: inset 0 0 15px rgba(55, 84, 170, 0), inset 0 0 20px rgba(255, 255, 255, 0),
+    7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px rgba(255, 255, 255, 1),
+    inset 0px 0px 4px rgba(255, 255, 255, 0.2);
 }

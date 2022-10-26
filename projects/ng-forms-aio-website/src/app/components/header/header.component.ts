@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DefaultListArray } from './../../models';
@@ -8,7 +8,7 @@ import { DefaultListArray } from './../../models';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   public langs = [
     { value: 'fr', label: 'french' },
     { value: 'en', label: 'english' }
@@ -23,8 +23,6 @@ export class HeaderComponent implements OnInit {
   ];
 
   constructor(public router: Router, private translateService: TranslateService) {}
-
-  ngOnInit(): void {}
 
   public setTranslation(lang: string) {
     this.translateService.use(lang);
