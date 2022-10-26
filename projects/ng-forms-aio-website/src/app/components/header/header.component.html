@@ -1,26 +1,19 @@
-<div class="inner-content">
-  <div nz-row nzJustify="center" [nzGutter]="[24, 10]">
-    <div nz-col class="gutter-row" nzOffset="3" [nzSpan]="12">
-      <div class="_app_title">
-        {{ "appTitle" | translate }}
-      </div>
-    </div>
-    <div nz-col class="gutter-row">
-      <app-version></app-version>
-    </div>
-    <div nz-col class="gutter-row">
-      <app-menu [items]="mainRouter" mode="horizontal"> </app-menu>
-    </div>
-    <div nz-col class="gutter-row">
-      <app-zorro-dropdown
-        [items]="langs"
-        svgSelectedPattern="-white.svg"
-        svgNotSelectedPattern="-black.svg"
-        svgFolder="assets/svg/"
-        [defaultSelectedItem]="{ value: 'en', label: 'english' }"
-        [isSvgBtn]="true"
-        (isItemSelected)="setTranslation($event.value)"
-      ></app-zorro-dropdown>
-    </div>
+<div class="inner-content d-flex flex-row align-items-center">
+  <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4">
+    {{ 'appTitle' | translate }}
+  </div>
+  <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4">
+    <ul nz-menu nzMode="horizontal" nzTheme="light" class="d-flex flex-row align-items-center">
+      <li
+        nz-menu-item
+        nz-tooltip
+        nzTooltipPlacement="right"
+        (click)="router.navigate([item.value])"
+        *ngFor="let item of mainRouter"
+      >
+        <i nz-icon nzType="mail">{{ item.label }}</i>
+        <span></span>
+      </li>
+    </ul>
   </div>
 </div>
