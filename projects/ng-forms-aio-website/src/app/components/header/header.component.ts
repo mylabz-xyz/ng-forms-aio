@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { DefaultListArray } from './../../models';
 
@@ -15,13 +16,13 @@ export class HeaderComponent implements OnInit {
 
   public mainRouter: DefaultListArray = [
     { label: 'home', value: '/' },
-    { label: 'doc', value: 'doc' },
+    { label: 'doc', value: 'doc/introduce' },
     { label: 'components', value: 'components' },
     { label: 'experimental', value: 'experimental' },
     { label: 'about', value: 'about' }
   ];
 
-  constructor(private translateService: TranslateService) {}
+  constructor(public router: Router, private translateService: TranslateService) {}
 
   ngOnInit(): void {}
 
