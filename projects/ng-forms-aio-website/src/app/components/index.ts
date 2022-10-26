@@ -11,5 +11,4 @@ export * from './version/version.component';
 export * from './highlight';
 export * from './zorro';
 export * from './features/features.component';
-export * from './menu/menu.component';
 export * from './components/components.component';

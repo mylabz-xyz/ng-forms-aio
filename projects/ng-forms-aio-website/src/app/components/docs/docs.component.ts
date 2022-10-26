@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { debounceTime, filter } from 'rxjs';
+import { debounceTime, filter, tap } from 'rxjs';
+
 import { MarkdownProvider } from '../../providers';
 
 @Component({
@@ -27,6 +28,8 @@ export class DocsComponent implements OnInit {
   ngOnInit(): void {
     this.translateService.onLangChange.subscribe(i18n => {});
 
+    this.firstLoad();
+
     this.router.events
       .pipe(
         filter((event: any) => event?.snapshot),
@@ -34,8 +37,14 @@ export class DocsComponent implements OnInit {
       )
       .subscribe((event: any) => {
         this.id = this.route.snapshot.paramMap.get('id') as string;
-        console.log(this.id);
         this.markdownProvider.formatTitle();
       });
   }
+
+  private firstLoad() {
+    this.id = this.route.snapshot.paramMap.get('id') as string;
+    this.markdownProvider.formatTitle();
+  }
+      
+  
 }

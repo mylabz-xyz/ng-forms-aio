@@ -25,7 +25,6 @@ import {
   ZorroDropdownComponent,
   VersionComponent,
   FeaturesComponent,
-  MenuComponent,
   ComponentsComponent
 } from './components';
 
@@ -50,6 +49,8 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+
+import { NzAffixModule } from 'ng-zorro-antd/affix';
 
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
@@ -80,7 +81,6 @@ registerLocaleData(en);
     VersionComponent,
     AbstractWithForm,
     FeaturesComponent,
-    MenuComponent,
     ComponentsComponent,
     ComponentsPageComponent
   ],
@@ -100,6 +100,7 @@ registerLocaleData(en);
     NzGridModule,
     NzButtonModule,
     NzMenuModule,
+    NzAffixModule,
     NzDropDownModule,
     NzTypographyModule,
     NzLayoutModule,
