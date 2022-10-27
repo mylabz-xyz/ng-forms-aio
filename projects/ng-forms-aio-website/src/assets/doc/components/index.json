@@ -12,6 +12,7 @@
     "file": "input-text"
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
   {
@@ -19,6 +20,8 @@
     "file": "internationalization"
   },
 >>>>>>> :doc: : begin template for /doc/components/ | input doc | need to review import of components
+=======
+>>>>>>> :doc: : full doc v1
   {
     "title": "checkbox",
     "file": "checkbox"

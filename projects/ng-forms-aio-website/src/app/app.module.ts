@@ -1,5 +1,9 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy, registerLocaleData } from '@angular/common';
+=======
+import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
+>>>>>>> :doc: : full doc v1
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -119,7 +123,11 @@ registerLocaleData(en);
     AnimatedFormProvider,
     MarkdownProvider,
     { provide: NZ_I18N, useValue: en_US },
+<<<<<<< HEAD
     { provide: LocationStrategy, useClass: PathLocationStrategy }
+=======
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+>>>>>>> :doc: : full doc v1
   ],
   bootstrap: [AppComponent]
 })
