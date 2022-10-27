@@ -39,9 +39,9 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
   public defaultErrors: any = {
     input: ' is required ',
     'text-area': ' is required',
-    checkbox: ': Select at least one element',
-    'checkbox-list': ': Select at least one element',
-    select: ': Select at least one element'
+    checkbox: ' Select at least one element',
+    'checkbox-list': ' Select at least one element',
+    select: ' Select at least one element'
   };
 
   public submitted = false;

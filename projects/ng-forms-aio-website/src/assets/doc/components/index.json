@@ -11,11 +11,6 @@
     "title": "input-text",
     "file": "input-text"
   },
-
-  {
-    "title": "i18n",
-    "file": "internationalization"
-  },
   {
     "title": "checkbox",
     "file": "checkbox"

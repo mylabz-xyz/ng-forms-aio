@@ -1,0 +1,35 @@
+.title {
+  cursor: pointer;
+}
+
+.ant-menu-item-selected {
+  color: black !important;
+  transition: none !important;
+}
+
+.ant-menu-item-item {
+  color: black !important;
+  transition: none !important;
+}
+
+.ant-menu-item-selected::after,
+.ant-menu-item-item::after {
+  border: none !important;
+  transition: none !important;
+}
+
+.ant-menu-item-selected::before,
+.ant-menu-item-item::before {
+  border: none !important;
+  transition: none !important;
+}
+
+.ant-menu-horizontal > .ant-menu-item::after,
+.ant-menu-horizontal > .ant-menu-submenu::after {
+  transition: none !important;
+}
+
+.routing_list {
+  background: transparent !important;
+  border: none !important;
+}

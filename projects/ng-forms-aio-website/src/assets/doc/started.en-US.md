@@ -5,13 +5,15 @@
 
 The following StackBlitz link demonstrates a basic use case, and it is recommended to fork this demo as a baseline while doing `Bug Report`. However, please do not use this demo as a scaffold in a real production environment.
 
-- [NG-Forms-Aio StackBlitz](https://stackblitz.com/edit/Ng-Forms-Aio)
+- [NG-Forms-Aio StackBlitz (Soon)]
 
 ### Installation
 
 > Read the documentation of [Angular](https://angular.io/cli) to explore more features.
 
 ### Install Ng-Forms-Aio
+
+## By Angular CLI
 
 After changing the directory to the newly created project, you can automatically run the following commands to initialize the project's configuration, including importing i18n files and stylesheets and loading initial modules.
 
@@ -22,7 +24,7 @@ $ ng add ng-forms-aio
 
 Project files are built and generated in the `dist` directory by default.
 
-### Install Ng-Forms-Aio
+## By NPM | Yarn
 
 ```bash
 $ npm install ng-forms-aio --save

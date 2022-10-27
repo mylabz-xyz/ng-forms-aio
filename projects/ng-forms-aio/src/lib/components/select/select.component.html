@@ -1,10 +1,6 @@
 <div class="ng-aio-control">
   <div class="ng-aio-select-label">
-    <label
-      *ngIf="label && themes[theme].showLabel"
-      [for]="_id"
-      [innerHtml]="label"
-    ></label>
+    <label *ngIf="label" [for]="_id" [innerHtml]="label"></label>
     <div class="position-relative">
       <select
         [id]="_id"
@@ -12,20 +8,11 @@
         (change)="emit(getValue($event))"
         [class]="themes[theme].inputClass"
       >
-        <option
-          *ngFor="let choice of values; let i = index"
-          [value]="choice.value"
-          [innerHtml]="choice.label"
-        ></option>
+        <option *ngFor="let choice of values; let i = index" [value]="choice.value" [innerHtml]="choice.label"></option>
       </select>
       <span [class]="themes[theme].focusClass"> <i></i></span>
     </div>
 
-    <small
-      *ngIf="formValueTips"
-      id="emailHelp"
-      class=""
-      [innerHtml]="formValueTips"
-    ></small>
+    <small *ngIf="formValueTips" id="emailHelp" class="" [innerHtml]="formValueTips"></small>
   </div>
 </div>

@@ -17,9 +17,7 @@ export class HeaderComponent {
   public mainRouter: DefaultListArray = [
     { label: 'home', value: '/' },
     { label: 'doc', value: 'doc/introduce' },
-    { label: 'components', value: 'components/forms-aio' },
-    { label: 'experimental', value: 'experimental' },
-    { label: 'about', value: 'about' }
+    { label: 'components', value: 'components/forms-aio' }
   ];
 
   constructor(public router: Router, private translateService: TranslateService) {}

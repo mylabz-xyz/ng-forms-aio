@@ -1,32 +1,49 @@
-Documentation for **forms-aio** component
+Documentation for **Events**
 
 ## When To Use
 
-When there is a need for display form.
+When you want listen an events of **NG-AIO-FORMS**
 
 ## How to use
 
 ```ts
+const onChange = (change:NgFormsAio) => {
+console.log('Something changed in the form');
+};
+
+const onCreate = (change:NgFormsAio) => {
+console.log('The form has been created');
+};
+
+const onSubmit = (change:NgFormsAio) => {
+console.log('The form has been submitted');
+};
+
 const form = [{
   label: "Enter your name",
   component: 'input',
   value: ""
-}]
+}];
 ```
+
 
 ```html
 <ng-forms-aio
   [forms]="form"
   (onChange)="onChange($event)"
+  (onCreate)="onCreate($event)"
+  (onSubmit)="onSubmit($event)"
 ></ng-forms-aio>
 ```
-
 ## Interface
 
-This interface is usefull for the callback of all events.
+This interface is usefull for the callback of all events. It will be an Array of **NgFormsAioItem**.
+The interface **NgFormsAioItem** interface includes all component types.
+
+**For more precision and to see exactly your return please select the desired components in the Documentation page.**
 
 ```ts
-interface FormsAio {
+export interface NgFormsAioItem {
   /**
    * @description Label of form
    * @default

@@ -1,9 +1,12 @@
 <div class="inner-content d-flex flex-row align-items-center">
-  <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4">
+  <div
+    (click)="router.navigate(['/'])"
+    class="title ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4"
+  >
     {{ 'appTitle' | translate }}
   </div>
   <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4">
-    <ul nz-menu nzMode="horizontal" nzTheme="light" class="d-flex flex-row align-items-center">
+    <ul nz-menu nzMode="horizontal" nzTheme="light" class="routing_list d-flex flex-row align-items-center">
       <li
         nz-menu-item
         nz-tooltip

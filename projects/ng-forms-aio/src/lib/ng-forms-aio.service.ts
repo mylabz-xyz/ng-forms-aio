@@ -4,22 +4,21 @@ import { NgAioTheme } from './const';
 
 export interface NgFormsAioConfig {
   theme?: NgAioTheme;
-  displaySubmitBtn?:boolean
-  submitLabel?:string
-  opts?:{
-    debug?:boolean
-    submitIfValid?:boolean
-  }
+  displaySubmitBtn?: boolean;
+  submitLabel?: string;
+  opts?: {
+    debug?: boolean;
+    submitIfValid?: boolean;
+  };
 }
 
 export const _defaultConfig: NgFormsAioConfig = {
   theme: 'float-label-default',
-  displaySubmitBtn:true,
-  opts:{
-    debug:true,
-    submitIfValid:true
+  opts: {
+    debug: true,
+    submitIfValid: true
   },
-  submitLabel:'Submit'
+  submitLabel: 'Submit'
 };
 
 export const NG_FORMS_AIO_CONFIG_TOKEN = new InjectionToken<BehaviorSubject<NgFormsAioConfig>>('ng_forms_aio_token');
@@ -34,7 +33,7 @@ export class NgFormsAioService implements OnDestroy {
   constructor(@Optional() @Inject(NG_FORMS_AIO_CONFIG_TOKEN) _config?: BehaviorSubject<NgFormsAioConfig>) {
     if (_config) this.subs.push(_config.subscribe(__config => this.setConfig(__config)));
 
-    console.log("hey i'm construct")
+    console.log("hey i'm construct");
   }
 
   public getConfig$() {
@@ -42,7 +41,7 @@ export class NgFormsAioService implements OnDestroy {
   }
 
   public setConfig(config: NgFormsAioConfig) {
-    console.log('ng aio forms service',config)
+    console.log('ng aio forms service', config);
     const _config = this.config.getValue();
     this.config.next({ ..._config, ...config });
   }

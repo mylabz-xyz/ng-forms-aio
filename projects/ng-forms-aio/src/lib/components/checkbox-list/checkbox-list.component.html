@@ -13,12 +13,7 @@
           [value]="choice.value"
           (input)="emit($event, i, choice)"
         />
-        <label
-          #labelForAnimatedCheckbox
-          *ngIf="label && themes[theme].showLabel"
-          [for]="_idDynamic(i)"
-          [innerHTML]="choice.label"
-        ></label>
+        <label #labelForAnimatedCheckbox *ngIf="label" [for]="_idDynamic(i)" [innerHTML]="choice.label"></label>
       </div>
     </div>
   </div>
