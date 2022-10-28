@@ -5,14 +5,14 @@ Using a CLI helps initialize projects, generate template codes and reduce develo
 
 Initialize a project with `NG-FORMS-AIO`.
 
-Run the command `ng add ng-forms-aio` under your project directory, and follow the options to configure settings including whether you want to import i18n files and stylesheets, and load initial modules.
+Run the command `ng add @mylabz/ng-forms-aio` under your project directory, and follow the options to configure settings including whether you want to import i18n files and stylesheets, and load initial modules.
 
 In the meantime, you can choose an existing project template while creating your project, and then develop the project on the basis of it.
 
 ### Command
 
 ```bash
-ng add ng-forms-aio [options]
+ng add @mylabz/ng-forms-aio [options]
 ```
 
 ## Component Generation
@@ -22,5 +22,5 @@ There are template source codes under every component API show case, you may obt
 ### Command
 
 ```bash
-ng g ng-forms-aio:[schematic] <name> [options]
+ng g @mylabz/ng-forms-aio:[schematic] <name> [options]
 ```

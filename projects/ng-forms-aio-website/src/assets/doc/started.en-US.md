@@ -36,7 +36,7 @@ $ yarn add ng-forms-aio
 
 Finally, you need to import the component modules that you want to use into the `app.module.ts` file and [feature modules](https://angular.io/guide/feature-modules).
 
-Taking the following `NzButtonModule` module as an example, first import the component module:
+Taking the following `NgFormsAioModule` module as an example, first import the component module:
 
 ```ts
 import { NgModule } from '@angular/core';
@@ -60,7 +60,7 @@ Then use the component inside the template:
 
 Finally, you need to import the component modules that you want to use into the `app.module.ts` file and [feature modules](https://angular.io/guide/feature-modules).
 
-Taking the following `NzButtonModule` module as an example, first import the component module:
+Taking the following `NgFormsAioModule` module as an example, first import the component module:
 
 ```ts
 import { NgModule } from '@angular/core';
