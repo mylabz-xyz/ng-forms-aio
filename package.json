@@ -1,14 +1,15 @@
 {
-  "name": "@mylabz.xyz/ng-forms-aio",
-  "version": "0.0.0",
+  "name": "@mylabz/ng-forms-aio",
+  "version": "0.0.0-beta",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build:website": "ng build ng-forms-aio-website --prod",
+    "build:lib": "ng build ng-forms-aio --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:dev": "ng test ng-forms-aio --watch=true",
-    "publish": "npm publish --access public"
+    "publish:lib": "cd dist && cd ng-forms-aio && npm publish --access public"
   },
   "private": false,
   "dependencies": {
