@@ -1,17 +1,19 @@
 <div class="inner-content d-flex flex-row align-items-center">
-  <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4">
-    {{ 'appTitle' | translate }}
+  <div
+    (click)="router.navigate(['/'])"
+    class="title ant-col ant-col-xs-12 ant-col-sm-12 ant-col-md-6 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4"
+  >
+    <img width="100%" src="/assets/svg/logo.svg" />
   </div>
-  <div class="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4">
-    <ul nz-menu nzMode="horizontal" nzTheme="light" class="d-flex flex-row align-items-center">
-      <li
-        nz-menu-item
-        nz-tooltip
-        nzTooltipPlacement="right"
-        (click)="router.navigate([item.value])"
-        *ngFor="let item of mainRouter"
-      >
-        <i nz-icon nzType="mail">{{ item.label }}</i>
+  <div class="ant-col ant-col-xs-12 ant-col-sm-12 ant-col-md-6 ant-col-lg-6 ant-col-xl-5 ant-col-xxl-4">
+    <ul nz-menu nzMode="horizontal" nzTheme="light" class="routing_list d-flex flex-row align-items-center">
+      <li nz-menu-item (click)="router.navigate([item.value])" *ngFor="let item of mainRouter">
+        <i>{{ item.label }}</i>
+        <span></span>
+      </li>
+
+      <li nz-menu-item (click)="openTab('https://github.com/mylabz-xyz/ng-forms-aio')">
+        <i>Github</i>
         <span></span>
       </li>
     </ul>

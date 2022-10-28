@@ -10,8 +10,7 @@
     *ngFor="let formID of _formsKeys"
     [ngSwitch]="_forms[formID].component"
     [ngClass]="{
-      'ng-aio-pristine':
-        _formsGroup[formID].pristine && !_formsGroup[formID].errors,
+      'ng-aio-pristine': _formsGroup[formID].pristine && !_formsGroup[formID].errors,
       'ng-aio-dirty': _formsGroup[formID].dirty && !_formsGroup[formID].errors,
       'ng-aio-invalid': _formsGroup[formID].errors && submitted
     }"
@@ -75,18 +74,9 @@
   </div>
 
   <div class="w-100 text-start">
-   submitted :  {{submitted}}
-    <div
-      *ngIf="formGroup && formGroup.status === 'INVALID' && submitted"
-      class="w-100 ng-aio-wrap-error"
-    >
+    <div *ngIf="formGroup && formGroup.status === 'INVALID' && submitted" class="w-100 ng-aio-wrap-error">
       <div *ngFor="let control of formGroup.controls | keyvalue">
-        <div
-          *ngIf="
-            _forms[control.key].formControlFeedBack;
-            else defaultControlFeedback
-          "
-        >
+        <div *ngIf="_forms[control.key].formControlFeedBack; else defaultControlFeedback">
           <div *ngFor="let errors of control.value.errors | keyvalue">
             <div
               *ngIf="
@@ -110,10 +100,10 @@
   </div>
   <div class="w-100 text-end">
     <ng-aio-button
+      *ngIf="displaySubmitBtn"
       [theme]="theme"
       [isSubmitted]="submitted"
       [label]="submitLabel"
-      *ngIf="displaySubmitBtn"
       [label]="submitLabel"
       (onChange)="submit()"
     ></ng-aio-button>

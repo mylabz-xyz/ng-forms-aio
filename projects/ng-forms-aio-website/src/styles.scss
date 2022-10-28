@@ -2,6 +2,10 @@
 @import '~codemirror/lib/codemirror.css';
 @import '~codemirror/theme/material.css';
 @import '~codemirror/theme/idea.css';
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+* {
+  font-family: 'Lato', sans-serif;
+}
 
 .glslCanvas {
   top: 0;
@@ -40,23 +44,6 @@ a {
   text-decoration: none;
   padding: 0.2em 0.05em;
   border-bottom: 2px solid #333333;
-}
-
-a:hover {
-  color: #efefef;
-}
-
-a:after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: #333333;
-  z-index: -1;
-  transition: all 0.1s cubic-bezier(0, 0.59, 1, 0.26);
 }
 
 // fluid type

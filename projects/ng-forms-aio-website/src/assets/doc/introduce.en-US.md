@@ -35,15 +35,15 @@ All components are open source and free to use under MIT license.
 ```bash
 $ ng new PROJECT_NAME
 $ cd PROJECT_NAME
-$ ng add ng-forms-aio
+$ ng add @mylabz/ng-forms-aio
 ```
 
 > More information about `@angular/cli` [here](https://github.com/angular/angular-cli).
 
-You can also install `ng-forms-aio` with npm or yarn
+You can also install `@mylabz/ng-forms-aio` with npm or yarn
 
 ```bash
-$ npm install ng-forms-aio
+$ npm install @mylabz/ng-forms-aio
 ```
 
 ## Companies using ng-forms-aio

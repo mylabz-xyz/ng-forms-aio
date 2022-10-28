@@ -5,7 +5,7 @@ We add a **global configuration** support to many components. You can define the
 In order to provide default configurations in certain components, please pass an object that implements the interface `NzConfig` through the injection token `NZ_CONFIG` in the root injector. For example:
 
 ```typescript
-import { NgFormsAioConfig, NG_FORMS_AIO_CONFIG_TOKEN } from 'ng-zorro-antd/core/config';
+import { NgFormsAioConfig, NG_FORMS_AIO_CONFIG_TOKEN } from 'ng-aio-forms';
 
 const ngFormsAioConfig: NgFormsAioConfig = {
   theme: 'float-label-default',

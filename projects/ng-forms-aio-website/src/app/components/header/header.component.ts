@@ -15,16 +15,18 @@ export class HeaderComponent {
   ];
 
   public mainRouter: DefaultListArray = [
-    { label: 'home', value: '/' },
-    { label: 'doc', value: 'doc/introduce' },
-    { label: 'components', value: 'components' },
-    { label: 'experimental', value: 'experimental' },
-    { label: 'about', value: 'about' }
+    { label: 'Home', value: '/' },
+    { label: 'Doc', value: 'doc/introduce' },
+    { label: 'Components', value: 'components/forms-aio' },
   ];
 
   constructor(public router: Router, private translateService: TranslateService) {}
 
   public setTranslation(lang: string) {
     this.translateService.use(lang);
+  }
+
+  public openTab(link:string){
+    window.open(link,'_blank')
   }
 }

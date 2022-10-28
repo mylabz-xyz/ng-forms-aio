@@ -1,18 +1,23 @@
-<nz-layout class="layout">
-  <nz-sider>
-    <div class="logo"></div>
-    <ul nz-menu nzTheme="dark" nzMode="inline">
-      <a
-        nz-menu-item
-        *ngFor="let linkKey of links"
-        (click)="router.navigate(['/components/' + linkKey.file], { preserveFragment: false })"
-      >
-        {{ linkKey.file }}
-        <i nz-icon nzType="file"></i>
-      </a>
-    </ul>
-  </nz-sider>
-  <nz-content>
-    <app-doc></app-doc>
-  </nz-content>
-</nz-layout>
+<nz-content class="outer-content fadeIn" style="margin-top: 0px">
+  <nz-layout class="inner-layout">
+    <nz-sider nzWidth="200px" class="doc_sider" nzTheme="light">
+      <nz-affix nzOffsetTop="70">
+        <div class="logo"></div>
+        <ul nz-menu nzMode="inline" class="sider-menu">
+          <a
+            nz-menu-item
+            class="sider_menu_item"
+            *ngFor="let linkKey of links"
+            (click)="router.navigate(['/components/' + linkKey.file], { preserveFragment: false })"
+          >
+            {{ linkKey.file | titlecase }}
+            <i nz-icon nzType="file"></i>
+          </a>
+        </ul>
+      </nz-affix>
+    </nz-sider>
+    <nz-content>
+      <app-doc path="/assets/doc/components/" lang="/assets/doc/components/"></app-doc>
+    </nz-content>
+  </nz-layout>
+</nz-content>

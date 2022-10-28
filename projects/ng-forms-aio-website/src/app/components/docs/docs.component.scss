@@ -1,5 +1,25 @@
-.doc_markdown {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+::ng-deep .doc_wrap {
+  .doc_markdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .markdown_anchor {
+    border: none;
+    font-weight: bold;
+    font-size: 1.15rem;
+  }
+
+  .markdown_anchor_sigle {
+    padding-left: 0.25em;
+    opacity: 0;
+    transform: 1s;
+  }
+
+  .markdown_anchor:hover {
+    .markdown_anchor_sigle {
+      opacity: 1;
+    }
+  }
 }

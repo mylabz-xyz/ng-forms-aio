@@ -12,15 +12,24 @@ export class NgAioCheckboxListFormComponent
     public override _idMarker = 'ngAioCheckBoxList_';
 
   public override emit(event: any, i?: any, choice?: any): void {
-    if (event.target.checked && this.value.indexOf(choice) === -1) {
-      this.value.push(choice);
-       } else {
-        (this.value as any[]).splice(this.value.indexOf(choice),1);
-
-           (document.getElementById(this._idDynamic(i)) as any)['checked'] =
+this.values.forEach((value:any,index:number) => {
+  (document.getElementById(this._idDynamic(index)) as any)['checked'] =
              false;
-       }
-       this.onChange.emit({ value: this.value, id: this._idDynamic(i) });
+});
+
+setTimeout(()=>{
+  (document.getElementById(this._idDynamic(i)) as any)['checked'] =
+true;
+  if (event.target.checked && this.value.indexOf(choice) === -1) {
+    this.value.push(choice);
+
+     } else {
+      (this.value as any[]).splice(this.value.indexOf(choice),1);
+         (document.getElementById(this._idDynamic(i)) as any)['checked'] =
+           false;
+     }
+     this.onChange.emit({ value: this.value, id: this._idDynamic(i) });
+})
   }
 
 }

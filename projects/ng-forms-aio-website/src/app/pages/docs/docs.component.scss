@@ -15,3 +15,11 @@ a::after {
 .sider_menu_item {
   font-size: 1.25rem;
 }
+
+.ant-menu-item {
+  margin: 0 !important;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: transparent;
+}

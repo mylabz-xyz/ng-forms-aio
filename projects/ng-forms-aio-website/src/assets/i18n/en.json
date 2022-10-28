@@ -15,18 +15,19 @@
   "intro": {
     "manage": "Easily manage complex forms with NgFormsAio",
     "dontWrite": "Don't write <input [(ngModel)]=\"value\"/> anymore",
-    "tryExemple": "Customised exemple bellow, try it !   dev"
+    "tryExemple": "Customised exemple bellow, try it !",
+    "themeExemple": "Example of themes"
   },
   "features": {
     "title": "FEATURES",
     "useJSON": "Use simple JSON as input.",
     "15Themes": "15 Themes ready to use.",
     "customFeedBacks": "Easy provided custom feedbacks.",
-    "grids": "Use <a  href='https://getbootstrap.com/docs/4.0/layout/grid/'>Bootstrap Grid System.</a> to combine fields",
+    "grids": "Use <a target='_blank' href='https://getbootstrap.com/docs/4.0/layout/grid/'>Bootstrap Grid System.</a> to combine fields",
     "events": "3 Events to listen (onChange, onCreate, onSubmit).",
-    "controls": "Angular <a href='https://getbootstrap.com/docs/4.0/layout/grid/'>FormControl</a> for custom validations.",
+    "controls": "Angular <a target='_blank' href='https://getbootstrap.com/docs/4.0/layout/grid/'>FormControl</a> for custom validations.",
     "listens": "Easy listening old and new values.",
-    "typed": "Typed for <a  href='https://code.visualstudio.com/docs/editor/intellisense'>vscode Autocompletion.</a>",
+    "typed": "Typed for <a target='_blank' href='https://code.visualstudio.com/docs/editor/intellisense'>vscode Autocompletion.</a>",
     "debug": "Debug mode provided.",
     "collision": "No collision in case of many forms.",
     "noDep": "No other dependency."

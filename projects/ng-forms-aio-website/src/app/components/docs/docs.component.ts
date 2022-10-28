@@ -14,13 +14,6 @@ export class DocsComponent implements OnInit {
   @Input() lang: string = '/assets/doc/';
 
   public id!: String;
-  public options = {
-    displayMode: true,
-    throwOnError: false,
-    errorColor: '#cc0000'
-  };
-
-  private id_default = 'started';
 
   constructor(public route: ActivatedRoute, private router: Router, private markdownProvider: MarkdownProvider) {}
 
