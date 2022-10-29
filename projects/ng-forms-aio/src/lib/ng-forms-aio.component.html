@@ -26,7 +26,7 @@
       *ngSwitchCase="'select'"
     >
     </ng-aio-select>
-    <ng-aio-input-text-box
+    <ng-aio-text-area
       [isSubmitted]="submitted"
       [label]="_forms[formID].label"
       [invalid]="_formsGroup[formID].errors"
@@ -35,7 +35,7 @@
       (onChange)="onFormElementChange(_forms[formID].id, $event)"
       *ngSwitchCase="'text-area'"
     >
-    </ng-aio-input-text-box>
+    </ng-aio-text-area>
     <ng-aio-input
       [isSubmitted]="submitted"
       [label]="_forms[formID].label"

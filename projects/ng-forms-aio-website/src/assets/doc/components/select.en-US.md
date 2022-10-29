@@ -7,7 +7,7 @@ When there is a need for display form.
 ## How to use
 
 ```ts
-const form = [{
+const form: NgFormsAio = [{
       label: 'Type',
       component: 'select',
       values: [

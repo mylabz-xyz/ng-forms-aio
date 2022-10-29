@@ -19,7 +19,7 @@ const onSubmit = (change:NgFormsAio) => {
 console.log('The form has been submitted');
 };
 
-const form = [{
+const form: NgFormsAio = [{
   label: "Enter your name",
   component: 'input',
   value: ""

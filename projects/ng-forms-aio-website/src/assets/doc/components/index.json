@@ -8,8 +8,8 @@
     "file": "input"
   },
   {
-    "title": "input-text",
-    "file": "input-text"
+    "title": "text-area",
+    "file": "input-text-area"
   },
   {
     "title": "checkbox",

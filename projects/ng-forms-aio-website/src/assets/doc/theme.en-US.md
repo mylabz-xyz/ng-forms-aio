@@ -11,7 +11,7 @@ You can pass an object that implements the interface `NgAioTheme` to **NG-FORMS*
 ```ts
 const theme: NgAioTheme = 'float-label-default';
 
-const form = [{
+const form: NgFormsAio = [{
   label: "Enter your name",
   component: 'input',
   value: ""

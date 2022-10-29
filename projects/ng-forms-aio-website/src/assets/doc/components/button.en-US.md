@@ -6,19 +6,26 @@ When there is a need for display form.
 
 ## How to use
 
+```html
+<ng-forms-aio
+  displaySubmitBtn="true"
+  submitLabel="My submit button"
+></ng-forms-aio>
+```
+
+**Or**
+
 ```ts
-const form formOpts = {
+const form: NgFormsAioOptions = {
   displaySubmitBtn: true;
   submitLabel: 'Submit'
 }
 ```
 
-
 ```html
 <ng-forms-aio
   displaySubmitBtn="true"
   submitLabel="My submit button"
-  opts="formOpts"
 ></ng-forms-aio>
 ```
 ## Interface

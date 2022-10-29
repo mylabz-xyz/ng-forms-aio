@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { BaseAbstractGridSpecs } from 'projects/ng-forms-aio/src/test/index';
 
-import { NgAioInputTextBoxComponent } from './input-text-box.component';
+import { NgAioInputTextAreaComponent } from './input-text-area.component';
 
 
 @Component({
   selector: 'test-text-area',
   template: `<div>
-    <ng-aio-input-text-box (onChange)="onChange($event)" [value]="value"></ng-aio-input-text-box>
+    <ng-aio-text-area (onChange)="onChange($event)" [value]="value"></ng-aio-text-area>
   </div>`,
 })
 class InputTextAreaWrapComponent {
@@ -21,7 +21,7 @@ class InputTextAreaWrapComponent {
 describe('TextArea Component :', () => {
   let baseTestComponent = new BaseAbstractGridSpecs<InputTextAreaWrapComponent>();
 
-  baseTestComponent.init(NgAioInputTextBoxComponent, InputTextAreaWrapComponent);
+  baseTestComponent.init(NgAioInputTextAreaComponent, InputTextAreaWrapComponent);
   baseTestComponent.baseTest();
 
   it('It should emit input on input value change', fakeAsync(() => {
@@ -30,7 +30,7 @@ describe('TextArea Component :', () => {
         'textarea'
       );
     const spyChildEmitEvent = spyOn(
-      baseTestComponent.child as NgAioInputTextBoxComponent,
+      baseTestComponent.child as NgAioInputTextAreaComponent,
       'emit'
     ).and.callThrough();
     const spyParentOnSubmit = spyOn(
