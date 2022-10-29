@@ -16,18 +16,6 @@
   z-index: -1;
 }
 
-a:hover:after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: #333333;
-  z-index: -1;
-}
-
 .mojsContainer {
   width: 50%;
   margin: 0 auto;
@@ -37,14 +25,7 @@ a:hover:after {
     width: 75%;
   }
 }
-a {
-  display: inline-block;
-  position: relative;
-  color: #333333;
-  text-decoration: none;
-  padding: 0.2em 0.05em;
-  border-bottom: 2px solid #333333;
-}
+
 
 // fluid type
 @function strip-unit($value) {

@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-import {  HashLocationStrategy, LocationStrategy, PathLocationStrategy, registerLocaleData } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, PathLocationStrategy, registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,13 +50,17 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
-
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzAffixModule } from 'ng-zorro-antd/affix';
-
+import { NzIconModule } from 'ng-zorro-antd/icon';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
-
+import { IconDefinition } from '@ant-design/icons-angular';
 import { NgFormsAioModule } from 'projects/ng-forms-aio/src/lib/ng-forms-aio.module';
 import { MarkdownModule } from 'ngx-markdown';
+
+import { InfoCircleFill, GithubOutline, DropboxOutline } from '@ant-design/icons-angular/icons';
+
+const icons: IconDefinition[] = [InfoCircleFill, GithubOutline, DropboxOutline];
 
 registerLocaleData(en);
 
@@ -102,7 +106,9 @@ registerLocaleData(en);
     NzButtonModule,
     NzMenuModule,
     NzAffixModule,
+    NzNotificationModule,
     NzDropDownModule,
+    NzIconModule.forRoot(icons),
     NzTypographyModule,
     NzLayoutModule,
     NzDividerModule,
