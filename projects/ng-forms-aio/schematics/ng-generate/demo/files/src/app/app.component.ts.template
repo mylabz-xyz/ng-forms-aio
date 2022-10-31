@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgFormsAio } from '@mylabz/ng-forms-aio';
+import { NgFormsAio, NgFormsAioOptions } from '@mylabz/ng-forms-aio';
 
 @Component({
   selector: '<%= prefix %>-root',
