@@ -8,7 +8,7 @@ import {
 import { Rule, Tree } from '@angular-devkit/schematics';
 import { getAppModulePath } from '@schematics/angular/utility/ng-ast-utils';
 import { getWorkspace } from '@schematics/angular/utility/workspace';
-import { blue, yellow } from 'chalk';
+import chalk from 'chalk';
 
 import { Schema } from '../schema';
 
@@ -43,10 +43,10 @@ function addModuleImportToApptModule(
 ): void {
   if (hasNgModuleImport(host, appModulePath, moduleName)) {
     console.log(
-      yellow(
-        `Could not set up "${blue(moduleName)}" ` +
-          `because "${blue(moduleName)}" is already imported. Please manually ` +
-          `check "${blue(appModulePath)}" file.`
+      chalk.yellow(
+        `Could not set up "${chalk.blue(moduleName)}" ` +
+          `because "${chalk.blue(moduleName)}" is already imported. Please manually ` +
+          `check "${chalk.blue(appModulePath)}" file.`
       )
     );
     return;
