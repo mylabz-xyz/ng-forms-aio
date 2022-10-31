@@ -1,10 +1,10 @@
-<div class="ng-aio-control">
-  <div class="ng-aio-select-label">
+<div class="ng-forms-aio-control">
+  <div class="ng-forms-aio-select-label">
     <label *ngIf="label" [for]="_id" [innerHtml]="label"></label>
     <div class="position-relative">
       <select
         [id]="_id"
-        class="ng-aio-select w-100 h-100"
+        class="ng-forms-aio-select w-100 h-100"
         (change)="emit(getValue($event))"
         [class]="themes[theme].inputClass"
       >

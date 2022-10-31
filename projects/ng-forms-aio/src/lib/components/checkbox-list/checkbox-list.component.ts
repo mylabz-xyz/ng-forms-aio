@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { AbstractComponent } from './../abstract.component';
 
 @Component({
-  selector: 'ng-aio-checkbox-list',
+  selector: 'ng-forms-aio-checkbox-list',
   templateUrl: './checkbox-list.component.html',
   styleUrls: ['./checkbox-list.component.scss']
 })

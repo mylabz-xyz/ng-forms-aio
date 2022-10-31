@@ -5,15 +5,18 @@
     "ng": "ng",
     "start": "ng serve",
     "build:website": "ng build ng-forms-aio-website --prod",
-    "build:lib": "ng build ng-forms-aio --prod",
+    "build:lib": "ng build ng-forms-aio --prod && npm run build:schematics",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:dev": "ng test ng-forms-aio --watch=true",
-    "publish:lib": "cd dist && cd ng-forms-aio && npm publish --access public"
+    "publish:lib": "cd dist && cd ng-forms-aio && npm publish --access public",
+    "build:schematics": "tsc -p projects/ng-forms-aio/tsconfig.schematics.json",
+    "postbuild:schematics": "copyfiles --up 1 ./projects/ng-forms-aio/schematics/*/schema.json ./projects/ng-forms-aio/schematics/*/*/schema.json ./projects/ng-forms-aio/schematics/**/files/**/** ./projects/ng-forms-aio/schematics/collection.json ./dist"
   },
   "private": false,
   "dependencies": {
     "@angular/animations": "~13.0.0",
+    "@angular/cdk": "~13.0.0",
     "@angular/common": "~13.0.0",
     "@angular/compiler": "~13.0.0",
     "@angular/core": "~13.0.0",
@@ -41,6 +44,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "copyfiles": "2.4.1",
     "@angular-devkit/build-angular": "~13.0.4",
     "@angular/cli": "~1x3.0.4",
     "@angular/compiler-cli": "~13.0.0",
@@ -50,6 +54,7 @@
     "@types/node": "^12.11.1",
     "@types/three": "^0.137.0",
     "babel-loader": "^8.2.3",
+    "chalk": "^5.1.2",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.16",
     "karma-chrome-launcher": "~3.1.0",
