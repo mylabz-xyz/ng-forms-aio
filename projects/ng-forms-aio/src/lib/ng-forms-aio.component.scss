@@ -1,12 +1,7 @@
-@import './scss/bootstrap/bootstrap-grid.css';
 :host ::ng-deep {
   @import '~normalize.css';
-  @import './scss/input-label.scss';
-  @import './scss/button.scss';
-  @import './scss/commons.scss';
-  @import './scss/animations/index.scss';
-  @import './scss/feedback.scss';
-  @import './scss/icons.scss';
+  @import './scss/index.scss';
+
 
   $redInvalid: #dc3545;
 
