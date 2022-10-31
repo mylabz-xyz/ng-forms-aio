@@ -16,11 +16,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class NgFormsAioComponent implements OnInit, OnDestroy {
   @Input() forms!: NgFormsAio;
-  @Input() displaySubmitBtn: boolean = false;
-  @Input() submitLabel: string = 'Submit';
   @Input() opts: NgFormsAioOptions = {
     debug: false,
     submitIfValid: true,
+    submitLabel: 'Submit',
+    displaySubmitBtn: true,
     invalidFeedBack: {
       input: ' is required ',
       'text-area': ' is required',
@@ -28,10 +28,9 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
       'checkbox-list': ' Select at least one element',
       select: ' Select at least one element'
     },
-    validFeedBackLabel:'Form validated !',
-    invalidFeedBackLabel:'One or more fields have errors.'
+    validFeedBackLabel: 'Form validated !',
+    invalidFeedBackLabel: 'One or more fields have errors.'
   };
-
 
   @Input() theme: NgAioTheme = 'float-label-default';
   @Input() formId?: string;
@@ -89,8 +88,8 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
       this.ngFormsAioService.getConfig$().subscribe((config: NgFormsAioConfig) => {
         if (config.opts) this.opts = { ...this.opts, ...config.opts };
         if (config?.displaySubmitBtn === false || config?.displaySubmitBtn === true)
-          this.displaySubmitBtn = config.displaySubmitBtn;
-        if (config.submitLabel) this.submitLabel = config.submitLabel;
+          this.opts.displaySubmitBtn = config.displaySubmitBtn;
+        if (config.submitLabel) this.opts.submitLabel = config.submitLabel;
         if (config.theme) this.theme = config.theme;
       })
     );
@@ -212,8 +211,8 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
         'checkbox-list': ' Select at least one element',
         select: ' Select at least one element'
       },
-      validFeedBackLabel:'Form validated !',
-      invalidFeedBackLabel:'One or more fields have errors.'
+      validFeedBackLabel: 'Form validated !',
+      invalidFeedBackLabel: 'One or more fields have errors.'
     };
   }
 
