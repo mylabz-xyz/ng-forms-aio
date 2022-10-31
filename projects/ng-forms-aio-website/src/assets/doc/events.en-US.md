@@ -2,7 +2,7 @@ Documentation for **Events**
 
 ## When To Use
 
-When you want listen an events of **NG-AIO-FORMS**
+When you want listen an events of **ng-forms-aio**
 
 ## How to use
 

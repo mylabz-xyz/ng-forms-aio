@@ -1,9 +1,5 @@
-:host ::ng-deep {
   @import '~normalize.css';
   @import './scss/index.scss';
-
-
-  $redInvalid: #dc3545;
 
   .d-flex {
     display: flex !important;
@@ -21,7 +17,7 @@
     align-items: end !important;
   }
 
-  .ng-aio-control {
+  .ng-forms-aio-control {
     label {
       text-align: start;
     }
@@ -29,5 +25,4 @@
       width: 100%;
       background-color: transparent !important;
     }
-  }
 }

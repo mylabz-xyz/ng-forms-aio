@@ -5,7 +5,7 @@ import {
 import { AbstractComponent } from './../abstract.component';
 
 @Component({
-  selector: 'ng-aio-select',
+  selector: 'ng-forms-aio-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
 })

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { AbstractComponent } from '../abstract.component';
 
 @Component({
-  selector: 'ng-aio-text-area',
+  selector: 'ng-forms-aio-text-area',
   templateUrl: './input-text-area.component.html',
   styleUrls: ['./input-text-area.component.scss'],
 })

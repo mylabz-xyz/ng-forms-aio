@@ -2,7 +2,7 @@ import { Component,  Input,  OnInit } from '@angular/core';
 import { AbstractComponent } from './../abstract.component';
 
 @Component({
-  selector: 'ng-aio-input',
+  selector: 'ng-forms-aio-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
 })
