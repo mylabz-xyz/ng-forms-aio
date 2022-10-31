@@ -27,7 +27,6 @@ describe('NgFormsAioComponent', () => {
     fixture = TestBed.createComponent(NgFormsAioComponent);
     component = fixture.componentInstance;
     component.opts = { debug: false };
-    component.displaySubmitBtn = true;
     component.forms = [
       {
         label: 'This input is required',
