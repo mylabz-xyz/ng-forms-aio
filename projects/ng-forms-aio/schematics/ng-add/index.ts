@@ -1,4 +1,3 @@
-
 import { chain, Rule, schematic, SchematicContext, Tree } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 
@@ -9,11 +8,11 @@ export default function (options: Schema): Rule {
   return chain([
     (host: Tree) => {
       if (!options.skipPackageJson) {
-        addPackageToPackageJson(host, '@mylabz/ng-forms-aio', '0-0-2.beta');
+        addPackageToPackageJson(host, '@mylabz/ng-forms-aio', '13.0.5-beta');
       }
     },
     schematic('ng-add-setup-project', options),
-    async (_) => {
+    async _ => {
       if (options.template) {
         return schematic(options.template, { ...options });
       }

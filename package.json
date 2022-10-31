@@ -11,7 +11,7 @@
     "test:dev": "ng test ng-forms-aio --watch=true",
     "publish:lib": "cd dist && cd ng-forms-aio && npm publish --access public",
     "build:schematics": "tsc -p projects/ng-forms-aio/tsconfig.schematics.json",
-    "postbuild:schematics": "copyfiles --up 1 ./projects/ng-forms-aio/schematics/*/schema.json ./projects/ng-forms-aio/schematics/**/files/**/** ./projects/ng-forms-aio/schematics/collection.json ./dist"
+    "postbuild:schematics": "copyfiles --up 1 ./projects/ng-forms-aio/schematics/*/schema.json ./projects/ng-forms-aio/schematics/*/*/schema.json ./projects/ng-forms-aio/schematics/**/files/**/** ./projects/ng-forms-aio/schematics/collection.json ./dist"
   },
   "private": false,
   "dependencies": {

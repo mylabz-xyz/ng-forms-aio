@@ -28,7 +28,7 @@
     },
     "template": {
       "type": "string",
-      "default": "blank",
+      "default": "demo",
       "description": "Create an Angular project with using preset template.",
       "x-prompt": {
         "message": "Choose template to create project:",

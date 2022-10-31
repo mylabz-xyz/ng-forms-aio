@@ -12,7 +12,7 @@
       "factory": "./ng-add/setup-project/index",
       "schema": "./ng-add/schema.json"
     },
-    "blank": {
+    "demo": {
       "description": "Set up boot page",
       "private": true,
       "factory": "./ng-generate/demo/index",
