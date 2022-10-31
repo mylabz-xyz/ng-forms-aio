@@ -1,4 +1,3 @@
-import { getProjectFromWorkspace } from '@angular/cdk/schematics';
 
 import { chain, Rule, schematic, SchematicContext, Tree } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
@@ -14,7 +13,7 @@ export default function (options: Schema): Rule {
       }
     },
     schematic('ng-add-setup-project', options),
-    async (host: Tree) => {
+    async (_) => {
       if (options.template) {
         return schematic(options.template, { ...options });
       }

@@ -15,8 +15,8 @@
     "blank": {
       "description": "Set up boot page",
       "private": true,
-      "factory": "./ng-generate/blank/index",
-      "schema": "./ng-generate/blank/schema.json"
+      "factory": "./ng-generate/demo/index",
+      "schema": "./ng-generate/demo/schema.json"
     }
   }
 }

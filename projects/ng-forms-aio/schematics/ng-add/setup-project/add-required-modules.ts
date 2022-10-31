@@ -25,7 +25,7 @@ export function addRequiredModules(options: Schema): Rule {
 
     for (const module in modulesMap) {
       if (modulesMap.hasOwnProperty(module)) {
-        addModuleImportToApptModule(host, module, modulesMap[module as never], project, appModulePath, options);
+        addModuleImportToApptModule(host, module, modulesMap[module as never], project, appModulePath);
       }
     }
 
@@ -38,8 +38,7 @@ function addModuleImportToApptModule(
   moduleName: string,
   src: string,
   project: any,
-  appModulePath: string,
-  options: Schema
+  appModulePath: string
 ): void {
   if (hasNgModuleImport(host, appModulePath, moduleName)) {
     console.log(
