@@ -1,7 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { NgFormsAio } from 'projects/ng-forms-aio/src/lib/models/NgFormsAio';
-import { AnimatedFormProvider, AnimatedIcon, AnimatedLinkProvider } from './../../providers';
+import { AnimatedFormProvider,  AnimatedLinkProvider } from './../../providers';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -147,5 +147,8 @@ export class HomeComponent implements AfterViewInit {
         this.langChangeAnimation = false;
       }, 250);
     });
+  }
+
+  public onSubmit(event:NgFormsAio){
   }
 }

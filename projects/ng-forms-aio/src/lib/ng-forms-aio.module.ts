@@ -4,7 +4,7 @@ import {
   NgAioCheckboxFormComponent,
   NgAioInputFormComponent,
   NgAioSelectFormComponent,
-  NgAioInputTextBoxComponent,
+  NgAioInputTextAreaComponent,
   AbstractComponent,
   NgAioCheckboxListFormComponent,
   ButtonComponent
@@ -20,7 +20,7 @@ import { BehaviorSubject } from 'rxjs';
     NgAioCheckboxFormComponent,
     NgAioInputFormComponent,
     NgAioSelectFormComponent,
-    NgAioInputTextBoxComponent,
+    NgAioInputTextAreaComponent,
     NgAioCheckboxListFormComponent,
     AbstractComponent,
     ButtonComponent
@@ -31,7 +31,7 @@ import { BehaviorSubject } from 'rxjs';
     NgAioCheckboxFormComponent,
     NgAioInputFormComponent,
     NgAioSelectFormComponent,
-    NgAioInputTextBoxComponent,
+    NgAioInputTextAreaComponent,
     NgAioCheckboxListFormComponent,
     AbstractComponent,
     ButtonComponent

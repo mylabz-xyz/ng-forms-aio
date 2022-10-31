@@ -1,4 +1,4 @@
-a {
+.animatedLinks {
   display: inline-block;
   position: relative;
   color: #333333;
@@ -7,10 +7,7 @@ a {
   border-bottom: 2px solid #333333;
 }
 
-a:hover {
-}
-
-a:after {
+.animatedLinks:after {
   content: '';
   display: block;
   position: absolute;
@@ -23,7 +20,20 @@ a:after {
   transition: all 0.1s cubic-bezier(0, 0.59, 1, 0.26);
 }
 
-a:hover:after {
+.animatedLinks:hover:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #333333;
+  z-index: -1;
+}
+
+
+.animatedLinks:hover:after {
   content: '';
   display: block;
   position: absolute;

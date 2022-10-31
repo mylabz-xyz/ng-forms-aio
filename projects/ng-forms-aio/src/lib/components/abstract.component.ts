@@ -52,7 +52,6 @@ export class AbstractComponent implements OnInit, AfterViewInit {
   }
 
   public emit(value: any): void {
-    console.log(this._id, value);
     this.value = value;
     this.onChange.emit({ value: value, id: this._id });
   }

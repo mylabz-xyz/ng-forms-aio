@@ -1,0 +1,26 @@
+.ng-forms-aio-error {
+  background-color: #fff2f0;
+  border: 1px solid #ffccc7;
+  padding: 16px;
+  .divider {
+    padding-top: 5px;
+    border-bottom: 1px solid rgba(173, 173, 173, 0.316);
+    height: 1px;
+    width: 100%;
+    display: block;
+  }
+}
+
+.ng-forms-aio-valid {
+  background-color: #f6ffed;
+  border: 1px solid #b7eb8f;
+  padding: 16px;
+}
+
+.ng-aio-feedback-content {
+  padding-top: 10px;
+}
+
+.ng-aio-feedback-label {
+ font-weight: bold;
+}

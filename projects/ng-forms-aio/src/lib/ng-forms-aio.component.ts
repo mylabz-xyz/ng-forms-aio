@@ -2,10 +2,12 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { NgFormsAio, NgFormsAioOptions, NgFormsAioItem } from './models/NgFormsAio';
 
 import './extends/String';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, pairwise, startWith, Subscription } from 'rxjs';
 import { NgAioTheme } from './const';
 import { NgFormsAioConfig, NgFormsAioService } from './ng-forms-aio.service';
+import { NgFormsAioSvg } from './svg';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'ng-forms-aio',
@@ -18,8 +20,19 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
   @Input() submitLabel: string = 'Submit';
   @Input() opts: NgFormsAioOptions = {
     debug: false,
-    submitIfValid: true
+    submitIfValid: true,
+    invalidFeedBack: {
+      input: ' is required ',
+      'text-area': ' is required',
+      checkbox: ' Select at least one element',
+      'checkbox-list': ' Select at least one element',
+      select: ' Select at least one element'
+    },
+    validFeedBackLabel:'Form validated !',
+    invalidFeedBackLabel:'One or more fields have errors.'
   };
+
+
   @Input() theme: NgAioTheme = 'float-label-default';
   @Input() formId?: string;
 
@@ -30,25 +43,29 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
 
   public _formsKeys: string[] | any = [];
 
+  public ngFormsAioSvg = {
+    success: this.sanitizer.bypassSecurityTrustHtml(NgFormsAioSvg.SuccessSvg),
+    error: this.sanitizer.bypassSecurityTrustHtml(NgFormsAioSvg.ErrorSvg)
+  };
+
   private _keyStart = '';
 
   @Output() onChange = new EventEmitter();
   @Output() onCreate = new EventEmitter();
   @Output() onSubmit = new EventEmitter();
 
-  public defaultErrors: any = {
-    input: ' is required ',
-    'text-area': ' is required',
-    checkbox: ' Select at least one element',
-    'checkbox-list': ' Select at least one element',
-    select: ' Select at least one element'
+  public submitted = {
+    valid: false,
+    invalid: false
   };
-
-  public submitted = false;
 
   private subs: Subscription[] = [];
 
-  constructor(private formBuilder: FormBuilder, private ngFormsAioService: NgFormsAioService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private ngFormsAioService: NgFormsAioService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   private _formatID = (form: NgFormsAioItem, count: any) =>
     `${this._keyStart}${form.component}${
@@ -80,7 +97,8 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
   }
 
   public submit() {
-    this.submitted = true;
+    this.submitted.valid = this.formGroup.valid;
+    this.submitted.invalid = !this.formGroup.valid;
     if (this.formGroup.valid) {
       this.onSubmit.emit(this.formGroup);
     }
@@ -99,8 +117,6 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
       this.debug(this._formsGroup, 'on form change');
     }
   }
-
-  private installPlugins() {}
 
   private toObject() {
     if (!this.forms) {
@@ -130,7 +146,8 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
           component: form?.component,
           type: form?.type,
           id: id,
-          col: defaultClass + ' ' + (form?.col || 'd-flex flex-col col-12') + ' ',
+          col: defaultClass + ' ' + (form?.col || 'col-12') + ' ',
+          class: defaultClass + ' ' + (form?.class || '') + ' ',
           required: form?.required || false,
           eventId: eventId,
           onChange: form?.onChange || false
@@ -187,7 +204,16 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
     this._keyStart = '';
     this.opts = {
       debug: false,
-      submitIfValid: true
+      submitIfValid: true,
+      invalidFeedBack: {
+        input: ' is required ',
+        'text-area': ' is required',
+        checkbox: ' Select at least one element',
+        'checkbox-list': ' Select at least one element',
+        select: ' Select at least one element'
+      },
+      validFeedBackLabel:'Form validated !',
+      invalidFeedBackLabel:'One or more fields have errors.'
     };
   }
 

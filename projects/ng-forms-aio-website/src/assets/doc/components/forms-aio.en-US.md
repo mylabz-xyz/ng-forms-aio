@@ -7,18 +7,56 @@ When there is a need for display form.
 ## How to use
 
 ```ts
-const form = [{
-  label: "Enter your name",
-  component: 'input',
-  value: ""
-}]
+const form: NgFormsAio = [
+  {
+    label: 'Title',
+    component: 'select',
+    values: [
+      { value: 0, label: 'Mr' },
+      { value: 1, label: 'Mrs' },
+      { value: 2, label: 'Ms' }
+    ],
+    onChange: event => {
+      console.log(event);
+    },
+    col: 'col-2'
+  },
+  {
+    label: 'Name of the owner',
+    component: 'input',
+    value: '',
+    required: true,
+    onChange: event => {
+      console.log(event);
+    },
+    col: 'col-10'
+  },
+  {
+    label: 'Name your pet',
+    component: 'input',
+    value: '',
+    required: true,
+    onChange: event => {
+      console.log(event);
+    }
+  },
+  {
+    label: 'My animal is a :',
+    component: 'checkbox-list',
+    required: true,
+    values: [
+      { value: 0, label: 'A Dog 🐶' },
+      { value: 1, label: 'A Cat 🐱' }
+    ],
+    onChange: event => {
+      console.log(event);
+    }
+  }
+];
 ```
 
 ```html
-<ng-forms-aio
-  [forms]="form"
-  (onChange)="onChange($event)"
-></ng-forms-aio>
+<ng-forms-aio [forms]="form" (onChange)="onChange($event)"></ng-forms-aio>
 ```
 
 ## Interface
@@ -42,14 +80,14 @@ interface FormsAio {
   /**
    * @description Component to use for form object
    */
-  component: 'input' | 'text-area' | 'checkbox'| 'checkbox-list' | 'select';
+  component: 'input' | 'text-area' | 'checkbox' | 'checkbox-list' | 'select';
   /**
    * @description Actual or init value of form
    * @default
    * '' if type input;
    * 0 if type checkbox | select;
    */
-  value?: string | number | [] |any| undefined;
+  value?: string | number | [] | any | undefined;
   /**
    * @description Actual or init value of form (only for checkbox)
    * @default
@@ -92,12 +130,7 @@ interface FormsAio {
   /**
    * TODO
    */
-  validator?:
-    | ValidatorFn
-    | ValidatorFn[]
-    | AbstractControlOptions
-    | null
-    | undefined;
+  validator?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null | undefined;
   asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null | undefined;
 
   /**
@@ -128,5 +161,6 @@ interface FormsAio {
     | 'col-10'
     | 'col-11'
     | 'col-12';
-}[]
+}
+[];
 ```

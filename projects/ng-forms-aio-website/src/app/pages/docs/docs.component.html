@@ -10,8 +10,7 @@
             *ngFor="let linkKey of links"
             (click)="router.navigate(['/doc/' + linkKey.file], { preserveFragment: false })"
           >
-            {{ linkKey.file | titlecase }}
-            <i nz-icon nzType="file"></i>
+            {{ linkKey.title | titlecase }}
           </a>
         </ul>
       </nz-affix>

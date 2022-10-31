@@ -2,6 +2,10 @@ a::after {
   background: transparent;
 }
 
+a{
+  color: black;
+}
+
 .doc_sider {
   background: transparent;
 }
@@ -14,6 +18,8 @@ a::after {
 
 .sider_menu_item {
   font-size: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.509);
+
 }
 
 .ant-menu-item {
