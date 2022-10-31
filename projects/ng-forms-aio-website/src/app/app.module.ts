@@ -53,12 +53,15 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { IconDefinition } from '@ant-design/icons-angular';
-import { NgFormsAioModule } from 'projects/ng-forms-aio/src/lib/ng-forms-aio.module';
 import { MarkdownModule } from 'ngx-markdown';
 
 import { InfoCircleFill, GithubOutline, DropboxOutline } from '@ant-design/icons-angular/icons';
+
+// To replace with lib
+import { NgFormsAioModule } from 'projects/ng-forms-aio/src/lib/ng-forms-aio.module';
 
 const icons: IconDefinition[] = [InfoCircleFill, GithubOutline, DropboxOutline];
 

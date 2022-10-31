@@ -1,7 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { NzNotificationService } from 'ng-zorro-antd/notification';
-import { AnimatedLinkProvider } from './providers';
 
 @Component({
   selector: 'app-root',
@@ -11,20 +9,12 @@ import { AnimatedLinkProvider } from './providers';
 export class AppComponent implements AfterViewInit {
   title = 'ng-forms-aio-website';
 
-  constructor(private translateService: TranslateService, private notification: NzNotificationService) {
+  constructor(private translateService: TranslateService) {
     translateService.setDefaultLang('en');
   }
 
   ngAfterViewInit(): void {
     this.listenScroll();
-
-    setTimeout(()=>{
-      this.notification.create(
-        'info',
-        'Currently in development',
-        'The first release of this library is scheduled for 2022-10-31.'
-      );
-    },1000)
   }
 
   private listenScroll() {
@@ -49,3 +39,6 @@ export class AppComponent implements AfterViewInit {
     storeScroll.bind(this)();
   }
 }
+
+
+

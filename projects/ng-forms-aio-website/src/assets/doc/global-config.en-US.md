@@ -1,4 +1,4 @@
-We add a **global configuration** support to many components. You can define the default behavior of these components through the global configuration, which reduces redundant codes that must be written in the templates (makes your codes concise). Moreover, it supports altering the global configuration at runtime.
+We add a **configuration** support to many components. You can define the default behavior of these components through the global configuration, which reduces redundant codes that must be written in the templates (makes your codes concise). Moreover, it supports altering the global configuration at runtime.
 
 ## How to Use?
 
@@ -11,8 +11,17 @@ const ngFormsAioConfig: NgFormsAioConfig = {
   theme: 'float-label-default',
   displaySubmitBtn: true,
   opts: {
-    debug: true,
-    submitIfValid: true
+    debug: false,
+    submitIfValid: true,
+    invalidFeedBack: {
+      input: ' is required ',
+      'text-area': ' is required',
+      checkbox: ' Select at least one element',
+      'checkbox-list': ' Select at least one element',
+      select: ' Select at least one element'
+    },
+    validFeedBackLabel: 'Form validated !',
+    invalidFeedBackLabel: 'One or more fields have errors.'
   },
   submitLabel: 'Submit'
 };
@@ -38,6 +47,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.ngFormsAioService.setConfig({ displaySubmitBtn: true });
+  }
+
+// You can update an element of the config at any time.
+  setFormTheme(theme: string): void {
+    this.ngFormsAioService.setConfig({ theme: theme });
   }
 }
 ```

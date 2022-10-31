@@ -1,13 +1,12 @@
-import {
-  AbstractControlOptions,
-  AsyncValidatorFn,
-  ValidatorFn,
-} from '@angular/forms';
+import { AbstractControlOptions, AsyncValidatorFn, ValidatorFn } from '@angular/forms';
 
 export interface NgFormsAio extends Array<NgFormsAioItem> {}
 export interface NgFormsAioOptions {
   submitIfValid?: boolean;
   debug?: boolean;
+  invalidFeedBack?: { [key: string]: string };
+  validFeedBackLabel?: string;
+  invalidFeedBackLabel?: string;
 }
 
 export interface NgFormsAioItem {
@@ -26,14 +25,14 @@ export interface NgFormsAioItem {
   /**
    * @description Component to use for form object
    */
-  component: 'input' | 'text-area' | 'checkbox'| 'checkbox-list' | 'select';
+  component: 'input' | 'text-area' | 'checkbox' | 'checkbox-list' | 'select';
   /**
    * @description Actual or init value of form
    * @default
    * '' if type input;
    * 0 if type checkbox | select;
    */
-  value?: string | number | [] |any| undefined;
+  value?: string | number | [] | any | undefined;
   /**
    * @description Actual or init value of form (only for checkbox)
    * @default
@@ -76,12 +75,7 @@ export interface NgFormsAioItem {
   /**
    * TODO
    */
-  validator?:
-    | ValidatorFn
-    | ValidatorFn[]
-    | AbstractControlOptions
-    | null
-    | undefined;
+  validator?: ValidatorFn | ValidatorFn[] | AbstractControlOptions | null | undefined;
   asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null | undefined;
 
   /**
@@ -94,6 +88,12 @@ export interface NgFormsAioItem {
     //@ts-ignore
     pattern?: string;
   };
+
+  /**
+   * @description set class form element
+   * @default ''
+   */
+  class?: string;
 
   /**
    * @description set col size for form element

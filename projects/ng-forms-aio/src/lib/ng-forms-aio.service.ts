@@ -1,22 +1,29 @@
 import { Inject, Injectable, InjectionToken, OnDestroy, Optional } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { NgAioTheme } from './const';
+import { NgFormsAio, NgFormsAioOptions } from './models/NgFormsAio';
 
 export interface NgFormsAioConfig {
   theme?: NgAioTheme;
   displaySubmitBtn?: boolean;
   submitLabel?: string;
-  opts?: {
-    debug?: boolean;
-    submitIfValid?: boolean;
-  };
+  opts?: NgFormsAioOptions;
 }
 
 export const _defaultConfig: NgFormsAioConfig = {
   theme: 'float-label-default',
   opts: {
-    debug: true,
-    submitIfValid: true
+    debug: false,
+    submitIfValid: true,
+    invalidFeedBack: {
+      input: ' is required ',
+      'text-area': ' is required',
+      checkbox: ' Select at least one element',
+      'checkbox-list': ' Select at least one element',
+      select: ' Select at least one element'
+    },
+    validFeedBackLabel: 'Form validated !',
+    invalidFeedBackLabel: 'One or more fields have errors.'
   },
   submitLabel: 'Submit'
 };
@@ -45,6 +52,8 @@ export class NgFormsAioService implements OnDestroy {
     const _config = this.config.getValue();
     this.config.next({ ..._config, ...config });
   }
+
+  public getItemByLabel(form: NgFormsAio, label: string) {}
 
   ngOnDestroy(): void {
     if (this.subs.length > 0) {
