@@ -21,22 +21,20 @@
     <div nz-row>
       <div nz-col class="gutter-row" nzJustify="center" [nzSpan]="24">
         <ng-forms-aio
-          [opts]="{ debug: false }"
+          [opts]="{ debug: false, displaySubmitBtn: false }"
           [forms]="themeSelectForm"
           [theme]="themeSelected"
           (onChange)="onThemeselect($event)"
-          [displaySubmitBtn]="false"
           *ngIf="showForm"
         ></ng-forms-aio>
       </div>
       <div nz-col class="gutter-row" nzJustify="center" [nzSpan]="24">
         <ng-forms-aio
-          [opts]="{ debug: false }"
+          [opts]="{ debug: false, displaySubmitBtn: false }"
           [forms]="form"
           [theme]="themeSelected"
           (onChange)="onOut('form', $event)"
           (onCreate)="onCreate($event)"
-          [displaySubmitBtn]="false"
           *ngIf="showForm"
         ></ng-forms-aio>
       </div>

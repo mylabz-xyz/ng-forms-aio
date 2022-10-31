@@ -3,6 +3,8 @@ import { AbstractControlOptions, AsyncValidatorFn, ValidatorFn } from '@angular/
 export interface NgFormsAio extends Array<NgFormsAioItem> {}
 export interface NgFormsAioOptions {
   submitIfValid?: boolean;
+  submitLabel?:string;
+  displaySubmitBtn?:boolean;
   debug?: boolean;
   invalidFeedBack?: { [key: string]: string };
   validFeedBackLabel?: string;

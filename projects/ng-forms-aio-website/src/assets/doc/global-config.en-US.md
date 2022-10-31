@@ -61,3 +61,22 @@ All component instances is responsive to this configuration change (as long as t
 ## Check all Available Globally Configurable Parameters
 
 The interface `NgFormsAioConfig` provide a complete information about all components and parameters that are globally configurable. You can also check each individual component's API for more details.
+
+```ts
+export interface NgFormsAioConfig {
+  theme?: NgAioTheme;
+  displaySubmitBtn?: boolean;
+  submitLabel?: string;
+  opts?: NgFormsAioOptions;
+}
+
+export interface NgFormsAioOptions {
+  submitIfValid?: boolean;
+  submitLabel?:string;
+  displaySubmitBtn?:boolean;
+  debug?: boolean;
+  invalidFeedBack?: { [key: string]: string };
+  validFeedBackLabel?: string;
+  invalidFeedBackLabel?: string;
+}
+```

@@ -113,11 +113,10 @@
   </div>
   <div class="w-100 text-end">
     <ng-aio-button
-      *ngIf="displaySubmitBtn"
+      *ngIf="opts.displaySubmitBtn"
       [theme]="theme"
       [isSubmitted]="submitted.valid"
-      [label]="submitLabel"
-      [label]="submitLabel"
+      [label]="opts.submitLabel"
       (onChange)="submit()"
     ></ng-aio-button>
   </div>

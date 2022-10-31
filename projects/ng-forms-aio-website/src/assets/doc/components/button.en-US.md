@@ -7,34 +7,33 @@ When there is a need for display form.
 ## How to use
 
 ```html
-<ng-forms-aio
-  displaySubmitBtn="true"
-  submitLabel="My submit button"
-></ng-forms-aio>
+<ng-forms-aio [opts]="{ displaySubmitBtn: true, submitLabel: 'Submit !' }"></ng-forms-aio>
 ```
 
 **Or**
 
+See **Global Config** under Doc sections for more information.
+
 ```ts
-const form: NgFormsAioOptions = {
-  displaySubmitBtn: true;
-  submitLabel: 'Submit'
+export class AppComponent implements OnInit {
+  constructor(private ngFormsAioService: NgFormsAioService) {}
+
+  ngOnInit(): void {
+    this.ngFormsAioService.setConfig({ displaySubmitBtn: true });
+  }
 }
 ```
 
-```html
-<ng-forms-aio
-  displaySubmitBtn="true"
-  submitLabel="My submit button"
-></ng-forms-aio>
-```
 ## Interface
 
-This interface is usefull for the callback of all events.
-
 ```ts
-interface Button {
-  displaySubmitBtn: boolean; // Default true
-  submitLabel: string;
+export interface NgFormsAioOptions {
+  submitIfValid?: boolean;
+  submitLabel?:string;
+  displaySubmitBtn?:boolean;
+  debug?: boolean;
+  invalidFeedBack?: { [key: string]: string };
+  validFeedBackLabel?: string;
+  invalidFeedBackLabel?: string;
 }
 ```
