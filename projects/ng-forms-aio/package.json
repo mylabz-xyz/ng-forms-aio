@@ -1,6 +1,6 @@
 {
   "name": "@mylabz/ng-forms-aio",
-  "version": "14.0.0",
+  "version": "14.0.1",
   "schematics": "./schematics/collection.json",
   "peerDependencies": {
     "@angular/common": "^14.2.0",
