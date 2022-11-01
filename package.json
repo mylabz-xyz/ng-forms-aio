@@ -36,7 +36,6 @@
     "install": "^0.13.0",
     "ng-zorro-antd": "^13.1.1",
     "ngx-markdown": "^13.1.0",
-    "normalize.css": "^8.0.1",
     "npm": "^8.5.5",
     "rxjs": "~7.4.0",
     "three": "^0.137.5",

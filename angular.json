@@ -8,7 +8,6 @@
       "root": "projects/ng-forms-aio",
       "sourceRoot": "projects/ng-forms-aio/src",
       "prefix": "ng-forms-aio",
-      "styles": ["../node_modules/normalize.css/normalize.css"],
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",

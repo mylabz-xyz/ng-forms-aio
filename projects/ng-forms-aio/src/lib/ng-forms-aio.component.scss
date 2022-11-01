@@ -1,4 +1,4 @@
-  @import '~normalize.css';
+::ng-deep {
   @import './scss/index.scss';
 
   .d-flex {
@@ -25,4 +25,5 @@
       width: 100%;
       background-color: transparent !important;
     }
+  }
 }

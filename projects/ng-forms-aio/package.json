@@ -1,12 +1,11 @@
 {
   "name": "@mylabz/ng-forms-aio",
-  "version": "13.0.9-beta",
+  "version": "13.0.13-beta",
   "schematics": "./schematics/collection.json",
   "peerDependencies": {
     "@angular/common": "^13.0.0",
     "@angular/core": "^13.0.0",
-    "@angular/cdk": "^13.0.0",
-    "normalize.css": "^8.0.1"
+    "@angular/cdk": "^13.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
