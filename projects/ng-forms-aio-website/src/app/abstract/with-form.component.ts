@@ -29,8 +29,6 @@ export class AbstractWithForm {
   public out = '';
 
   public onThemeselect(form: any) {
-    console.warn(form)
-
    if(form?.value?.select.length > 0) this.themeSelected = form.value.select;
   }
 

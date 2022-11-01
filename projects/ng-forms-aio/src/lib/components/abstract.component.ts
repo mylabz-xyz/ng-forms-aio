@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, ValidationErrors } from '@angular/forms';
-import { NgFormsAioTheme, Themes } from '../const';
+import { NgFormsAioTheme, NgFormsAioThemesList } from '../const';
 
 @Component({
   template: ''
@@ -17,7 +17,7 @@ export class AbstractComponent implements OnInit, AfterViewInit {
   @Input() invalid: ValidationErrors | null = null;
   @Input() required = false;
 
-  public themes = Themes;
+  public themes = NgFormsAioThemesList;
 
   @Output() onChange: EventEmitter<any> = new EventEmitter();
 

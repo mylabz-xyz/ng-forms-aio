@@ -10,23 +10,7 @@ export interface NgFormsAioConfig {
   opts?: NgFormsAioOptions;
 }
 
-export const _defaultConfig: NgFormsAioConfig = {
-  theme: 'float-label-default',
-  opts: {
-    debug: false,
-    submitIfValid: true,
-    invalidFeedBack: {
-      input: ' is required ',
-      'text-area': ' is required',
-      checkbox: ' Select at least one element',
-      'checkbox-list': ' Select at least one element',
-      select: ' Select at least one element'
-    },
-    validFeedBackLabel: 'Form validated !',
-    invalidFeedBackLabel: 'One or more fields have errors.'
-  },
-  submitLabel: 'Submit'
-};
+export const _defaultConfig: NgFormsAioConfig = {}
 
 export const NG_FORMS_AIO_CONFIG_TOKEN = new InjectionToken<BehaviorSubject<NgFormsAioConfig>>('ng_forms_aio_token');
 
