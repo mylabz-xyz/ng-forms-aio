@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
 
 import 'codemirror/mode/javascript/javascript.js';
@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
   templateUrl: './exemples.component.html',
   styleUrls: ['./exemples.component.scss']
 })
-export class ExemplesComponent implements OnInit,AfterViewChecked {
+export class ExemplesComponent implements OnInit,OnChanges {
   @Input() data?: any;
   @Input() stringify?: boolean;
   @Input() reloadData?: BehaviorSubject<boolean>;
@@ -30,16 +30,11 @@ export class ExemplesComponent implements OnInit,AfterViewChecked {
   ngOnInit(): void {
     this.exemple = this.stringify ? JSON.stringify(this.data, null, '\t') : this.data;
 
-    setTimeout(() => {
-      this.editor.codeMirror!.refresh();
-    }, 1000);
   }
 
-  ngAfterViewChecked(): void {
-    setTimeout(() => {
-      this.editor.codeMirror!.refresh();
-    }, 1000);
-  }
+ngOnChanges(changes: SimpleChanges): void {
+    this.editor.codeMirror!.refresh();
+}
 
   public onInputChange(value: any) {
     this.inputChange.emit(JSON.parse(value));

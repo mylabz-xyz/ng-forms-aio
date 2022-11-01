@@ -7,11 +7,12 @@
     class="wrap-codemirror-explain neumo-default-card d-flex flex-column align-items-start justify-content-center px-2"
     [nzSpan]="8"
   >
-    <nz-tabset nzType="card">
+    <nz-tabset nzType="card" [nzSelectedIndex]="actualTab" (nzSelectedIndexChange)="actualTab = $event">
       <nz-tab nzTitle="Angular 14"
         ><div class="fadeIn">
           <p>Using <b>NPM</b></p>
           <app-exemples
+            [_class]="actualTab"
             data=" npm install @mylabz/ng-forms-aio"
             [options]="{
               lineNumbers: false,
@@ -23,6 +24,7 @@
           <nz-divider></nz-divider>
           <p>Using <b>Yarn</b></p>
           <app-exemples
+            [_class]="actualTab"
             data=" yarn add @mylabz/ng-forms-aio"
             [options]="{
               lineNumbers: false,
@@ -34,6 +36,7 @@
           <nz-divider></nz-divider>
           <p>Using <b>@angular/cli</b></p>
           <app-exemples
+            [_class]="actualTab"
             data=" ng new PROJECT_NAME
  cd PROJECT_NAME
  ng add @mylabz/ng-forms-aio"
@@ -49,6 +52,7 @@
         <div class="fadeIn">
           <p>Using <b>NPM</b></p>
           <app-exemples
+            [_class]="actualTab"
             data=" npm install @mylabz/ng-forms-aio@13"
             [options]="{
               lineNumbers: false,
@@ -60,6 +64,7 @@
           <nz-divider></nz-divider>
           <p>Using <b>Yarn</b></p>
           <app-exemples
+            [_class]="actualTab"
             data=" yarn add @mylabz/ng-forms-aio@13"
             [options]="{
               lineNumbers: false,
@@ -71,6 +76,7 @@
           <nz-divider></nz-divider>
           <p>Using <b>@angular/cli</b></p>
           <app-exemples
+            [_class]="actualTab"
             data=" ng new PROJECT_NAME
  cd PROJECT_NAME
  ng add @mylabz/ng-forms-aio@13"
