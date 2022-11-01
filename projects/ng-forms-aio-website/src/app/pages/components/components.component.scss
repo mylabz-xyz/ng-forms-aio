@@ -1,11 +1,14 @@
-a::after {
-  background: transparent;
+
+.component_wrap ::ng-deep {
+  a::after {
+    background: transparent;
+  }
+  a {
+    color: black;
+  }
 }
 
-a {
-  color: black;
 
-}
 
 .doc_sider {
   background: transparent;

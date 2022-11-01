@@ -70,7 +70,7 @@ $ ng add @mylabz/ng-forms-aio
 
 ## Setup project with ng-add
 
-<video autoplay loop muted  src="https://github.com/mylabz-xyz/ng-forms-aio/blob/f4786a04fc71c53193cae379dfc853c941b77773/.gitfiles/ng-forms-aio-source.mp4?raw=true"> </video>
+<video autoplay loop muted  src="https://user-images.githubusercontent.com/75882457/199261498-7e414bbf-dfb7-4932-804d-aaf6db99f130.mp4"> </video>
 
 Will install @mylabz/ng-forms-aio to your project, and suggest a template who will edit the `app.module.ts` to add the `NgFormsAioModule`, create a template into `app.component.html`, add somes style to `app.component.scss` and add logic to `app.component.ts`.
 

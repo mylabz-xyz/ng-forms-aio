@@ -89,5 +89,6 @@ export class AbstractComponent implements OnInit, AfterViewInit {
     if (this.value === undefined || this.value === null) {
       this.value = this.values[0];
     }
+    this.emit(this.value);
   }
 }
