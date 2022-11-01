@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "ng-forms-aio-ng-add",
+  "title": "NG-FORMS*AIO ng-add schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "skipPackageJson": {
+      "type": "boolean",
+      "default": false,
+      "description": "Do not add ng-forms-aio dependencies to package.json (e.g., --skipPackageJson)"
+    },
+    "skipInstall": {
+      "type": "boolean",
+      "default": false,
+      "description": "Do not install dependency package."
+    },
+    "theme": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether custom theme file should be set up."
+    },
+    "template": {
+      "type": "string",
+      "default": "demo",
+      "description": "Create an Angular project with using preset template.",
+      "x-prompt": {
+        "message": "Choose template to create project:",
+        "type": "list",
+        "items": ["demo"]
+      }
+    }
+  },
+  "required": []
+}

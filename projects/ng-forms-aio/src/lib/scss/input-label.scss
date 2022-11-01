@@ -1,4 +1,4 @@
-.ng-aio-wrap {
+.ng-forms-aio-wrap {
   --redInvalid: #dc3545;
   --blueDefault: #3399ff;
   --pristine: #3399ff;
@@ -7,28 +7,27 @@
 
   --borderDefault: var(--pristine);
 
-  .ng-aio-invalid {
+  .ng-forms-aio-invalid {
     --borderDefault: var(--invalid);
   }
-  .ng-aio-pristine {
+  .ng-forms-aio-pristine {
     --borderDefault: var(--pristine);
   }
-  .ng-aio-dirty {
+  .ng-forms-aio-dirty {
     --borderDefault: var(--dirty);
   }
 
-  .ng-aio-wrap-error {
+  .ng-forms-aio-wrap-error {
     text-align: start !important;
-    color: --redInvalid !important;
     margin: 0.5em;
-    .ng-aio-error {
+    .ng-forms-aio-error {
       height: 2px;
       transition: 0.4s;
     }
   }
-  .ng-aio-control {
+  .ng-forms-aio-control {
     margin: 0.75em auto;
-    .ng-aio-checkbox-label {
+    .ng-forms-aio-checkbox-label {
       label {
         z-index: 1;
         padding: 1em 0.25em;
@@ -124,7 +123,7 @@
   .border-slide,
   .border-slide-invert {
     border: 0;
-    padding: 5px 0 7px;
+    padding: 5px 0px 7px;
     border: 1px solid transparent;
     border-bottom-color: #ccc;
     transition: 0.4s;
@@ -185,7 +184,7 @@
   .borders-diagonal,
   .borders-fill {
     border-bottom: 1px solid #ccc;
-    padding: 7px 14px 9px;
+    padding: 7px 0px 9px;
     transition: 0.4s;
   }
 
@@ -339,7 +338,7 @@
   .background-appear,
   .background-fill {
     border: 0;
-    padding: 7px 15px;
+    padding: 7px 0px;
     border-bottom: 1px solid #ccc;
     position: relative;
     background: transparent;
@@ -506,7 +505,7 @@
     position: absolute;
     left: 0;
     width: 100%;
-    top: 9px;
+    top: 0px;
     color: #aaa;
     transition: 0.3s;
     z-index: -1;
@@ -539,7 +538,7 @@
     position: absolute;
     left: 0;
     width: 100%;
-    top: 9px;
+    top: 0px;
     color: #aaa;
     transition: 0.3s;
     z-index: -1;
@@ -587,7 +586,7 @@
     position: absolute;
     left: 0;
     width: 100%;
-    top: 9px;
+    top: 0px;
     color: #aaa;
     transition: 0.3s;
     z-index: -1;
@@ -605,7 +604,7 @@
   .float-label.border-center-to-edges,
   .float-label.border-edges-to-center {
     border-bottom: 1px solid #ccc;
-    padding: 7px 14px;
+    padding: 7px 0px;
     transition: 0.4s;
     background: transparent;
   }
@@ -824,7 +823,7 @@
   .float-label.background-slide,
   .float-label.background-appear {
     border: 0;
-    padding: 7px 15px;
+    padding: 7px 0px;
     border-bottom: 1px solid #ccc;
     position: relative;
     background: transparent;

@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { byCss } from './index';
 import { AbstractComponent } from '../lib';
 import { _ANNOTATIONS } from './BaseHelper';
-import { Themes } from '../lib/const';
+import { NgFormsAioThemesList } from '../lib/const';
 
 export type _ExtendedComponent = Component & AbstractComponent
 
@@ -46,7 +46,7 @@ public  init  (child: any, parent: unknown)  {
     describe(`Base test : Child should have herited opts from AbstractComponent`, () => {
       it(`It should create the component`, () => {
         expect(this.child.theme).toBeDefined();
-        expect(this.child.themes).toBe(Themes);
+        expect(this.child.themes).toBe(NgFormsAioThemesList);
         expect(this.child.value).toBeDefined();
         expect(this.child.isSubmitted).toBeDefined();
         expect(this.child.required).toBeDefined();

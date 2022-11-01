@@ -6,11 +6,11 @@ import { NgAioCheckboxListFormComponent } from '..';
 @Component({
   selector: 'test-checkbox-list',
   template: `<div>
-    <ng-aio-checkbox-list
+    <ng-forms-aio-checkbox-list
       (onChange)="onChange($event)"
       [value]="value"
       [values]="values"
-    ></ng-aio-checkbox-list>
+    ></ng-forms-aio-checkbox-list>
   </div>`,
 })
 class CheckBoxListWrapComponent {

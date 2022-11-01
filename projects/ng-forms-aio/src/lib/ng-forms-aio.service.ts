@@ -1,32 +1,16 @@
 import { Inject, Injectable, InjectionToken, OnDestroy, Optional } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { NgAioTheme } from './const';
+import { NgFormsAioTheme } from './const';
 import { NgFormsAio, NgFormsAioOptions } from './models/NgFormsAio';
 
 export interface NgFormsAioConfig {
-  theme?: NgAioTheme;
+  theme?: NgFormsAioTheme;
   displaySubmitBtn?: boolean;
   submitLabel?: string;
   opts?: NgFormsAioOptions;
 }
 
-export const _defaultConfig: NgFormsAioConfig = {
-  theme: 'float-label-default',
-  opts: {
-    debug: false,
-    submitIfValid: true,
-    invalidFeedBack: {
-      input: ' is required ',
-      'text-area': ' is required',
-      checkbox: ' Select at least one element',
-      'checkbox-list': ' Select at least one element',
-      select: ' Select at least one element'
-    },
-    validFeedBackLabel: 'Form validated !',
-    invalidFeedBackLabel: 'One or more fields have errors.'
-  },
-  submitLabel: 'Submit'
-};
+export const _defaultConfig: NgFormsAioConfig = {}
 
 export const NG_FORMS_AIO_CONFIG_TOKEN = new InjectionToken<BehaviorSubject<NgFormsAioConfig>>('ng_forms_aio_token');
 

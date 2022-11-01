@@ -1,11 +1,11 @@
-<div class="ng-aio-control">
-  <div class="ng-aio-checkbox-label text-start">
+<div class="ng-forms-aio-control">
+  <div class="ng-forms-aio-checkbox-label text-start">
     <label *ngIf="label" id="inputGroup-sizing-default" [innerHtml]="label"></label>
 
     <div class="d-flex position-relative">
       <div class="d-flex flex-col" [ngStyle]="{ padding: '0 1em' }" *ngFor="let choice of values; let i = index">
         <input
-          class="ng-aio-checkbox"
+          class="ng-forms-aio-checkbox"
           type="checkbox"
           (focus)="isFocus = themes[theme].showLabel && true"
           (focusout)="isFocus = themes[theme].showLabel && false"

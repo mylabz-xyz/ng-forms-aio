@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { NgAioTheme, Themes } from 'projects/ng-forms-aio/src/lib/const';
+import { NgFormsAioTheme, NgFormsAioThemesList } from 'projects/ng-forms-aio/src/lib/const';
 import { NgFormsAio } from 'projects/ng-forms-aio/src/lib/models/NgFormsAio';
 
 @Component({
@@ -15,12 +15,12 @@ export class AbstractWithForm {
 
   public showForm = true;
   public showCode = true;
-  public themeSelected: NgAioTheme = 'float-label-background-slide';
+  public themeSelected: NgFormsAioTheme = 'float-label-background-slide';
   public themeSelectForm: NgFormsAio = [
     {
       label: 'Theme',
       component: 'select',
-      values: Object.keys(Themes).map((value, index) => {
+      values: Object.keys(NgFormsAioThemesList).map((value, index) => {
         return { label: value, value: value };
       }),
     },
@@ -29,8 +29,6 @@ export class AbstractWithForm {
   public out = '';
 
   public onThemeselect(form: any) {
-    console.warn(form)
-
    if(form?.value?.select.length > 0) this.themeSelected = form.value.select;
   }
 

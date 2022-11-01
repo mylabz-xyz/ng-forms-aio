@@ -1,0 +1,23 @@
+<div>
+  <div class="home-exemple-form mb-auto default-card">
+    <div class="form-theme-select">
+      <ng-forms-aio
+        [opts]="{ displaySubmitBtn: false }"
+        [forms]="themeSelectForm"
+        [theme]="themeSelected"
+        (onChange)="onThemeselect($event)"
+      ></ng-forms-aio>
+    </div>
+
+    <div class="form-exemple">
+      <ng-forms-aio
+        [forms]="form"
+        [theme]="themeSelected"
+        (onSubmit)="onSubmit($event)"
+        (onCreate)="onCreate($event)"
+      ></ng-forms-aio>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

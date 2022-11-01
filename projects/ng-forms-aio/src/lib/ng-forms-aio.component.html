@@ -2,20 +2,22 @@
   (keyup.enter)="submit()"
   [formGroup]="formGroup"
   *ngIf="_formsKeys && _formsKeys.length > 0 && formGroup"
-  class="row d-flex align-items-end ng-aio-wrap"
+  class="row d-flex align-items-end ng-forms-aio-wrap"
+  id="ng-form-aio-main-wrap"
 >
   <div
-    class="position-relative ng-aio-item"
+    class="position-relative ng-forms-aio-item"
     [class]="_forms[formID].col! + _forms[formID].class! + 'd-flex flex-col'"
     *ngFor="let formID of _formsKeys"
     [ngSwitch]="_forms[formID].component"
     [ngClass]="{
-      'ng-aio-pristine': _formsGroup[formID].pristine && !_formsGroup[formID].errors,
-      'ng-aio-dirty': _formsGroup[formID].dirty && !_formsGroup[formID].errors,
-      'ng-aio-invalid': _formsGroup[formID].errors && submitted
+      'ng-forms-aio-pristine': _formsGroup[formID].pristine && !_formsGroup[formID].errors,
+      'ng-forms-aio-dirty': _formsGroup[formID].dirty && !_formsGroup[formID].errors,
+      'ng-forms-aio-invalid': _formsGroup[formID].errors && submitted
     }"
   >
-    <ng-aio-select
+    <ng-forms-aio-select
+      class="p-1"
       [isSubmitted]="submitted.valid || submitted.invalid"
       [label]="_forms[formID].label"
       [invalid]="_formsGroup[formID].errors"
@@ -25,8 +27,9 @@
       (onChange)="onFormElementChange(_forms[formID].id, $event)"
       *ngSwitchCase="'select'"
     >
-    </ng-aio-select>
-    <ng-aio-text-area
+    </ng-forms-aio-select>
+    <ng-forms-aio-text-area
+      class="p-1"
       [isSubmitted]="submitted.valid || submitted.invalid"
       [label]="_forms[formID].label"
       [invalid]="_formsGroup[formID].errors"
@@ -35,8 +38,9 @@
       (onChange)="onFormElementChange(_forms[formID].id, $event)"
       *ngSwitchCase="'text-area'"
     >
-    </ng-aio-text-area>
-    <ng-aio-input
+    </ng-forms-aio-text-area>
+    <ng-forms-aio-input
+      class="p-1"
       [isSubmitted]="submitted.valid || submitted.invalid"
       [label]="_forms[formID].label"
       [invalid]="_formsGroup[formID].errors"
@@ -46,8 +50,9 @@
       (onChange)="onFormElementChange(_forms[formID].id, $event)"
       *ngSwitchCase="'input'"
     >
-    </ng-aio-input>
-    <ng-aio-checkbox-list
+    </ng-forms-aio-input>
+    <ng-forms-aio-checkbox-list
+      class="p-1"
       [isSubmitted]="submitted.valid || submitted.invalid"
       [label]="_forms[formID].label"
       [invalid]="_formsGroup[formID].errors"
@@ -57,8 +62,9 @@
       (onChange)="onFormElementChange(_forms[formID].id, $event)"
       *ngSwitchCase="'checkbox-list'"
     >
-    </ng-aio-checkbox-list>
-    <ng-aio-checkbox
+    </ng-forms-aio-checkbox-list>
+    <ng-forms-aio-checkbox
+      class="p-1"
       [isSubmitted]="submitted.valid || submitted.invalid"
       [label]="_forms[formID].label"
       [invalid]="_formsGroup[formID].errors"
@@ -68,19 +74,19 @@
       (onChange)="onFormElementChange(_forms[formID].id, $event)"
       *ngSwitchCase="'checkbox'"
     >
-    </ng-aio-checkbox>
+    </ng-forms-aio-checkbox>
 
     <div *ngSwitchDefault>...</div>
   </div>
 
   <div class="w-100 text-start position-relative">
     <div *ngIf="formGroup.status === 'INVALID' && submitted.invalid" class="w-100 ng-forms-aio-error fadeIn">
-      <div class="ng-aio-feedback-label d-flex flex-row align-items-center">
-        <i class="ng-aio-icon-errors" [innerHTML]="ngFormsAioSvg.error"></i>
+      <div class="ng-forms-aio-feedback-label d-flex flex-row align-items-center">
+        <i class="ng-forms-aio-icon-errors" [innerHTML]="ngFormsAioSvg.error"></i>
         <span class="m-auto"> {{ opts.invalidFeedBackLabel! }}</span>
       </div>
       <div class="divider"></div>
-      <div class="ng-aio-feedback-content">
+      <div class="ng-forms-aio-feedback-content">
         <div *ngFor="let control of formGroup.controls | keyvalue">
           <div *ngIf="_forms[control.key].formControlFeedBack; else defaultControlFeedback">
             <div *ngFor="let errors of control.value.errors | keyvalue">
@@ -105,19 +111,19 @@
     </div>
 
     <div *ngIf="formGroup.status === 'VALID' && submitted.valid" class="w-100 ng-forms-aio-valid fadeIn">
-      <div class="ng-aio-feedback-label d-flex flex-row align-items-center">
-        <i class="ng-aio-icon-valid" [innerHTML]="ngFormsAioSvg.success"></i>
+      <div class="ng-forms-aio-feedback-label d-flex flex-row align-items-center">
+        <i class="ng-forms-aio-icon-valid" [innerHTML]="ngFormsAioSvg.success"></i>
         <span class="m-auto"> {{ opts.validFeedBackLabel! }}</span>
       </div>
     </div>
   </div>
   <div class="w-100 text-end">
-    <ng-aio-button
+    <ng-forms-aio-button
       *ngIf="opts.displaySubmitBtn"
       [theme]="theme"
       [isSubmitted]="submitted.valid"
       [label]="opts.submitLabel"
       (onChange)="submit()"
-    ></ng-aio-button>
+    ></ng-forms-aio-button>
   </div>
 </form>

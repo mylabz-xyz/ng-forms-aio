@@ -6,10 +6,10 @@ When you want provide a theme or customise a class.
 
 ## How to use
 
-You can pass an object that implements the interface `NgAioTheme` to **NG-FORMS*AIO**
+You can pass an object that implements the interface `NgFormsAioTheme` to **NG-FORMS*AIO**
 
 ```ts
-const theme: NgAioTheme = 'float-label-default';
+const theme: NgFormsAioTheme = 'float-label-default';
 
 const form: NgFormsAio = [{
   label: "Enter your name",
@@ -30,7 +30,7 @@ const form: NgFormsAio = [{
 This is the interface and list of all themes.
 
 ```typescript
-export const Themes = {
+export const NgFormsAioThemesList = {
   'float-label-default': {
     inputClass: 'float-label border-default',
     focusClass: 'focus-border',
@@ -148,5 +148,5 @@ export const Themes = {
   },
 };
 
-export type NgAioTheme = keyof typeof Themes;
+export type NgFormsAioTheme = keyof typeof NgFormsAioThemesList;
 ```

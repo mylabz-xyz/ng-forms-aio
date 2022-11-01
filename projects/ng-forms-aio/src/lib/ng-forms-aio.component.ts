@@ -4,7 +4,7 @@ import { NgFormsAio, NgFormsAioOptions, NgFormsAioItem } from './models/NgFormsA
 import './extends/String';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, pairwise, startWith, Subscription } from 'rxjs';
-import { NgAioTheme } from './const';
+import { NgFormsAioTheme } from './const';
 import { NgFormsAioConfig, NgFormsAioService } from './ng-forms-aio.service';
 import { NgFormsAioSvg } from './svg';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -16,7 +16,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class NgFormsAioComponent implements OnInit, OnDestroy {
   @Input() forms!: NgFormsAio;
-  @Input() opts: NgFormsAioOptions = {
+  @Input() opts: NgFormsAioOptions = {};
+
+  private _opts = {
     debug: false,
     submitIfValid: true,
     submitLabel: 'Submit',
@@ -32,7 +34,9 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
     invalidFeedBackLabel: 'One or more fields have errors.'
   };
 
-  @Input() theme: NgAioTheme = 'float-label-default';
+  @Input() theme: NgFormsAioTheme = '' as any;
+
+  private _theme: NgFormsAioTheme = 'float-label-default';
   @Input() formId?: string;
 
   public _forms: { [key: string]: NgFormsAioItem } = {};
@@ -87,10 +91,18 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
     this.subs.push(
       this.ngFormsAioService.getConfig$().subscribe((config: NgFormsAioConfig) => {
         if (config.opts) this.opts = { ...this.opts, ...config.opts };
-        if (config?.displaySubmitBtn === false || config?.displaySubmitBtn === true)
+        if (config?.displaySubmitBtn === false || config?.displaySubmitBtn === true) {
           this.opts.displaySubmitBtn = config.displaySubmitBtn;
+        }
         if (config.submitLabel) this.opts.submitLabel = config.submitLabel;
-        if (config.theme) this.theme = config.theme;
+          if (config.theme && this.theme.length === 0) {
+            this.theme = config.theme;
+          } else {
+            this.theme = this._theme;
+          }
+        if (Object.keys(this.opts).length > 0) {
+          this.opts = { ...this._opts, ...this.opts };
+        }
       })
     );
   }
