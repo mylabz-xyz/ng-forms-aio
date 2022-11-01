@@ -1,4 +1,4 @@
-export const Themes = {
+export const NgFormsAioThemesList = {
   'float-label-default': {
     inputClass: 'float-label border-default',
     focusClass: 'focus-border',
@@ -116,4 +116,4 @@ export const Themes = {
   },
 };
 
-export type NgFormsAioTheme = keyof typeof Themes;
+export type NgFormsAioTheme = keyof typeof NgFormsAioThemesList;

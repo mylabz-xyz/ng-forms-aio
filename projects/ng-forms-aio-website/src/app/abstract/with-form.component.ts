@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { NgFormsAioTheme, Themes } from 'projects/ng-forms-aio/src/lib/const';
+import { NgFormsAioTheme, NgFormsAioThemesList } from 'projects/ng-forms-aio/src/lib/const';
 import { NgFormsAio } from 'projects/ng-forms-aio/src/lib/models/NgFormsAio';
 
 @Component({
@@ -20,7 +20,7 @@ export class AbstractWithForm {
     {
       label: 'Theme',
       component: 'select',
-      values: Object.keys(Themes).map((value, index) => {
+      values: Object.keys(NgFormsAioThemesList).map((value, index) => {
         return { label: value, value: value };
       }),
     },

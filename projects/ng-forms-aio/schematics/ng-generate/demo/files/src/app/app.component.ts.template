@@ -3,7 +3,7 @@ import {
   NgFormsAioTheme,
   NgFormsAio,
   NgFormsAioOptions,
-  Themes,
+  NgFormsAioThemesList,
 } from '@mylabz/ng-forms-aio';
 
 @Component({
@@ -17,7 +17,7 @@ export class AppComponent {
     {
       label: 'Theme',
       component: 'select',
-      values: Object.keys(Themes).map((value, index) => {
+      values: Object.keys(NgFormsAioThemesList).map((value, index) => {
         return { label: value, value: value };
       }),
     },
