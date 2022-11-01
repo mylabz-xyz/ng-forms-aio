@@ -4,7 +4,7 @@ import { NgFormsAio, NgFormsAioOptions, NgFormsAioItem } from './models/NgFormsA
 import './extends/String';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, pairwise, startWith, Subscription } from 'rxjs';
-import { NgAioTheme } from './const';
+import { NgFormsAioTheme } from './const';
 import { NgFormsAioConfig, NgFormsAioService } from './ng-forms-aio.service';
 import { NgFormsAioSvg } from './svg';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -32,7 +32,7 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
     invalidFeedBackLabel: 'One or more fields have errors.'
   };
 
-  @Input() theme: NgAioTheme = 'float-label-default';
+  @Input() theme: NgFormsAioTheme = 'float-label-default';
   @Input() formId?: string;
 
   public _forms: { [key: string]: NgFormsAioItem } = {};

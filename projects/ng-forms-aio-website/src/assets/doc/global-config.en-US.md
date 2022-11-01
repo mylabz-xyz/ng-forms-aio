@@ -64,7 +64,7 @@ The interface `NgFormsAioConfig` provide a complete information about all compon
 
 ```ts
 export interface NgFormsAioConfig {
-  theme?: NgAioTheme;
+  theme?: NgFormsAioTheme;
   displaySubmitBtn?: boolean;
   submitLabel?: string;
   opts?: NgFormsAioOptions;

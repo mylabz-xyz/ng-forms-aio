@@ -1,10 +1,10 @@
 import { Inject, Injectable, InjectionToken, OnDestroy, Optional } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { NgAioTheme } from './const';
+import { NgFormsAioTheme } from './const';
 import { NgFormsAio, NgFormsAioOptions } from './models/NgFormsAio';
 
 export interface NgFormsAioConfig {
-  theme?: NgAioTheme;
+  theme?: NgFormsAioTheme;
   displaySubmitBtn?: boolean;
   submitLabel?: string;
   opts?: NgFormsAioOptions;

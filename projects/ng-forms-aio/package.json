@@ -1,8 +1,7 @@
 {
   "name": "@mylabz/ng-forms-aio",
-  "version": "13.0.13-beta",
+  "version": "13.0.14-beta",
   "schematics": "./schematics/collection.json",
-  "exports":["./lib/const"],
   "peerDependencies": {
     "@angular/common": "^13.0.0",
     "@angular/core": "^13.0.0",

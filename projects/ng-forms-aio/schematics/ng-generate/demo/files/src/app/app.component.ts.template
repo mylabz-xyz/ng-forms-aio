@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {
-  NgAioTheme,
+  NgFormsAioTheme,
   NgFormsAio,
   NgFormsAioOptions,
+  Themes,
 } from '@mylabz/ng-forms-aio';
 
 @Component({
@@ -11,22 +12,14 @@ import {
   styleUrls: ['./app.component.<%= style %>']
 })
 export class AppComponent {
-  public themeSelected: NgAioTheme = 'float-label-background-slide';
-  // public themeSelectForm: NgFormsAio = [
-  //   {
-  //     label: 'Theme',
-  //     component: 'select',
-  //     values: Object.keys(Themes).map((value, index) => {
-  //       return { label: value, value: value };
-  //     }),
-  //   },
-  // ];
-
+  public themeSelected: NgFormsAioTheme = 'float-label-background-slide';
   public themeSelectForm: NgFormsAio = [
     {
       label: 'Theme',
       component: 'select',
-      values: [],
+      values: Object.keys(Themes).map((value, index) => {
+        return { label: value, value: value };
+      }),
     },
   ];
 

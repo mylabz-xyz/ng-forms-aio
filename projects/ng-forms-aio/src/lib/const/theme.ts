@@ -116,4 +116,4 @@ export const Themes = {
   },
 };
 
-export type NgAioTheme = keyof typeof Themes;
+export type NgFormsAioTheme = keyof typeof Themes;
