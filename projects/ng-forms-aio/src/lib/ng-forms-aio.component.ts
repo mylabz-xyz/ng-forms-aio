@@ -95,14 +95,11 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
           this.opts.displaySubmitBtn = config.displaySubmitBtn;
         }
         if (config.submitLabel) this.opts.submitLabel = config.submitLabel;
-        if (this.theme.length > 0) {
-        } else {
           if (config.theme && this.theme.length === 0) {
             this.theme = config.theme;
           } else {
             this.theme = this._theme;
           }
-        }
         if (Object.keys(this.opts).length > 0) {
           this.opts = { ...this._opts, ...this.opts };
         }
