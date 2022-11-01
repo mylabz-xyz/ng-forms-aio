@@ -12,6 +12,7 @@
     <div class="form-exemple">
       <ng-forms-aio
         [forms]="form"
+        [opts]="{ displaySubmitBtn: true }"
         [theme]="themeSelected"
         (onSubmit)="onSubmit($event)"
         (onCreate)="onCreate($event)"
