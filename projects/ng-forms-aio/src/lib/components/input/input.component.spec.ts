@@ -7,7 +7,7 @@ import { NgAioInputFormComponent } from './input.component';
 @Component({
   selector: 'test-input',
   template: `<div>
-    <ng-forms-aio-input (onChange)="onChange($event)" [value]="value"></ng-forms-aio-input>
+    <ng-aio-input (onChange)="onChange($event)" [value]="value"></ng-aio-input>
   </div>`,
 })
 class InputWrapComponent {

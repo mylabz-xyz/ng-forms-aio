@@ -1,4 +1,4 @@
-.ng-forms-aio-wrap {
+.ng-aio-wrap {
   --redInvalid: #dc3545;
   --blueDefault: #3399ff;
   --pristine: #3399ff;
@@ -7,27 +7,28 @@
 
   --borderDefault: var(--pristine);
 
-  .ng-forms-aio-invalid {
+  .ng-aio-invalid {
     --borderDefault: var(--invalid);
   }
-  .ng-forms-aio-pristine {
+  .ng-aio-pristine {
     --borderDefault: var(--pristine);
   }
-  .ng-forms-aio-dirty {
+  .ng-aio-dirty {
     --borderDefault: var(--dirty);
   }
 
-  .ng-forms-aio-wrap-error {
+  .ng-aio-wrap-error {
     text-align: start !important;
+    color: --redInvalid !important;
     margin: 0.5em;
-    .ng-forms-aio-error {
+    .ng-aio-error {
       height: 2px;
       transition: 0.4s;
     }
   }
-  .ng-forms-aio-control {
+  .ng-aio-control {
     margin: 0.75em auto;
-    .ng-forms-aio-checkbox-label {
+    .ng-aio-checkbox-label {
       label {
         z-index: 1;
         padding: 1em 0.25em;
