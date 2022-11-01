@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:website": "ng build ng-forms-aio-website --prod",
-    "build:lib": "ng build ng-forms-aio --prod && npm run build:schematics",
+    "build:website": "ng build ng-forms-aio-website --configuration production",
+    "build:lib": "ng build ng-forms-aio --configuration production && npm run build:schematics",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:dev": "ng test ng-forms-aio --watch=true",
