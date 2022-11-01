@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { NgFormsAio, NgFormsAioOptions } from '@mylabz/ng-forms-aio';
+import {
+  NgAioTheme,
+  NgFormsAio,
+  NgFormsAioOptions,
+} from '@mylabz/ng-forms-aio';
 
 @Component({
   selector: '<%= prefix %>-root',
@@ -7,6 +11,25 @@ import { NgFormsAio, NgFormsAioOptions } from '@mylabz/ng-forms-aio';
   styleUrls: ['./app.component.<%= style %>']
 })
 export class AppComponent {
+  public themeSelected: NgAioTheme = 'float-label-background-slide';
+  // public themeSelectForm: NgFormsAio = [
+  //   {
+  //     label: 'Theme',
+  //     component: 'select',
+  //     values: Object.keys(Themes).map((value, index) => {
+  //       return { label: value, value: value };
+  //     }),
+  //   },
+  // ];
+
+  public themeSelectForm: NgFormsAio = [
+    {
+      label: 'Theme',
+      component: 'select',
+      values: [],
+    },
+  ];
+
   public form: NgFormsAio = [
     {
       label: 'Title',
@@ -14,31 +37,31 @@ export class AppComponent {
       values: [
         { value: 0, label: 'Mr' },
         { value: 1, label: 'Mrs' },
-        { value: 2, label: 'Ms' }
+        { value: 2, label: 'Ms' },
       ],
-      onChange: value => {
+      onChange: (value) => {
         console.log(value);
       },
-      col: 'col-2'
+      col: 'col-2',
     },
     {
       label: 'Name of the owner',
       component: 'input',
       value: '',
       required: true,
-      onChange: value => {
+      onChange: (value) => {
         console.log(value);
       },
-      col: 'col-10'
+      col: 'col-12',
     },
     {
       label: 'Name your pet',
       component: 'input',
       value: '',
       required: true,
-      onChange: value => {
+      onChange: (value) => {
         console.log(value);
-      }
+      },
     },
     {
       label: 'My animal is a :',
@@ -46,9 +69,9 @@ export class AppComponent {
       required: true,
       values: [
         { value: 1, label: 'A Dog 🐶' },
-        { value: 2, label: 'A Cat 🐱' }
-      ]
-    }
+        { value: 2, label: 'A Cat 🐱' },
+      ],
+    },
   ];
 
   public formOptions: NgFormsAioOptions = {
@@ -61,13 +84,25 @@ export class AppComponent {
       'text-area': ' is required',
       checkbox: ' Select at least one element',
       'checkbox-list': ' Select at least one element',
-      select: ' Select at least one element'
+      select: ' Select at least one element',
     },
     validFeedBackLabel: 'Form validated !',
-    invalidFeedBackLabel: 'One or more fields have errors.'
+    invalidFeedBackLabel: 'One or more fields have errors.',
   };
 
-    public onSubmit(event:NgFormsAio){
-      console.log(event);
+  public onSubmit(event: NgFormsAio) {
+    console.warn('Form is submited !');
+    console.log(event);
+  }
+
+  public onThemeselect(form: any) {
+    console.warn(form);
+
+    if (form?.value?.select.length > 0) this.themeSelected = form.value.select;
+  }
+
+  public onCreate(homeForms: any) {
+    console.warn('Form is created !');
+    console.log(homeForms);
   }
 }
