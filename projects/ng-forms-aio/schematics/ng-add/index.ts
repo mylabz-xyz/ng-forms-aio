@@ -8,7 +8,7 @@ export default function (options: Schema): Rule {
   return chain([
     (host: Tree) => {
       if (!options.skipPackageJson) {
-        addPackageToPackageJson(host, '@mylabz/ng-forms-aio', '14.0.2');
+        addPackageToPackageJson(host, '@mylabz/ng-forms-aio', '14.0.3');
       }
     },
     schematic('ng-add-setup-project', options),

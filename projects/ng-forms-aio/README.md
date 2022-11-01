@@ -4,10 +4,13 @@ A library of Angular UI components, made to make managing forms easier.
 All components are open source and free to use under MIT license.
 
 
-DEMO: https://ng-forms-aio.mylabz.xyz/
-GLOBAL DOC: https://ng-forms-aio.mylabz.xyz/#/doc/forms-aio
-COMPONENT DOC: https://ng-forms-aio.mylabz.xyz/#/components/forms-aio
-NPM: https://www.npmjs.com/package/@mylabz/ng-forms-aio
+**DEMO**: https://ng-forms-aio.mylabz.xyz/
+
+**GLOBAL DOC**: https://ng-forms-aio.mylabz.xyz/#/doc/forms-aio
+
+**COMPONENT DOC**: https://ng-forms-aio.mylabz.xyz/#/components/forms-aio
+
+**NPM**: https://www.npmjs.com/package/@mylabz/ng-forms-aio
 
 ## **Dependencies**
 
