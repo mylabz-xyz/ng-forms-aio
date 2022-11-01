@@ -1,1 +1,94 @@
-<p>explanation works!</p>
+<div nz-row nzJustify="center" [nzGutter]="[24, 10]" class="w-100">
+  <div nz-col class="d-flex flex-column align-items-center justify-content-center p-2" [nzSpan]="24">
+    <p class="_install_title">{{ 'explain.title' | translate }}</p>
+  </div>
+
+  <div
+    nz-col
+    class="wrap-codemirror-explain neumo-default-card d-flex flex-column align-items-start justify-content-center px-2"
+    [nzSpan]="12"
+  >
+    <video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
+      <source src="/assets/video/ng-forms-aio-source.mp4" width="100%" type="video/mp4" />
+    </video>
+  </div>
+
+  <div
+    nz-col
+    class="wrap-codemirror-explain neumo-default-card d-flex flex-column align-items-start justify-content-center px-2"
+    [nzSpan]="8"
+  >
+    <nz-tabset nzType="card" [nzSelectedIndex]="actualTab" (nzSelectedIndexChange)="actualTab = $event">
+      <nz-tab nzTitle="Angular 14"
+        ><div class="fadeIn">
+          <p>Using <b>NPM</b></p>
+          <markdown
+            clipboard
+            ngPreserveWhitespaces
+            data="
+        ```bash
+        npm install @mylabz/ng-forms-aio
+        ```"
+          ></markdown>
+          <nz-divider></nz-divider>
+          <p>Using <b>Yarn</b></p>
+          <markdown
+            clipboard
+            ngPreserveWhitespaces
+            data="
+        ```bash
+        yarn add @mylabz/ng-forms-aio
+        ```"
+          ></markdown>
+          <nz-divider></nz-divider>
+          <p>Using <b>@angular/cli</b></p>
+          <markdown
+            clipboard
+            ngPreserveWhitespaces
+            data="
+          ```bash
+        npm install @mylabz/ng-forms-aio
+        ng new PROJECT_NAME
+        cd PROJECT_NAME
+        ng add @mylabz/ng-forms-aio
+        ```"
+          ></markdown> </div
+      ></nz-tab>
+      <nz-tab nzTitle="Angular 13">
+        <div class="fadeIn">
+          <p>Using <b>NPM</b></p>
+          <markdown
+            clipboard
+            ngPreserveWhitespaces
+            data="
+        ```bash
+        npm install @mylabz/ng-forms-aio@13
+        ```"
+          ></markdown>
+          <nz-divider></nz-divider>
+          <p>Using <b>Yarn</b></p>
+          <markdown
+            clipboard
+            ngPreserveWhitespaces
+            data="
+        ```bash
+        yarn add @mylabz/ng-forms-aio@13
+        ```"
+          ></markdown>
+          <nz-divider></nz-divider>
+          <p>Using <b>@angular/cli</b></p>
+          <markdown
+            clipboard
+            ngPreserveWhitespaces
+            data="
+          ```bash
+        ng new PROJECT_NAME
+        cd PROJECT_NAME
+        ng add @mylabz/ng-forms-aio@13
+        ```"
+          ></markdown>
+        </div>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+</div>

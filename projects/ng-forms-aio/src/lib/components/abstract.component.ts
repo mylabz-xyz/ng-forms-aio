@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, ValidationErrors } from '@angular/forms';
 import { NgFormsAioTheme, NgFormsAioThemesList } from '../const';
 
 @Component({
   template: ''
 })
-export class AbstractComponent implements OnInit, AfterViewInit {
+export class AbstractComponent implements OnInit, AfterContentInit {
   @Input() label: string | undefined;
   @Input() _index: number | undefined;
   @Input() value?: string | number | any = '';
@@ -32,7 +32,9 @@ export class AbstractComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.initIndex();
     this.initId();
+  }
 
+  ngAfterContentInit(): void {
     if (this.constructor.name === 'NgAioCheckboxFormComponent') {
       this.checkCheckboxSelected();
     }
@@ -40,15 +42,15 @@ export class AbstractComponent implements OnInit, AfterViewInit {
       this.checkCheckboxListSelected();
     }
 
-    if (this.constructor.name === 'NgAioSelectFormComponent' && this.values) {
+    if (this.constructor.name === 'NgAioSelectFormComponent') {
       this.dropDownSelected();
     }
-  }
 
-  ngAfterViewInit(): void {
-    if (this.constructor.name !== 'ButtonComponent') {
-      this.onChange.emit({ value: this.value, id: this._id });
-    }
+    setTimeout(() => {
+      if (this.constructor.name !== 'ButtonComponent') {
+        this.onChange.emit({ value: this.value, id: this._id });
+      }
+    });
   }
 
   public emit(value: any): void {
@@ -57,6 +59,7 @@ export class AbstractComponent implements OnInit, AfterViewInit {
   }
 
   public getValue(event: Event): string {
+    console.log(event);
     return (event.target as HTMLInputElement).value;
   }
 
@@ -86,8 +89,6 @@ export class AbstractComponent implements OnInit, AfterViewInit {
 
   // on init select component
   public dropDownSelected() {
-    if (this.value === undefined || this.value === null) {
-      this.value = this.values[0];
-    }
+    this.value = this.values[0].value;
   }
 }

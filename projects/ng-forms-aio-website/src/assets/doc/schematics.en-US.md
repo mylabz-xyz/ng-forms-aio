@@ -1,26 +1,19 @@
-Using a CLI helps initialize projects, generate template codes and reduce development time.
-> The`NG-FORMS-AIO` scaffolding is essentially based on [schematics](https://blog.angular.io/schematics-an-introduction-dc1dfbc2a2b2).
+## Schematics
 
-## Initialize A Project
+## Setup project with ng-add
 
-Initialize a project with `NG-FORMS-AIO`.
+Will install @mylabz/ng-forms-aio to your project, and suggest a template who will edit the `app.module.ts` to add the `NgFormsAioModule`, create a template into `app.component.html`, add somes style to `app.component.scss` and add logic to `app.component.ts`.
 
-Run the command `ng add @mylabz/ng-forms-aio` under your project directory, and follow the options to configure settings including whether you want to import i18n files and stylesheets, and load initial modules.
-
-In the meantime, you can choose an existing project template while creating your project, and then develop the project on the basis of it.
-
-### Command
+Use **skip** if you don't want a template generation.
 
 ```bash
-ng add @mylabz/ng-forms-aio [options]
+$ ng add @mylabz/ng-forms-aio
 ```
 
-## Component Generation
+## Only Generate demo template
 
-There are template source codes under every component API show case, you may obtain these codes by expanding `Show Code`.
-
-### Command
+Into an existing project, simple run
 
 ```bash
-ng g @mylabz/ng-forms-aio:[schematic] <name> [options]
+$ ng g @mylabz/ng-forms-aio:demo
 ```

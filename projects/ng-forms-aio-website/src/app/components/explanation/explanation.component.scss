@@ -1,0 +1,12 @@
+:host {
+  width: 100%;
+}
+._install_title {
+  font: 2em Arvo, sans-serif;
+}
+
+::ng-deep .wrap-codemirror-explain {
+  .CodeMirror {
+    height: auto;
+  }
+}

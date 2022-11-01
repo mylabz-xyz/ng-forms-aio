@@ -34,7 +34,6 @@ export class AnimatedFormProvider {
     this.timeLine.add(icon);
 
     this.timeLine.play();
-    console.log(this.timeLine);
   }
 
   public getCtx() {

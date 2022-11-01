@@ -80,7 +80,7 @@
   </div>
 
   <div class="w-100 text-start position-relative">
-    <div *ngIf="formGroup.status === 'INVALID' && submitted.invalid" class="w-100 ng-forms-aio-error fadeIn">
+    <div *ngIf="formGroup.status === 'INVALID' && submitted.invalid" class="ng-forms-aio-error fadeIn">
       <div class="ng-forms-aio-feedback-label d-flex flex-row align-items-center">
         <i class="ng-forms-aio-icon-errors" [innerHTML]="ngFormsAioSvg.error"></i>
         <span class="m-auto"> {{ opts.invalidFeedBackLabel! }}</span>

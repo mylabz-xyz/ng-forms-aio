@@ -1,5 +1,5 @@
 export enum ProjectTemplate {
-  Blank = 'blank',
+  Skip = 'skip',
   Demo = 'demo',
 }
 

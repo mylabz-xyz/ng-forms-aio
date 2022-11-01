@@ -1,9 +1,10 @@
-a::after {
-  background: transparent;
-}
-
-a{
-  color: black;
+.doc_wrap ::ng-deep  {
+  a::after {
+    background: transparent;
+  }
+  a {
+    color: black;
+  }
 }
 
 .doc_sider {
@@ -19,7 +20,6 @@ a{
 .sider_menu_item {
   font-size: 1.25rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.509);
-
 }
 
 .ant-menu-item {

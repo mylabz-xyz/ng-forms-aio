@@ -13,5 +13,7 @@ This document will help you upgrade from `NG-FORM-AIO` 13.x version to 14.x vers
 
 ### 2.Upgrade NG-FORM-AIO
 
-- Run `ng update ng-forms-aio`.
+- Run `npm i @mylabz/ng-forms-aio`.
 - If any warning messages appear in the console, follow the prompts to modify the corresponding code.
+
+A schematics will be available soon for this.

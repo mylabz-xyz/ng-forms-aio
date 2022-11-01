@@ -1,4 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
 
 import 'codemirror/mode/javascript/javascript.js';
@@ -29,7 +39,6 @@ export class ExemplesComponent implements OnInit {
 
   ngOnInit(): void {
     this.exemple = this.stringify ? JSON.stringify(this.data, null, '\t') : this.data;
-
     setTimeout(() => {
       this.editor.codeMirror!.refresh();
     }, 1000);
