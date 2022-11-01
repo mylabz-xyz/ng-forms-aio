@@ -23,8 +23,6 @@ export class NgFormsAioService implements OnDestroy {
 
   constructor(@Optional() @Inject(NG_FORMS_AIO_CONFIG_TOKEN) _config?: BehaviorSubject<NgFormsAioConfig>) {
     if (_config) this.subs.push(_config.subscribe(__config => this.setConfig(__config)));
-
-    console.log("hey i'm construct");
   }
 
   public getConfig$() {
@@ -32,7 +30,6 @@ export class NgFormsAioService implements OnDestroy {
   }
 
   public setConfig(config: NgFormsAioConfig) {
-    console.log('ng aio forms service', config);
     const _config = this.config.getValue();
     this.config.next({ ..._config, ...config });
   }
