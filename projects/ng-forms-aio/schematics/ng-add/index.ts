@@ -14,6 +14,9 @@ export default function (options: Schema): Rule {
     schematic('ng-add-setup-project', options),
     async _ => {
       if (options.template) {
+        if(options.template === 'skip'){
+          return;
+        }
         return schematic(options.template, { ...options });
       }
     },

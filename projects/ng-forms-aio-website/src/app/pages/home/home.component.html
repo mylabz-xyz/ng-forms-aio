@@ -59,7 +59,13 @@
       <app-features></app-features>
     </div>
   </div>
-  <nz-divider nzText="Example"></nz-divider>
+  <nz-divider></nz-divider>
+  <div nz-row nzJustify="center" [nzGutter]="[24, 10]">
+    <div nz-col class="d-flex flex-column align-items-center justify-content-center px-2" [nzSpan]="24">
+      <app-explanation></app-explanation>
+    </div>
+  </div>
+  <nz-divider></nz-divider>
   <app-intro [(form)]="multiLineForm"></app-intro>
   <nz-divider></nz-divider>
 </div>

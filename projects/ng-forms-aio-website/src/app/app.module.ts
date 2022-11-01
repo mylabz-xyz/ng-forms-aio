@@ -26,7 +26,8 @@ import {
   ZorroDropdownComponent,
   VersionComponent,
   FeaturesComponent,
-  ComponentsComponent
+  ComponentsComponent,
+  ExplanationComponent
 } from './components';
 
 import { AbstractWithForm } from './abstract';
@@ -53,6 +54,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { IconDefinition } from '@ant-design/icons-angular';
@@ -77,6 +79,7 @@ registerLocaleData(en);
     ExemplesComponent,
     FooterComponent,
     HeaderComponent,
+    ExplanationComponent,
     AboutComponentPage,
     DocsComponentPage,
     ExemplesComponentPage,
@@ -112,6 +115,7 @@ registerLocaleData(en);
     NzNotificationModule,
     NzDropDownModule,
     NzIconModule.forRoot(icons),
+    NzTabsModule,
     NzTypographyModule,
     NzLayoutModule,
     NzDividerModule,

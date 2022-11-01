@@ -12,3 +12,4 @@ export * from './highlight';
 export * from './zorro';
 export * from './features/features.component';
 export * from './components/components.component';
+export * from './explanation/explanation.component';

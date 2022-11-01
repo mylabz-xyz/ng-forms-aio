@@ -31,9 +31,9 @@
       "default": "demo",
       "description": "Create an Angular project with using preset template.",
       "x-prompt": {
-        "message": "Choose template to create project:",
+        "message": "Choose template to create project: (will edit app.component.* files, use skip for stop here)",
         "type": "list",
-        "items": ["demo"]
+        "items": ["skip", "demo"]
       }
     }
   },
