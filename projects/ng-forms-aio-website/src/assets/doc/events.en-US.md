@@ -2,7 +2,7 @@ Documentation for **Events**
 
 ## When To Use
 
-When you want listen an events of **ng-forms-aio**
+When you want listen an events of **NG-AIO-FORMS**
 
 ## How to use
 
@@ -38,8 +38,7 @@ const form: NgFormsAio = [{
 ## Interface
 
 This interface is usefull for the callback of all events. It will be an Object of **NgFormsAioItem**.
-The keys of the return Object is set with the name the used component type. For exemple **input**, **checkbox**, **checkbox-list** ... In case of many use of one component type, we had an index for exemple **input_1**, **checkbox_1**, **checkbox-list_1**.
-
+The keys of the return Object is set with the name the used component type. For exemple **input**, **checkbox**, **checkbox-list** ... In case of many use of one component type, we had an index for exemple **input_1**, **checkbox_1**, **checkbox-list_1**
 The interface **NgFormsAioItem** interface includes all component types.
 
 **For more precision and to see exactly your return please select the desired components in the Documentation page.**

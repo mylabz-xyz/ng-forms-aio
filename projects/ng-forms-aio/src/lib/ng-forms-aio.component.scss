@@ -1,5 +1,14 @@
+@import './scss/bootstrap/bootstrap-grid.css';
+:host ::ng-deep {
   @import '~normalize.css';
-  @import './scss/index.scss';
+  @import './scss/input-label.scss';
+  @import './scss/button.scss';
+  @import './scss/commons.scss';
+  @import './scss/animations/index.scss';
+  @import './scss/feedback.scss';
+  @import './scss/icons.scss';
+
+  $redInvalid: #dc3545;
 
   .d-flex {
     display: flex !important;
@@ -17,7 +26,7 @@
     align-items: end !important;
   }
 
-  .ng-forms-aio-control {
+  .ng-aio-control {
     label {
       text-align: start;
     }
@@ -25,4 +34,5 @@
       width: 100%;
       background-color: transparent !important;
     }
+  }
 }

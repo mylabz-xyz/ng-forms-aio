@@ -8,7 +8,7 @@ import { NgAioInputTextAreaComponent } from './input-text-area.component';
 @Component({
   selector: 'test-text-area',
   template: `<div>
-    <ng-forms-aio-text-area (onChange)="onChange($event)" [value]="value"></ng-forms-aio-text-area>
+    <ng-aio-text-area (onChange)="onChange($event)" [value]="value"></ng-aio-text-area>
   </div>`,
 })
 class InputTextAreaWrapComponent {

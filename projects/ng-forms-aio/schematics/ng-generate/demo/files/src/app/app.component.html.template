@@ -1,5 +1,0 @@
-<div>
-    <ng-forms-aio [opts]="formOptions" [forms]="form" (onSubmit)="onSubmit($event)"></ng-forms-aio>
-
-  <router-outlet></router-outlet>
-</div>

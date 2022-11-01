@@ -85,6 +85,10 @@ export interface NgFormsAioItem {
    */
   formControlFeedBack?: {
     [key: string]: string;
+    //@ts-ignore
+    required?: string;
+    //@ts-ignore
+    pattern?: string;
   };
 
   /**

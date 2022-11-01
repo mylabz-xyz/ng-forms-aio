@@ -6,7 +6,7 @@ import { fakeAsync } from '@angular/core/testing';
 @Component({
   selector: 'test-btn',
   template: `<div>
-    <ng-forms-aio-button (onChange)="onSubmit($event)"></ng-forms-aio-button>
+    <ng-aio-button (onChange)="onSubmit($event)"></ng-aio-button>
   </div>`,
 })
 class ButtonWrapComponent {
