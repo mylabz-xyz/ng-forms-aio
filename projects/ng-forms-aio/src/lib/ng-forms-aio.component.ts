@@ -108,8 +108,9 @@ export class NgFormsAioComponent implements OnInit, OnDestroy {
   }
 
   public submit() {
+    console.log('submit')
     this.submitted.valid = this.formGroup.valid;
-    this.submitted.invalid = !this.formGroup.valid;
+    this.submitted.invalid = this.formGroup.invalid;
     if (this.formGroup.valid) {
       this.onSubmit.emit(this.formGroup);
     }

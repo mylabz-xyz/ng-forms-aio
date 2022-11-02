@@ -10,6 +10,8 @@ export class NgAioCheckboxFormComponent
   extends AbstractComponent
 {
   public override _idMarker = 'ngAioCheckBox_';
+  public override componentName = 'NgAioCheckboxFormComponent'
+
 
   public override emit(event: any, i?: any, choice?: any): void {
     if (event.target.checked) {

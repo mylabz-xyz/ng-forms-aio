@@ -7,6 +7,8 @@ import { AbstractComponent } from '..';
   styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent  extends AbstractComponent{
+   public override componentName = 'ButtonComponent'
+
   public onSubmit(){
     this.onChange.emit('Submit event !')
   }
