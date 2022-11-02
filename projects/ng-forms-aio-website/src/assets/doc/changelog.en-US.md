@@ -9,6 +9,13 @@
 
 ---
 
+## 14.0.4
+
+`2022-11-02`
+### Fix
+* Fix use of `this.component.name` on `AbstractComponent`, this logic will be remplaced by an inject/destroy function. (To enable custom component import)
+
+
 ## 14.0.3
 
 `2022-11-01`
@@ -39,6 +46,13 @@
 * **Deploy on npm** for Angular 14
 
 ---
+
+## 13.1.2
+
+`2022-11-02`
+### Fix
+* Fix use of `this.component.name` on `AbstractComponent`, this logic will be remplaced by an inject/destroy function. (To enable custom component import)
+
 
 ## 13.1.1
 
