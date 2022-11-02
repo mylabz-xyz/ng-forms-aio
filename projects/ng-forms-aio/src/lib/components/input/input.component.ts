@@ -15,5 +15,7 @@ export class NgAioInputFormComponent
   @Input() type: string | any = 'text';
 
   public override _idMarker = 'ngAioInput_';
+  public override componentName: string = 'NgAioInputFormComponent';
+
 
 }

@@ -11,4 +11,6 @@ export class NgAioInputTextAreaComponent extends AbstractComponent {
   @Input() appendLabel: number | any;
 
   public override _idMarker: string='ngAioTextBox_';
+  public override componentName: string = 'NgAioInputTextAreaComponent';
+
 }

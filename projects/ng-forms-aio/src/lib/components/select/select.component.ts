@@ -15,4 +15,6 @@ export class NgAioSelectFormComponent
   @Input() formValueTips: number | any;
 
   public override _idMarker = 'ngAioSelect_';
+  public override componentName: string = 'NgAioSelectFormComponent';
+
 }

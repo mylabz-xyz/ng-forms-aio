@@ -10,6 +10,8 @@ export class NgAioCheckboxListFormComponent extends AbstractComponent {
   @Input() multi?: boolean;
 
   public override _idMarker = 'ngAioCheckBoxList_';
+  public override componentName: string = 'NgAioCheckboxListFormComponent';
+
 
   public override emit(event: any, i?: any, choice?: any): void {
     if (this.multi) {

@@ -29,23 +29,25 @@ export class AbstractComponent implements OnInit, AfterContentInit {
 
   public _idDynamic = (id: string | number): string => this._idMarker + id + '_' + this._index;
 
+  public componentName!: string;
+
   ngOnInit(): void {
     this.initIndex();
     this.initId();
   }
 
   ngAfterContentInit(): void {
-    if (this.constructor.name === 'NgAioCheckboxFormComponent') {
+    if (this.componentName === 'NgAioCheckboxFormComponent') {
       this.checkCheckboxSelected();
     }
-    if (this.constructor.name === 'NgAioCheckboxListFormComponent') {
+    if (this.componentName === 'NgAioCheckboxListFormComponent') {
       this.checkCheckboxListSelected();
     }
 
-    if (this.constructor.name === 'NgAioSelectFormComponent') {
+    if (this.componentName === 'NgAioSelectFormComponent') {
       this.dropDownSelected();
     }
-    if (this.constructor.name !== 'ButtonComponent') {
+    if (this.componentName !== 'ButtonComponent') {
       this.onChange.emit({ value: this.value, id: this._id });
     }
   }
